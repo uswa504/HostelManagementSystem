@@ -1,0 +1,82 @@
+﻿ <div class="brand clearfix">
+        <a href="#" class="logo text-white" style="font-size:16px;">Hostel Management System</a>
+        <ul class="ts-profile-nav">
+            <li class="ts-account">
+            <li><a href="/Home/Logout">Logout</a></li>
+        </ul>
+    </div>
+    <div class="ts-main-content">
+        <nav class="ts-sidebar">
+            <ul class="ts-sidebar-menu">
+                <li class="ts-label">Main</li>
+                <li><a href="/Student/dashboard"><i class="fa fa-desktop"></i>Dashboard</a></li>
+                <li><a href="/Student/change_password"><i class="fa fa-files-o"></i>Change Password</a></li>
+                <li><a href="/Student/send_request"><i class="fa fa-files-o"></i>Send Request</a></li>
+            </ul>
+        </nav>
+        <div class="content-wrapper" style="margin-top:8px;">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="page-title">Student Dashboard</h2>
+                        <form method="post" action="" class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Name: </label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="std_name" id="std_name" class="form-control" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Hostel Number: </label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="hostel_id" id="hostel_id" class="form-control" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Hostel Name: </label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="hostel_name" id="hostel_name" class="form-control" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Hostel Location: </label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="hostel_name" id="hostel_name" class="form-control" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Room No: </label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="room_no" value="" id="room_no" class="form-control" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Dues: </label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="annual_dues" id="annual_dues" class="form-control" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Mess Dues: </label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="mess_dues" id="mess_dues" class="form-control" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Fine: (if any) </label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="fine" id="fine" class="form-control" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Stay Duration: </label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="stay" value="" id="stay" class="form-control" disabled>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

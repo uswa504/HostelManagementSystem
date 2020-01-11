@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "Hostel_Details";
+}
+<div class="brand clearfix">
+    <a href="#" class="logo text-white" style="font-size:16px;">Hostel Management System</a>
+    <ul class="ts-profile-nav">
+        <li class="ts-account">
+        <li><a href="/Home/Logout">Logout</a></l
+    </ul>
+</div>
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12" style="margin-top: 8%;">
+                <div class="row"></div>
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="panel-body">
+                                <h3>Hostel Details</h3>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h4>Hostel Id:</h4>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <h4>@Model.hostel_id</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h4>Male/Female:</h4>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h4>@Model.hostel_type</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h4>Hostel Name:</h4>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h4>@Model.hostel_name</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h4>Total Rooms:</h4>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h4>@Model.hostel_rooms</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h4>Location:</h4>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h4>@Model.hostel_location</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
