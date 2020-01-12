@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="HostelManagement" Class="HMSDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\HostelManagement.mdf;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="HostelManagementConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Allottment" Member="Allottments">
+    <Type Name="Allottment">
+      <Column Name="allottee_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="room_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="std_cnic" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="allotte_type" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="allotte_addedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="[time-of-addition]" Member="time_of_addition" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="allotte_activeStatus" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Allottment_Due" Member="Dues" ThisKey="allottee_id" OtherKey="allottee_id" Type="Due" />
+      <Association Name="Allottment_Request" Member="Requests" ThisKey="allottee_id" OtherKey="allotte_id" Type="Request" />
+      <Association Name="Room_Allottment" Member="Room" ThisKey="room_id" OtherKey="room_id" Type="Room" IsForeignKey="true" />
+      <Association Name="Student_Allottment" Member="Student" ThisKey="std_cnic" OtherKey="std_cnic" Type="Student" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[User]" Member="Users">
+    <Type Name="User">
+      <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="user_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="user_passwd" Type="System.Data.Linq.Binary" DbType="Binary(50)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="user_role" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="user_addedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="time_of_addition" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="user_activeStatus" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="hostel_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="User_Student" Member="Students" ThisKey="user_id" OtherKey="user_id" Type="Student" />
+      <Association Name="Hostel_User" Member="Hostel" ThisKey="hostel_id" OtherKey="hostel_id" Type="Hostel" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Department" Member="Departments">
+    <Type Name="Department">
+      <Column Name="dep_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="dep_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Department_Session" Member="Sessions" ThisKey="dep_id" OtherKey="dep_id" Type="Session" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Dues" Member="Dues">
+    <Type Name="Due">
+      <Column Name="dues_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="dues_type" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="dues_amount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="dues_month" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="dues_lastDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="dues_paidDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="dues_paidStatus" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="dues_recipt_no" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="allottee_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="dues_addedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="time_of_addition" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Allottment_Due" Member="Allottment" ThisKey="allottee_id" OtherKey="allottee_id" Type="Allottment" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Education" Member="Educations">
+    <Type Name="Education">
+      <Column Name="edu_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="std_cnic" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="edu_degree" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="edu_marksObt" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="edu_totalMarks" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="[edu_board/uni]" Member="edu_board_uni" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="edu_session" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="edu_addedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="time_of_addition" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Student_Education" Member="Student" ThisKey="std_cnic" OtherKey="std_cnic" Type="Student" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Hostel" Member="Hostels">
+    <Type Name="Hostel">
+      <Column Name="hostel_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="hostel_no" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="hostel_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="hostel_location" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="hostel_type" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="hostel_roomCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="hostel_addedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="time_of_addition" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="hostel_activeStatus" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Hostel_User" Member="Users" ThisKey="hostel_id" OtherKey="hostel_id" Type="User" />
+      <Association Name="Hostel_Room" Member="Rooms" ThisKey="hostel_id" OtherKey="hostel_id" Type="Room" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Request" Member="Requests">
+    <Type Name="Request">
+      <Column Name="req_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="req_msg" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="allotte_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Allottment_Request" Member="Allottment" ThisKey="allotte_id" OtherKey="allottee_id" Type="Allottment" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Room" Member="Rooms">
+    <Type Name="Room">
+      <Column Name="room_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="room_type" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="room_capacity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="room_addedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="room_status" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="time_of_addition" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="hostel_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Room_Allottment" Member="Allottments" ThisKey="room_id" OtherKey="room_id" Type="Allottment" />
+      <Association Name="Hostel_Room" Member="Hostel" ThisKey="hostel_id" OtherKey="hostel_id" Type="Hostel" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Session" Member="Sessions">
+    <Type Name="Session">
+      <Column Name="session_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="std_cnic" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="dep_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="session_rollno" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="session_degree" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="session_batch" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="session_startDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="session_endDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="session_duration" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="session_addedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="session_activeStatus" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="time_of_addition" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Department_Session" Member="Department" ThisKey="dep_id" OtherKey="dep_id" Type="Department" IsForeignKey="true" />
+      <Association Name="Student_Session" Member="Student" ThisKey="std_cnic" OtherKey="std_cnic" Type="Student" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Student" Member="Students">
+    <Type Name="Student">
+      <Column Name="std_cnic" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="std_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="std_fatherName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="std_fatherOccupation" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="std_presentAddress" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="std_permanentAddress" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="std_phone" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="std_parentPhone" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="std_district" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="std_bloodGroup" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="std_HBSAg_report" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="std_antiHCV_report" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="std_nationality" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="user_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="std_addedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="time_of_addition" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="std_activeStatus" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Student_Allottment" Member="Allottments" ThisKey="std_cnic" OtherKey="std_cnic" Type="Allottment" />
+      <Association Name="Student_Education" Member="Educations" ThisKey="std_cnic" OtherKey="std_cnic" Type="Education" />
+      <Association Name="Student_Session" Member="Sessions" ThisKey="std_cnic" OtherKey="std_cnic" Type="Session" />
+      <Association Name="User_Student" Member="User" ThisKey="user_id" OtherKey="user_id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
