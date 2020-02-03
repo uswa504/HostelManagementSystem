@@ -1,0 +1,99 @@
+﻿
+    <div class="ts-main-content">
+        <div class="brand clearfix">
+            <a href="#" class="logo text-white" style="font-size:16px;">Hostel Management System</a>
+            <ul class="ts-profile-nav">
+                <li class="ts-account">
+                <li><a href="/Home/Logout">Logout</a></li>
+            </ul>
+        </div>
+        <nav class="ts-sidebar">
+            <ul class="ts-sidebar-menu">
+                <li class="ts-label">Main</li>
+                <li><a href="/ChairmanHallCouncil/Addhostel"><i class="fa fa-dashboard"></i>Add Hostel</a></li>
+                <li><a href="/ChairmanHallCouncil/View_hostels"><i class="fa fa-users"></i>View Hostels</a></li>
+                <li><a href="/ChairmanHallCouncil/Change_password"><i class="fa fa-users"></i>Change Password</a></li>
+            </ul>
+        </nav>
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="page-title" style="margin-top:10px">Add Hostel </h2>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">Add Hostel</div>
+                                    <div class="panel-body">
+                                        <form action="/HallCouncilClerk/hostelAdd" method="post" class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Hostel No:</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control" name="hostel_number" id="hostel_name" value="" required="required">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Hostel Name:</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control" name="hostel_name" id="hostel_id" value="" required="required">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Hostel Location:</label>
+                                                <div class="col-sm-8">
+                                                    <select name="hlocation" class="form-control" required>
+                                                        <option value="">Select</option>
+                                                        <option value="Old Campus">Old Campus</option>
+                                                        <option value="New Campus">New Campus</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Hostel Type</label>
+                                                <div class="col-sm-8">
+                                                    <select name="htype" class="form-control" required>
+                                                        <option value="">Select</option>
+                                                        <option value="Female">Female</option>
+                                                        <option value="Male">Male</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Total rooms in Hostel:</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control" name="hostel_rooms" id="hostel_id" value="" required="required">
+                                                </div>
+                                            </div>
+                                            <div class="hr-dashed"></div>
+                                            <div class="hr-dashed"></div>
+                                            <div class="col-sm-8 col-sm-offset-2">
+                                                <input class="btn btn-primary" type="submit" id="submitButton" name="submit" value="Add">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    $(document).ready(function () {
+        $("#submitButton").on("click", function () {
+            alert('User has been added succesfully');
+        });
+
+    });
+</script>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap-select.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.dataTables.min.js"></script>
+<script src="js/dataTables.bootstrap.min.js"></script>
+<script src="js/Chart.min.js"></script>
+<script src="js/fileinput.js"></script>
+<script src="js/chartData.js"></script>
+<script src="js/main.js"></script>

@@ -10,11 +10,10 @@
     <ul class="ts-sidebar-menu">
         <li class="ts-label">Main</li>
         <li><a href="/HallCouncilClerk/addhostel"><i class="fa fa-dashboard"></i>Add Hostel</a></li>
-        <li><a href="/HallCouncilClerk/addroom"><i class="fa fa-user"></i>Add Room</a></li>
         <li><a href="/HallCouncilClerk/adduser"><i class="fa fa-users"></i>Add User</a></li>
-        <li><a href="/HallCouncilClerk/view_rooms"><i class="fa fa-users"></i>View Rooms</a></li>
         <li><a href="/HallCouncilClerk/view_hostels"><i class="fa fa-users"></i>View Hostels</a></li>
         <li><a href="/HallCouncilClerk/viewusers"><i class="fa fa-users"></i>View Users</a></li>
+        <li><a href="/HallCouncilClerk/change_password"><i class="fa fa-users"></i>Change Password</a></li>
     </ul>
 </nav>
 		<div class="content-wrapper">
@@ -33,23 +32,30 @@
                                             <th>Hostel Name</th>
                                             <th>Location</th>
                                             <th>Hostel Type</th>
+                                            <th>Time of Addition</th>
+                                            <th>Hostel added by</th>
+                                            <th>Hostel Status</th>
                                             <th>Total Rooms</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     @foreach (var s in Model)
                                     {
-                                        <tr>
-                                        <td>@s.hostel_id</td>
-                                        <td>@s.hostel_no</td>
-                                        <td>@s.hostel_name</td>
-                                        <td>@s.hostel_location</td>
-                                        <td>@s.hostel_type</td>
-                                        <td>@s.hostel_rooms</td>
-                                        <td>
-                                            <a class="see-details" href="/HallCouncilClerk/DeleteHostel/@s.hostel_id">Delete</a>
-                                        </td>
-                                        </tr>
+                                <tr>
+                                    <td>@s.hostel_id</td>
+                                    <td>@s.hostel_no</td>
+                                    <td>@s.hostel_name</td>
+                                    <td>@s.hostel_location</td>
+                                    <td>@s.hostel_type</td>
+                                    <td>@s.time_of_addition</td>
+                                    <td>@s.user_name</td>
+                                    <td>@s.hostel_activeStatus</td>
+                                    <td>@s.hostel_roomCount</td>
+                                    <td>
+                                        <a class="see-details" href="/HallCouncilClerk/update_hostel/@s.hostel_id">Update</a>
+                                        <a class="see-details" href="/HallCouncilClerk/view_rooms/@s.hostel_id">View Rooms</a>
+                                    </td>
+                                </tr>
                                     }
                                 </table>
 							</div>

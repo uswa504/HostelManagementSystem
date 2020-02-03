@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,7 +9,7 @@ namespace Online_Hostel_Management_System.Controllers
 {
     public class StudentController : Controller
     {
-        HMSDataContext dc = new HMSDataContext();
+        readonly HMSDataContext dc = new HMSDataContext();
         public ActionResult dashboard()
         {
             if (Session["user_role"].ToString() == "student")
@@ -72,4 +72,4 @@ namespace Online_Hostel_Management_System.Controllers
             else return RedirectToAction("Index", "Home");
         }
     }
-}
+}*/

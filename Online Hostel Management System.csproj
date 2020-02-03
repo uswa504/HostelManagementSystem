@@ -125,7 +125,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HostelClerkController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
-    <Compile Include="Controllers\VCCHCController.cs" />
+    <Compile Include="Controllers\ChairmanHallCouncilController.cs" />
+    <Compile Include="Controllers\ViceChancellorController.cs" />
     <Compile Include="Controllers\WardenController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -198,15 +199,19 @@
     <Content Include="Content\Styles\style.less" />
     <Content Include="Views\HallCouncilClerk\change_password.cshtml" />
     <Content Include="Views\HallCouncilClerk\viewusers.cshtml" />
+    <Content Include="Views\HallCouncilClerk\update_hostel.cshtml" />
+    <Content Include="Views\ChairmanHallCouncil\View_hostels.cshtml" />
+    <Content Include="Views\ChairmanHallCouncil\View_rooms.cshtml" />
+    <Content Include="Views\ChairmanHallCouncil\Change_password.cshtml" />
+    <Content Include="Views\ChairmanHallCouncil\Update_hostel.cshtml" />
     <None Include="Views\Student\change_password.cshtml" />
     <None Include="Views\Student\dashboard.cshtml" />
     <None Include="Views\Student\send_request.cshtml" />
     <None Include="Views\HostelClerk\add_allotment.cshtml" />
     <None Include="Views\HostelClerk\manage_students.cshtml" />
-    <None Include="Views\VCCHC\Hostel_Details.cshtml" />
-    <None Include="Views\VCCHC\View_Hostels.cshtml" />
+    <Content Include="Views\ChairmanHallCouncil\Addhostel.cshtml" />
+    <None Include="Views\ChairmanHallCouncil\Hostel_Details.cshtml" />
     <None Include="Views\HallCouncilClerk\addhostel.cshtml" />
-    <None Include="Views\HallCouncilClerk\addroom.cshtml" />
     <None Include="Views\HallCouncilClerk\adduser.cshtml" />
     <None Include="Views\HallCouncilClerk\view_hostels.cshtml" />
     <None Include="Views\HallCouncilClerk\view_rooms.cshtml" />
@@ -222,6 +227,10 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\ViceChancellor\Hostel_Details.cshtml" />
+    <Content Include="Views\ViceChancellor\View_hostels.cshtml" />
+    <Content Include="Views\ViceChancellor\Change_password.cshtml" />
+    <Content Include="Views\ViceChancellor\View_rooms.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Warden\" />

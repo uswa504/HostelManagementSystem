@@ -1,5 +1,4 @@
-﻿
-    <div class="ts-main-content">
+﻿        <div class="ts-main-content">
         <div class="brand clearfix">
             <a href="#" class="logo text-white" style="font-size:16px;">Hostel Management System</a>
             <ul class="ts-profile-nav">
@@ -11,18 +10,17 @@
             <ul class="ts-sidebar-menu">
                 <li class="ts-label">Main</li>
                 <li><a href="/HallCouncilClerk/addhostel"><i class="fa fa-dashboard"></i>Add Hostel</a></li>
-                <li><a href="/HallCouncilClerk/addroom"><i class="fa fa-user"></i>Add Room</a></li>
                 <li><a href="/HallCouncilClerk/adduser"><i class="fa fa-users"></i>Add User</a></li>
-                <li><a href="/HallCouncilClerk/view_rooms"><i class="fa fa-users"></i>View Rooms</a></li>
                 <li><a href="/HallCouncilClerk/view_hostels"><i class="fa fa-users"></i>View Hostels</a></li>
                 <li><a href="/HallCouncilClerk/viewusers"><i class="fa fa-users"></i>View Users</a></li>
+                <li><a href="/HallCouncilClerk/change_password"><i class="fa fa-users"></i>Change Password</a></li>
             </ul>
         </nav>
         <div class="content-wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2 class="page-title" style="margin-top: 4%">Add User</h2>
+                        <h2 class="page-title" style="margin-top: 5%">Add User</h2>
                         <div class="panel panel-default">
                             <div class="panel-heading">Add User</div>
                             <div class="panel-body">
@@ -47,15 +45,27 @@
                                                 <option value="vc">Vice Chancellor</option>
                                                 <option value="chc">Chairman Hall Council</option>
                                                 <option value="hc_clerk">Hall Council Clerk</option>
-                                                <option value="hostel_clerk">Hostel Clerk</option>
+                                                <option value="superitendant">Superitendant</option>
                                                 <option value="warden">Warden</option>
+                                                <option value="admin">Admin</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Hostel Assigned:</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control" name="hostel" id="hostel_name" value="">
+                                            <select name="hostel" class="form-control" required>
+                                                <option value="">Select</option>
+                                                <option value="0">None</option>
+                                                @if (Model != null)
+                                                {
+                                                    foreach (var s in Model)
+                                                    {
+                                                        <option value="@s.hostel_id">@s.hostel_id</option>
+                                                    }
+                                                }
+                                            </select>
+                                           
                                         </div>
                                     </div>
                                     <div class="col-sm-8 col-sm-offset-2">
@@ -70,6 +80,7 @@
                 </div>
             </div>
         </div>
+            </div>
         < !--Loading Scripts-- >
         @if (ViewBag.Message != null){
             <script type="text/javascript">

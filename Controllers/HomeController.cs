@@ -9,7 +9,7 @@ namespace Online_Hostel_Management_System.Controllers
 {
     public class HomeController : Controller
     {
-        HMSDataContext dc = new HMSDataContext();
+        readonly HMSDataContext dc = new HMSDataContext();
         public ActionResult Index()
         {
             return View();
@@ -18,19 +18,24 @@ namespace Online_Hostel_Management_System.Controllers
         {
             string user_name = Request["username"];
             string user_passwd = Request["password"];
-            var obj = dc.Users.Where(a => a.user_name.Equals(user_name) && a.user_passwd.Equals(user_passwd)).FirstOrDefault();
+            System.Text.ASCIIEncoding encryptpwd = new System.Text.ASCIIEncoding();
+            byte[] passwordArray = encryptpwd.GetBytes(user_passwd);
+            var obj = dc.Users.Where(a => a.user_name.Equals(user_name) && a.user_passwd.Equals(passwordArray)).FirstOrDefault();
             //Login check for Hostel Clerk
             if (obj != null && obj.user_role.Equals("hostel_clerk"))
             {
+                Session["user_id"] = obj.user_id;
                 Session["user_role"] = "hostel_clerk";
-                Session["hostel_assign"] = obj.user_session;
+                Session["hostel"] = obj.hostel_id;
                 return RedirectToAction("add_allotment","HostelClerk");
             }
             //Login check for warden
             if (obj != null && obj.user_role.Equals("warden"))
             {
+
+                Session["user_id"] = obj.user_id;
                 Session["user_role"] = "warden";
-                Session["hostel_assign"] = obj.user_session;
+                Session["hostel"] = obj.hostel_id;
                 return RedirectToAction("dashboard", "Student");
             }
             //Login check for Student
@@ -47,16 +52,24 @@ namespace Online_Hostel_Management_System.Controllers
                 return RedirectToAction("dashboard", "Student");
             }
             //Login check for Hall Council Clerk
-            else if (obj != null && obj.user_role.Equals("hc_clerk"))
+            else if (obj != null && (obj.user_role.Equals("hc_clerk") || obj.user_role.Equals("admin")))
             {
+                Session["user_id"] = obj.user_id;
                 Session["user_role"] = "hc_clerk";
                 return RedirectToAction("addhostel", "HallCouncilClerk");
             }
-            //Login check for VC and CHC
-            else if (obj != null && (obj.user_role.Equals("vc") || obj.user_role.Equals("chc")))
+            //Login check for VC
+            else if (obj != null && obj.user_role.Equals("vc"))
             {
-                Session["user_role"] = "vc/chc";
-                return RedirectToAction("View_Hostels", "VCCHC");
+                Session["user_role"] = "vc";
+                Session["user_id"] = obj.user_id;
+                return RedirectToAction("View_Hostels", "ViceChancellor");
+            }
+            else if (obj != null && obj.user_role.Equals("chc"))
+            {
+                Session["user_role"] = "chc";
+                Session["user_id"] = obj.user_id;
+                return RedirectToAction("View_hostels", "ChairmanHallCouncil");
             }
             else
             {

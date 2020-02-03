@@ -171,6 +171,14 @@ namespace Online_Hostel_Management_System.Models
 				return this.GetTable<Student>();
 			}
 		}
+		
+		public System.Data.Linq.Table<View_Hostel> View_Hostels
+		{
+			get
+			{
+				return this.GetTable<View_Hostel>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Allottment")]
@@ -3280,6 +3288,195 @@ namespace Online_Hostel_Management_System.Models
 		{
 			this.SendPropertyChanging();
 			entity.Student = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.View_Hostel")]
+	public partial class View_Hostel
+	{
+		
+		private int _hostel_id;
+		
+		private System.Nullable<int> _hostel_no;
+		
+		private string _hostel_name;
+		
+		private string _hostel_location;
+		
+		private string _hostel_type;
+		
+		private System.Nullable<System.DateTime> _time_of_addition;
+		
+		private string _hostel_activeStatus;
+		
+		private System.Nullable<int> _hostel_addedBy;
+		
+		private System.Nullable<int> _hostel_roomCount;
+		
+		private string _user_name;
+		
+		public View_Hostel()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_hostel_id", DbType="Int NOT NULL")]
+		public int hostel_id
+		{
+			get
+			{
+				return this._hostel_id;
+			}
+			set
+			{
+				if ((this._hostel_id != value))
+				{
+					this._hostel_id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_hostel_no", DbType="Int")]
+		public System.Nullable<int> hostel_no
+		{
+			get
+			{
+				return this._hostel_no;
+			}
+			set
+			{
+				if ((this._hostel_no != value))
+				{
+					this._hostel_no = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_hostel_name", DbType="NVarChar(MAX)")]
+		public string hostel_name
+		{
+			get
+			{
+				return this._hostel_name;
+			}
+			set
+			{
+				if ((this._hostel_name != value))
+				{
+					this._hostel_name = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_hostel_location", DbType="NVarChar(MAX)")]
+		public string hostel_location
+		{
+			get
+			{
+				return this._hostel_location;
+			}
+			set
+			{
+				if ((this._hostel_location != value))
+				{
+					this._hostel_location = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_hostel_type", DbType="NVarChar(MAX)")]
+		public string hostel_type
+		{
+			get
+			{
+				return this._hostel_type;
+			}
+			set
+			{
+				if ((this._hostel_type != value))
+				{
+					this._hostel_type = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_time_of_addition", DbType="DateTime")]
+		public System.Nullable<System.DateTime> time_of_addition
+		{
+			get
+			{
+				return this._time_of_addition;
+			}
+			set
+			{
+				if ((this._time_of_addition != value))
+				{
+					this._time_of_addition = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_hostel_activeStatus", DbType="NVarChar(MAX)")]
+		public string hostel_activeStatus
+		{
+			get
+			{
+				return this._hostel_activeStatus;
+			}
+			set
+			{
+				if ((this._hostel_activeStatus != value))
+				{
+					this._hostel_activeStatus = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_hostel_addedBy", DbType="Int")]
+		public System.Nullable<int> hostel_addedBy
+		{
+			get
+			{
+				return this._hostel_addedBy;
+			}
+			set
+			{
+				if ((this._hostel_addedBy != value))
+				{
+					this._hostel_addedBy = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_hostel_roomCount", DbType="Int")]
+		public System.Nullable<int> hostel_roomCount
+		{
+			get
+			{
+				return this._hostel_roomCount;
+			}
+			set
+			{
+				if ((this._hostel_roomCount != value))
+				{
+					this._hostel_roomCount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_name", DbType="NVarChar(MAX)")]
+		public string user_name
+		{
+			get
+			{
+				return this._user_name;
+			}
+			set
+			{
+				if ((this._user_name != value))
+				{
+					this._user_name = value;
+				}
+			}
 		}
 	}
 }
