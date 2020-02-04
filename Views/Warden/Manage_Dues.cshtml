@@ -5,7 +5,7 @@
 <!--<script language="javascript" type="text/javascript">
     var popUpWin = 0;
     function popUpWindow(URLStr, left, top, width, height) {
-        if (popUpWin) {
+        if (popUpWin) {}
             if (!popUpWin.closed) popUpWin.close();
         }
         popUpWin = open(URLStr, 'popUpWin', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,copyhistory=yes,width=' + 510 + ',height=' + 430 + ',left=' + left + ', top=' + top + ',screenX=' + left + ',screenY=' + top + '');
@@ -25,8 +25,10 @@
             <ul class="ts-sidebar-menu">
 
                 <li class="ts-label">Main</li>
-                <li><a href="/HostelClerk/add_allotment"><i class="fa fa-dashboard logo"></i>Add Allotment</a></li>
-                <li><a href="/HostelClerk/manage-students"><i class="fa fa-users logo"></i>Manage Students</a></li>
+                <li><a href="/Warden/Manage_Dues"><i class="fa fa-money"></i>Manage Dues</a></li>
+                <li><a href="/Warden/Adduser"><i class="fa fa-user"></i>Add Hostel Clerk</a></li>
+                <li><a href="/Warden/View_rooms"><i class="fa fa-bed"></i>View Rooms</a></li>
+                <li><a href="/Warden/Change_password"><i class="fa fa-key"></i>Change Password</a></li>
             </ul>
         </nav>
         <div class="content-wrapper">

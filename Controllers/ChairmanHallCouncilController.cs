@@ -88,7 +88,7 @@ namespace Online_Hostel_Management_System.Controllers
                     a.user_passwd = newPasswordArray;
                     dc.SubmitChanges();
                 }
-                return RedirectToAction("dashboard", "Student");
+                return View("View_hostels");
             }
             else return RedirectToAction("Index", "Home");
         }
@@ -122,15 +122,6 @@ namespace Online_Hostel_Management_System.Controllers
                     return RedirectToAction("View_hostels");
                 }
                 else return RedirectToAction("View_hostels");
-            }
-            else return RedirectToAction("Index", "Home");
-        }
-        public ActionResult Hostel_Details(int id)
-        {
-            if (Session["user_role"].ToString() == "chc")
-            {
-                var a = dc.Hostels.First(s => s.hostel_id == id);
-                return View(a);
             }
             else return RedirectToAction("Index", "Home");
         }

@@ -159,4 +159,15 @@
       <Column Name="user_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.View_Rooms" Member="View_Rooms">
+    <Type Name="View_Room">
+      <Column Name="room_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="room_type" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="room_capacity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="room_status" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="time_of_addition" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="hostel_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="user_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>

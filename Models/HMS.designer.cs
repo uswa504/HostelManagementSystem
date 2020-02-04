@@ -179,6 +179,14 @@ namespace Online_Hostel_Management_System.Models
 				return this.GetTable<View_Hostel>();
 			}
 		}
+		
+		public System.Data.Linq.Table<View_Room> View_Rooms
+		{
+			get
+			{
+				return this.GetTable<View_Room>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Allottment")]
@@ -3459,6 +3467,141 @@ namespace Online_Hostel_Management_System.Models
 				if ((this._hostel_roomCount != value))
 				{
 					this._hostel_roomCount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_name", DbType="NVarChar(MAX)")]
+		public string user_name
+		{
+			get
+			{
+				return this._user_name;
+			}
+			set
+			{
+				if ((this._user_name != value))
+				{
+					this._user_name = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.View_Rooms")]
+	public partial class View_Room
+	{
+		
+		private int _room_id;
+		
+		private string _room_type;
+		
+		private System.Nullable<int> _room_capacity;
+		
+		private string _room_status;
+		
+		private System.Nullable<System.DateTime> _time_of_addition;
+		
+		private System.Nullable<int> _hostel_id;
+		
+		private string _user_name;
+		
+		public View_Room()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_room_id", DbType="Int NOT NULL")]
+		public int room_id
+		{
+			get
+			{
+				return this._room_id;
+			}
+			set
+			{
+				if ((this._room_id != value))
+				{
+					this._room_id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_room_type", DbType="NVarChar(MAX)")]
+		public string room_type
+		{
+			get
+			{
+				return this._room_type;
+			}
+			set
+			{
+				if ((this._room_type != value))
+				{
+					this._room_type = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_room_capacity", DbType="Int")]
+		public System.Nullable<int> room_capacity
+		{
+			get
+			{
+				return this._room_capacity;
+			}
+			set
+			{
+				if ((this._room_capacity != value))
+				{
+					this._room_capacity = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_room_status", DbType="NVarChar(MAX)")]
+		public string room_status
+		{
+			get
+			{
+				return this._room_status;
+			}
+			set
+			{
+				if ((this._room_status != value))
+				{
+					this._room_status = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_time_of_addition", DbType="DateTime")]
+		public System.Nullable<System.DateTime> time_of_addition
+		{
+			get
+			{
+				return this._time_of_addition;
+			}
+			set
+			{
+				if ((this._time_of_addition != value))
+				{
+					this._time_of_addition = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_hostel_id", DbType="Int")]
+		public System.Nullable<int> hostel_id
+		{
+			get
+			{
+				return this._hostel_id;
+			}
+			set
+			{
+				if ((this._hostel_id != value))
+				{
+					this._hostel_id = value;
 				}
 			}
 		}

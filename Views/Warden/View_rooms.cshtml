@@ -10,9 +10,10 @@
     <nav class="ts-sidebar">
         <ul class="ts-sidebar-menu">
             <li class="ts-label">Main</li>
-            <li><a href="/ChairmanHallCouncil/Addhostel"><i class="fa fa-building"></i>Add Hostel</a></li>
-            <li><a href="/ChairmanHallCouncil/View_hostels"><i class="fa fa-bed"></i>View Hostels</a></li>
-            <li><a href="/ChairmanHallCouncil/Change_password"><i class="fa fa-key"></i>Change Password</a></li>
+            <li><a href="/Warden/Manage_Dues"><i class="fa fa-money"></i>Manage Dues</a></li>
+            <li><a href="/Warden/Adduser"><i class="fa fa-user"></i>Add Hostel Clerk</a></li>
+            <li><a href="/Warden/View_rooms"><i class="fa fa-bed"></i>View Rooms</a></li>
+            <li><a href="/Warden/Change_password"><i class="fa fa-key"></i>Change Password</a></li>
         </ul>
     </nav>
 </nav>
@@ -31,6 +32,7 @@
                                             <th>Room Type</th>
                                             <th>Room Capacity</th>
                                             <th>Time of Addition</th>
+                                            <th>Room Added by</th>
                                         </tr>
                                     </thead>
                                         @foreach (var s in Model)
@@ -40,6 +42,7 @@
                                     <td>@s.room_type</td>
                                     <td>@s.room_capacity</td>
                                     <td>@s.time_of_addition</td>
+                                    <td>@s.user_name</td>
                                 </tr>
                                     }
 

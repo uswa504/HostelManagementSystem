@@ -126,6 +126,7 @@
     <Compile Include="Controllers\HostelClerkController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\ChairmanHallCouncilController.cs" />
+    <Compile Include="Controllers\SuperitendantController.cs" />
     <Compile Include="Controllers\ViceChancellorController.cs" />
     <Compile Include="Controllers\WardenController.cs" />
     <Compile Include="Global.asax.cs">
@@ -208,9 +209,14 @@
     <None Include="Views\Student\dashboard.cshtml" />
     <None Include="Views\Student\send_request.cshtml" />
     <None Include="Views\HostelClerk\add_allotment.cshtml" />
-    <None Include="Views\HostelClerk\manage_students.cshtml" />
+    <Content Include="Views\Warden\Adduser.cshtml" />
+    <Content Include="Views\Warden\Change_password.cshtml" />
+    <Content Include="Views\Superitendant\adduser.cshtml" />
+    <Content Include="Views\Superitendant\Change_password.cshtml" />
+    <Content Include="Views\Superitendant\View_rooms.cshtml" />
+    <Content Include="Views\Superitendant\View_Request.cshtml" />
+    <None Include="Views\Warden\Manage_Dues.cshtml" />
     <Content Include="Views\ChairmanHallCouncil\Addhostel.cshtml" />
-    <None Include="Views\ChairmanHallCouncil\Hostel_Details.cshtml" />
     <None Include="Views\HallCouncilClerk\addhostel.cshtml" />
     <None Include="Views\HallCouncilClerk\adduser.cshtml" />
     <None Include="Views\HallCouncilClerk\view_hostels.cshtml" />
@@ -227,14 +233,12 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\ViceChancellor\Hostel_Details.cshtml" />
     <Content Include="Views\ViceChancellor\View_hostels.cshtml" />
     <Content Include="Views\ViceChancellor\Change_password.cshtml" />
     <Content Include="Views\ViceChancellor\View_rooms.cshtml" />
+    <Content Include="Views\Warden\View_rooms.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Warden\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

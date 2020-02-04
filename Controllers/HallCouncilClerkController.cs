@@ -189,7 +189,7 @@ namespace Online_Hostel_Management_System.Controllers
                     a.user_passwd = newPasswordArray;
                     dc.SubmitChanges();
                 }
-                return RedirectToAction("dashboard", "Student");
+                return RedirectToAction("addhostel", "HallCouncilClerk");
             }
             else return RedirectToAction("Index", "Home");
         }

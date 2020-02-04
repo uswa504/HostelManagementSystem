@@ -7,12 +7,21 @@ using Online_Hostel_Management_System.Models;
 
 namespace Online_Hostel_Management_System.Controllers
 {
-    public class WardenController : Controller
+    public class SuperitendantController : Controller
     {
         readonly HMSDataContext dc = new HMSDataContext();
         public ActionResult Adduser()
         {
-            if (Session["user_role"].ToString() == "warden" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"].ToString() == "superitendant" || Session["user_role"].ToString() == "admin")
+            {
+                ViewBag.hostel = (int)Session["hostel"];
+                return View();
+            }
+            else return RedirectToAction("Index", "Home");
+        }
+        public ActionResult View_Request()
+        {
+            if (Session["user_role"].ToString() == "superitendant" || Session["user_role"].ToString() == "admin")
             {
                 ViewBag.hostel = (int)Session["hostel"];
                 return View();
@@ -21,7 +30,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult UserAdd()
         {
-            if (Session["user_role"].ToString() == "warden" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"].ToString() == "superitendant" || Session["user_role"].ToString() == "admin")
             {
                 int hostel = (int)Session["hostel"];
                 string name = Request["user_name"];
@@ -46,13 +55,13 @@ namespace Online_Hostel_Management_System.Controllers
                 };
                 dc.Users.InsertOnSubmit(user);
                 dc.SubmitChanges();
-                return RedirectToAction("Adduser", "Warden");
+                return RedirectToAction("Adduser", "Superitendant");
             }
             else return RedirectToAction("Index", "Home");
         }
         public ActionResult View_rooms()
         {
-            if (Session["user_role"].ToString() == "warden" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"].ToString() == "superitendant" || Session["user_role"].ToString() == "admin")
             {
                 int id = (int)Session["hostel"];
                 var a = dc.View_Rooms.Where(x => x.hostel_id == id).ToList();
@@ -60,17 +69,9 @@ namespace Online_Hostel_Management_System.Controllers
             }
             else return RedirectToAction("Index", "Home");
         }
-        public ActionResult Manage_Dues()
+        public ActionResult change_password()
         {
-            if (Session["user_role"].ToString() == "warden" || Session["user_role"].ToString() == "admin")
-            {
-                return View();
-            }
-            else return RedirectToAction("Index", "Home");
-        }
-        public ActionResult Change_password()
-        {
-            if (Session["user_role"].ToString() == "warden" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"].ToString() == "superitendant" || Session["user_role"].ToString() == "admin")
             {
                 return View();
             }
@@ -78,7 +79,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult Change()
         {
-            if (Session["user_role"].ToString() == "warden" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"].ToString() == "superitendant" || Session["user_role"].ToString() == "admin")
             {
                 string old = Request["oldpassword"];
                 string newpassword = Request["newpassword"];
@@ -92,10 +93,9 @@ namespace Online_Hostel_Management_System.Controllers
                     a.user_passwd = newPasswordArray;
                     dc.SubmitChanges();
                 }
-                return RedirectToAction("Manage_Dues", "Warden");
+                return RedirectToAction("View_Request", "Superitendant");
             }
             else return RedirectToAction("Index", "Home");
         }
-
     }
 }
