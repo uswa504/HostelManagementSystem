@@ -1,0 +1,71 @@
+﻿<div class="ts-main-content">		
+<div class="brand clearfix">
+		<a href="#" class="logo text-white" style="font-size:16px;">Hostel Management System</a>
+		<ul class="ts-profile-nav">
+			<li class="ts-account">
+					<li><a href="logout.php">Logout</a></li>
+		</ul>
+	</div>
+	<nav class="ts-sidebar">
+        <ul class="ts-sidebar-menu">
+            <li class="ts-label">Main</li>
+            <li><a href="/HostelClerk/Addroom"><i class="fa fa-bed"></i>Add Room</a></li>
+            <li><a href="/HostelClerk/View_rooms"><i class="fa fa-dashboard"></i>View Rooms</a></li>
+            <li><a href="/HostelClerk/View_Allottment"><i class="fa fa-users"></i>View Allottments</a></li>
+            <li><a href="/HostelClerk/Add_allotment"><i class="fa fa-user"></i>Add Allotment</a></li>
+            <li><a href="/HostelClerk/Change_password"><i class="fa fa-key"></i>Change Password</a></li>
+        </ul>
+	</nav>
+		<div class="content-wrapper">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-12">
+						<h2 class="page-title" style="margin-top:5%">Add Room </h2>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="panel panel-default">
+									<div class="panel-heading">Add a Room</div>
+									<div class="panel-body">
+		                                <form method="post" action="/HostelClerk/Add_room" class="form-horizontal">
+						                    <div class="form-group">
+						                        <label class="col-sm-2 control-label">Room No.</label>
+						                        <div class="col-sm-8">
+						                        <input type="text" class="form-control" name="rmno" id="rmno" value="" required="required">
+						                        </div>
+						                    </div>
+					                        <div class="hr-dashed"></div>
+							                <div class="form-group">
+											<label class="col-sm-2 control-label">Select Seater  </label>
+												<div class="col-sm-8">
+												<Select name="seater" class="form-control" required>
+                                                    <option value="">Select Seater</option>
+                                                    <option value="1">Single Seater</option>
+                                                    <option value="2">Two Seater</option>
+                                                    <option value="3">Three Seater</option>
+                                                    <option value="4">Four Seater</option>
+                                                    </Select>
+                                                </div>
+                                             </div>
+                                        <div class="hr-dashed"></div>
+		                                <div class="form-group">
+						                <label class="col-sm-2 control-label">Select Room Type  </label>
+							             <div class="col-sm-8">
+                                            <select name="rtype" class="form-control" required>
+                                            <option value="">Select Room Type</option>
+                                            <option value="dormitory">Dormitory</option>
+                                            <option value="cubical">Cubical</option>
+                                            </select>
+                                            </div>
+                                            </div>
+                                        <div class="col-sm-8 col-sm-offset-2">
+                                        <input class="btn btn-primary" type="submit" name="submit" value="Add Room "></div>
+                                    </form>
+									</div>
+								</div>
+							</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+    </div>

@@ -144,5 +144,11 @@
         <elementListCompartment Id="6f05ef20-4eac-4327-9a28-ef292b66e3f6" absoluteBounds="4.515, 2.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="f937f39d-6339-443e-a9e5-8159abc11ad0" absoluteBounds="6.75, 0.75, 2, 2.5401025390625">
+      <DataClassMoniker Name="/HMSDataContext/View_User" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3d4764b3-a5db-4898-9d2d-075def34be52" absoluteBounds="6.7650000000000006, 1.21, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

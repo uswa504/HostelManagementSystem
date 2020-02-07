@@ -104,7 +104,7 @@ namespace Online_Hostel_Management_System.Controllers
         {
             if (Session["user_role"].ToString() == "hc_clerk" || Session["user_role"].ToString() == "admin")
             {
-                var a = dc.Users.ToList();
+                var a = dc.View_Users.ToList();
                 return View(a);
             }
             else return RedirectToAction("Index", "Home");

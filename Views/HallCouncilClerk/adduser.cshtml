@@ -55,13 +55,12 @@
                                         <label class="col-sm-2 control-label">Hostel Assigned:</label>
                                         <div class="col-sm-8">
                                             <select name="hostel" class="form-control" required>
-                                                <option value="">Select</option>
                                                 <option value="0">None</option>
                                                 @if (Model != null)
                                                 {
                                                     foreach (var s in Model)
                                                     {
-                                                        <option value="@s.hostel_id">@s.hostel_id</option>
+                                                        <option value="@s.hostel_id">@s.hostel_no (@s.hostel_location)</option>
                                                     }
                                                 }
                                             </select>

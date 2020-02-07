@@ -1,4 +1,4 @@
-﻿/*using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,27 +10,58 @@ namespace Online_Hostel_Management_System.Controllers
     public class HostelClerkController : Controller
     {
         readonly HMSDataContext dc = new HMSDataContext();
-        // GET: HostelClerk
-        public ActionResult add_allotment()
-        {
-            if (Session["user_role"].ToString() == "hostel_clerk")
+        public ActionResult Addroom() { 
+            if (Session["user_role"].ToString() == "hostel_clerk" || Session["user_role"].ToString() == "admin")
             {
-                int hostel = (int)Session["hostel_assign"];
+                return View();
+            }
+            else return RedirectToAction("Index", "Home");
+        }
+        public ActionResult Add_allotment()
+        {
+            if (Session["user_role"].ToString() == "hostel_clerk" || Session["user_role"].ToString() == "admin")
+            {
+                int hostel = (int)Session["hostel"];
                 var a = dc.Rooms.Where(x=> x.hostel_id == hostel).ToList();
                 return View(a);
             }
             else return RedirectToAction("Index", "Home"); ;
         }
-        public ActionResult manage_students()
+        public ActionResult View_rooms()
         {
-            if (Session["user_role"].ToString() == "hostel_clerk")
+            if (Session["user_role"].ToString() == "hostel_clerk" || Session["user_role"].ToString() == "admin")
             {
-                return View();
+                int id = (int)Session["hostel"];
+                var a = dc.View_Rooms.Where(x => x.hostel_id == id).ToList();
+                return View(a);
             }
-            else return RedirectToAction("Index", "Home"); ;
+            else return RedirectToAction("Index", "Home");
+        }
+        public ActionResult Add_room()
+        {
+            if (Session["user_role"].ToString() == "hostel_clerk" || Session["user_role"].ToString() == "admin")
+            {
+                int roomno = int.Parse(Request["rmno"]);
+                int seater = int.Parse(Request["seater"]);
+                string rtype = Request["rtype"];
+                Room room = new Room
+                {
+                    room_id = roomno,
+                    room_type = rtype,
+                    room_capacity = seater,
+                    room_addedBy = (int)Session["user_id"],
+                    room_status = "active",
+                    time_of_addition = DateTime.Now,
+                    hostel_id = (int)Session["hostel"]
+                };
+                dc.Rooms.InsertOnSubmit(room);
+                dc.SubmitChanges();
+                return RedirectToAction("Addroom");
+            }
+            else return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult student_info()
+        /*public ActionResult student_info()
         {
             string username = Request["stud_username"];
             string passwd = Request["stud_passwd"];
@@ -108,6 +139,34 @@ namespace Online_Hostel_Management_System.Controllers
             dc.Departments.InsertOnSubmit(dept);
             dc.SubmitChanges();
             return RedirectToAction("add_allotment");
+        }*/
+        public ActionResult Change_password()
+        {
+            if (Session["user_role"].ToString() == "hostel_clerk" || Session["user_role"].ToString() == "admin")
+            {
+                return View();
+            }
+            else return RedirectToAction("Index", "Home");
+        }
+        public ActionResult Change()
+        {
+            if (Session["user_role"].ToString() == "hostel_clerk" || Session["user_role"].ToString() == "admin")
+            {
+                string old = Request["oldpassword"];
+                string newpassword = Request["newpassword"];
+                System.Text.ASCIIEncoding encryptpwd = new System.Text.ASCIIEncoding();
+                byte[] passwordArray = encryptpwd.GetBytes(old);
+                int userid = (int)Session["user_id"];
+                var a = dc.Users.First(x => x.user_id == userid);
+                if (a != null && a.user_passwd == passwordArray)
+                {
+                    byte[] newPasswordArray = encryptpwd.GetBytes(newpassword);
+                    a.user_passwd = newPasswordArray;
+                    dc.SubmitChanges();
+                }
+                return RedirectToAction("View_Allottment", "HostelClerk");
+            }
+            else return RedirectToAction("Index", "Home");
         }
     }
-}*/
+}

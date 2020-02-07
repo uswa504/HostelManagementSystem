@@ -1,4 +1,4 @@
-﻿/*using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +10,7 @@ namespace Online_Hostel_Management_System.Controllers
     public class StudentController : Controller
     {
         readonly HMSDataContext dc = new HMSDataContext();
-        public ActionResult dashboard()
+        public ActionResult Dashboard()
         {
             if (Session["user_role"].ToString() == "student")
             {
@@ -26,19 +26,21 @@ namespace Online_Hostel_Management_System.Controllers
             {
                 string old = Request["oldpassword"];
                 string newpassword = Request["newpassword"];
+                System.Text.ASCIIEncoding encryptpwd = new System.Text.ASCIIEncoding();
+                byte[] passwordArray = encryptpwd.GetBytes(old);
                 int userid = (int)Session["user_id"];
                 var a = dc.Users.First(x => x.user_id == userid);
-                if (a != null && a.user_passwd == old)
+                if (a != null && a.user_passwd == passwordArray)
                 {
-                    a.user_passwd = newpassword;
+                    byte[] newPasswordArray = encryptpwd.GetBytes(newpassword);
+                    a.user_passwd = newPasswordArray;
                     dc.SubmitChanges();
                 }
-                //else return Content("<script language='javascript' type='text/javascript'>alert('Save Successfully');</script>");
-                return RedirectToAction("dashboard", "Student");
+                return RedirectToAction("Dashboard");
             }
             else return RedirectToAction("Index", "Home");
         }
-        public ActionResult change_password()
+        public ActionResult Change_password()
         {
             if (Session["user_role"].ToString() == "student")
             { 
@@ -54,7 +56,7 @@ namespace Online_Hostel_Management_System.Controllers
                 Request request = new Request()
                 {
                     req_msg = query,
-                    std_cnic = (decimal)Session["user_cnic"]
+                    allotte_id = 9
                 };
                 dc.Requests.InsertOnSubmit(request);
                 dc.SubmitChanges();
@@ -72,4 +74,4 @@ namespace Online_Hostel_Management_System.Controllers
             else return RedirectToAction("Index", "Home");
         }
     }
-}*/
+}

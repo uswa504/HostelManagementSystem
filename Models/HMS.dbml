@@ -170,4 +170,17 @@
       <Column Name="user_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.View_Users" Member="View_Users">
+    <Type Name="View_User">
+      <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="user_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="user_role" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="user_addedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="user_activeStatus" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="time_of_addition" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="hostel_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="USERID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="USERNAME" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>

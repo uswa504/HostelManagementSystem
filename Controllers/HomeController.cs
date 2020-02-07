@@ -27,7 +27,7 @@ namespace Online_Hostel_Management_System.Controllers
                 Session["user_id"] = obj.user_id;
                 Session["user_role"] = "hostel_clerk";
                 Session["hostel"] = obj.hostel_id;
-                return RedirectToAction("add_allotment","HostelClerk");
+                return RedirectToAction("Add_allotment","HostelClerk");
             }
             //Login check for warden
             if (obj != null && obj.user_role.Equals("warden"))
