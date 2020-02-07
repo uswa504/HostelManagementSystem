@@ -48,30 +48,5 @@ namespace Online_Hostel_Management_System.Controllers
             }
             else return RedirectToAction("Index", "Home");
         }
-        public ActionResult send()
-        {
-            if (Session["user_role"].ToString() == "student")
-            {
-                string query = Request["query"];
-                Request request = new Request()
-                {
-                    req_msg = query,
-                    allotte_id = 9
-                };
-                dc.Requests.InsertOnSubmit(request);
-                dc.SubmitChanges();
-                return RedirectToAction("dashboard", "Student");
-            }
-            else return RedirectToAction("Index", "Home");
-        }
-        public ActionResult send_request()
-        {
-            if (Session["user_role"].ToString() == "student")
-            {
-
-                return View();
-            }
-            else return RedirectToAction("Index", "Home");
-        }
     }
 }

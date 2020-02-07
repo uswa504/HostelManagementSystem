@@ -19,15 +19,6 @@ namespace Online_Hostel_Management_System.Controllers
             }
             else return RedirectToAction("Index", "Home");
         }
-        public ActionResult View_Request()
-        {
-            if (Session["user_role"].ToString() == "superitendant" || Session["user_role"].ToString() == "admin")
-            {
-                ViewBag.hostel = (int)Session["hostel"];
-                return View();
-            }
-            else return RedirectToAction("Index", "Home");
-        }
         public ActionResult UserAdd()
         {
             if (Session["user_role"].ToString() == "superitendant" || Session["user_role"].ToString() == "admin")

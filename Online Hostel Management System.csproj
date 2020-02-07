@@ -211,14 +211,12 @@
     <Content Include="Views\HostelClerk\View_Allottment.cshtml" />
     <None Include="Views\Student\Change_password.cshtml" />
     <None Include="Views\Student\Dashboard.cshtml" />
-    <None Include="Views\Student\Send_request.cshtml" />
     <None Include="Views\HostelClerk\Add_allotment.cshtml" />
     <Content Include="Views\Warden\Adduser.cshtml" />
     <Content Include="Views\Warden\Change_password.cshtml" />
     <Content Include="Views\Superitendant\adduser.cshtml" />
     <Content Include="Views\Superitendant\Change_password.cshtml" />
     <Content Include="Views\Superitendant\View_rooms.cshtml" />
-    <Content Include="Views\Superitendant\View_Request.cshtml" />
     <None Include="Views\Warden\Manage_Dues.cshtml" />
     <Content Include="Views\ChairmanHallCouncil\Addhostel.cshtml" />
     <None Include="Views\HallCouncilClerk\addhostel.cshtml" />

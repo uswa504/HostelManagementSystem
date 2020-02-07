@@ -52,11 +52,12 @@ namespace Online_Hostel_Management_System.Controllers
                 Session["user_role"] = "student";
                 Session["user_id"] = obj.user_id;
                 var a = dc.Students.First(x => x.user_id == obj.user_id);
+                var s = dc.Allottments.First(y => y.std_cnic == a.std_cnic);
                 if (a == null)
                 {
                     //genearte alert
                 }
-                Session["user_cnic"] = a.std_cnic;
+                Session["allotte_id"] = s.allottee_id;
                 return RedirectToAction("dashboard", "Student");
             }
             //Login check for Hall Council Clerk

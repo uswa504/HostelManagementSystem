@@ -46,7 +46,7 @@ namespace Online_Hostel_Management_System.Controllers
                 string rtype = Request["rtype"];
                 Room room = new Room
                 {
-                    room_id = roomno,
+                    room_no = roomno,
                     room_type = rtype,
                     room_capacity = seater,
                     room_addedBy = (int)Session["user_id"],

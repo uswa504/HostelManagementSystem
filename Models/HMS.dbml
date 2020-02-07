@@ -9,8 +9,9 @@
       <Column Name="allotte_addedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="[time-of-addition]" Member="time_of_addition" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="allotte_activeStatus" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="hostel_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Allottment_Due" Member="Dues" ThisKey="allottee_id" OtherKey="allottee_id" Type="Due" />
-      <Association Name="Allottment_Request" Member="Requests" ThisKey="allottee_id" OtherKey="allotte_id" Type="Request" />
+      <Association Name="Hostel_Allottment" Member="Hostel" ThisKey="hostel_id" OtherKey="hostel_id" Type="Hostel" IsForeignKey="true" />
       <Association Name="Room_Allottment" Member="Room" ThisKey="room_id" OtherKey="room_id" Type="Room" IsForeignKey="true" />
       <Association Name="Student_Allottment" Member="Student" ThisKey="std_cnic" OtherKey="std_cnic" Type="Student" IsForeignKey="true" />
     </Type>
@@ -77,21 +78,15 @@
       <Column Name="hostel_addedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="time_of_addition" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="hostel_activeStatus" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Hostel_Allottment" Member="Allottments" ThisKey="hostel_id" OtherKey="hostel_id" Type="Allottment" />
       <Association Name="Hostel_User" Member="Users" ThisKey="hostel_id" OtherKey="hostel_id" Type="User" />
       <Association Name="Hostel_Room" Member="Rooms" ThisKey="hostel_id" OtherKey="hostel_id" Type="Room" />
     </Type>
   </Table>
-  <Table Name="dbo.Request" Member="Requests">
-    <Type Name="Request">
-      <Column Name="req_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="req_msg" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="allotte_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Allottment_Request" Member="Allottment" ThisKey="allotte_id" OtherKey="allottee_id" Type="Allottment" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Room" Member="Rooms">
     <Type Name="Room">
-      <Column Name="room_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="room_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="room_no" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="room_type" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="room_capacity" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="room_addedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -159,17 +154,6 @@
       <Column Name="user_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.View_Rooms" Member="View_Rooms">
-    <Type Name="View_Room">
-      <Column Name="room_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="room_type" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="room_capacity" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="room_status" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="time_of_addition" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="hostel_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="user_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.View_Users" Member="View_Users">
     <Type Name="View_User">
       <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -181,6 +165,17 @@
       <Column Name="hostel_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="USERID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="USERNAME" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.View_Rooms" Member="View_Rooms">
+    <Type Name="View_Room">
+      <Column Name="room_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="room_type" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="room_capacity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="room_status" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="time_of_addition" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="hostel_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="user_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

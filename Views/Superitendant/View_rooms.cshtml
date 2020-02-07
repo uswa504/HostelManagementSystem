@@ -10,7 +10,6 @@
         <nav class="ts-sidebar">
             <ul class="ts-sidebar-menu">
                 <li class="ts-label">Main</li>
-                <li><a href="/Superitendant/View_Request"><i class="fa fa-question"></i>View Requests</a></li>
                 <li><a href="/Superitendant/Adduser"><i class="fa fa-user"></i>Add Hostel Clerk</a></li>
                 <li><a href="/Superitendant/View_rooms"><i class="fa fa-bed"></i>View Rooms</a></li>
                 <li><a href="/Superitendant/Change_password"><i class="fa fa-key"></i>Change Password</a></li>
@@ -38,7 +37,7 @@
                                 @foreach (var s in Model)
                                 {
                                     <tr>
-                                        <td>@s.room_id</td>
+                                        <td>@s.room_no</td>
                                         <td>@s.room_type</td>
                                         <td>@s.room_capacity</td>
                                         <td>@s.time_of_addition</td>

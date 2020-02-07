@@ -18,7 +18,16 @@
 html {
     font-size: 14px;
 }
-
+.add {
+    display: flex;
+    color: #ededed;
+    background-color: #6a6c6e;
+    border-radius: 50%;
+    width: 40px;
+    align-items: center;
+    justify-content: center;
+    height: 40px
+}
 @media only screen and (min-width: 480px) {
     html {
         font-size: 17px;

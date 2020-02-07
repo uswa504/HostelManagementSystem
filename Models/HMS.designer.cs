@@ -48,9 +48,6 @@ namespace Online_Hostel_Management_System.Models
     partial void InsertHostel(Hostel instance);
     partial void UpdateHostel(Hostel instance);
     partial void DeleteHostel(Hostel instance);
-    partial void InsertRequest(Request instance);
-    partial void UpdateRequest(Request instance);
-    partial void DeleteRequest(Request instance);
     partial void InsertRoom(Room instance);
     partial void UpdateRoom(Room instance);
     partial void DeleteRoom(Room instance);
@@ -140,14 +137,6 @@ namespace Online_Hostel_Management_System.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<Request> Requests
-		{
-			get
-			{
-				return this.GetTable<Request>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Room> Rooms
 		{
 			get
@@ -180,19 +169,19 @@ namespace Online_Hostel_Management_System.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<View_Room> View_Rooms
-		{
-			get
-			{
-				return this.GetTable<View_Room>();
-			}
-		}
-		
 		public System.Data.Linq.Table<View_User> View_Users
 		{
 			get
 			{
 				return this.GetTable<View_User>();
+			}
+		}
+		
+		public System.Data.Linq.Table<View_Room> View_Rooms
+		{
+			get
+			{
+				return this.GetTable<View_Room>();
 			}
 		}
 	}
@@ -217,9 +206,11 @@ namespace Online_Hostel_Management_System.Models
 		
 		private string _allotte_activeStatus;
 		
+		private System.Nullable<int> _hostel_id;
+		
 		private EntitySet<Due> _Dues;
 		
-		private EntitySet<Request> _Requests;
+		private EntityRef<Hostel> _Hostel;
 		
 		private EntityRef<Room> _Room;
 		
@@ -243,12 +234,14 @@ namespace Online_Hostel_Management_System.Models
     partial void Ontime_of_additionChanged();
     partial void Onallotte_activeStatusChanging(string value);
     partial void Onallotte_activeStatusChanged();
+    partial void Onhostel_idChanging(System.Nullable<int> value);
+    partial void Onhostel_idChanged();
     #endregion
 		
 		public Allottment()
 		{
 			this._Dues = new EntitySet<Due>(new Action<Due>(this.attach_Dues), new Action<Due>(this.detach_Dues));
-			this._Requests = new EntitySet<Request>(new Action<Request>(this.attach_Requests), new Action<Request>(this.detach_Requests));
+			this._Hostel = default(EntityRef<Hostel>);
 			this._Room = default(EntityRef<Room>);
 			this._Student = default(EntityRef<Student>);
 			OnCreated();
@@ -402,6 +395,30 @@ namespace Online_Hostel_Management_System.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_hostel_id", DbType="Int")]
+		public System.Nullable<int> hostel_id
+		{
+			get
+			{
+				return this._hostel_id;
+			}
+			set
+			{
+				if ((this._hostel_id != value))
+				{
+					if (this._Hostel.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onhostel_idChanging(value);
+					this.SendPropertyChanging();
+					this._hostel_id = value;
+					this.SendPropertyChanged("hostel_id");
+					this.Onhostel_idChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Allottment_Due", Storage="_Dues", ThisKey="allottee_id", OtherKey="allottee_id")]
 		public EntitySet<Due> Dues
 		{
@@ -415,16 +432,37 @@ namespace Online_Hostel_Management_System.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Allottment_Request", Storage="_Requests", ThisKey="allottee_id", OtherKey="allotte_id")]
-		public EntitySet<Request> Requests
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Hostel_Allottment", Storage="_Hostel", ThisKey="hostel_id", OtherKey="hostel_id", IsForeignKey=true)]
+		public Hostel Hostel
 		{
 			get
 			{
-				return this._Requests;
+				return this._Hostel.Entity;
 			}
 			set
 			{
-				this._Requests.Assign(value);
+				Hostel previousValue = this._Hostel.Entity;
+				if (((previousValue != value) 
+							|| (this._Hostel.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Hostel.Entity = null;
+						previousValue.Allottments.Remove(this);
+					}
+					this._Hostel.Entity = value;
+					if ((value != null))
+					{
+						value.Allottments.Add(this);
+						this._hostel_id = value.hostel_id;
+					}
+					else
+					{
+						this._hostel_id = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Hostel");
+				}
 			}
 		}
 		
@@ -523,18 +561,6 @@ namespace Online_Hostel_Management_System.Models
 		}
 		
 		private void detach_Dues(Due entity)
-		{
-			this.SendPropertyChanging();
-			entity.Allottment = null;
-		}
-		
-		private void attach_Requests(Request entity)
-		{
-			this.SendPropertyChanging();
-			entity.Allottment = this;
-		}
-		
-		private void detach_Requests(Request entity)
 		{
 			this.SendPropertyChanging();
 			entity.Allottment = null;
@@ -1616,6 +1642,8 @@ namespace Online_Hostel_Management_System.Models
 		
 		private string _hostel_activeStatus;
 		
+		private EntitySet<Allottment> _Allottments;
+		
 		private EntitySet<User> _Users;
 		
 		private EntitySet<Room> _Rooms;
@@ -1646,6 +1674,7 @@ namespace Online_Hostel_Management_System.Models
 		
 		public Hostel()
 		{
+			this._Allottments = new EntitySet<Allottment>(new Action<Allottment>(this.attach_Allottments), new Action<Allottment>(this.detach_Allottments));
 			this._Users = new EntitySet<User>(new Action<User>(this.attach_Users), new Action<User>(this.detach_Users));
 			this._Rooms = new EntitySet<Room>(new Action<Room>(this.attach_Rooms), new Action<Room>(this.detach_Rooms));
 			OnCreated();
@@ -1831,6 +1860,19 @@ namespace Online_Hostel_Management_System.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Hostel_Allottment", Storage="_Allottments", ThisKey="hostel_id", OtherKey="hostel_id")]
+		public EntitySet<Allottment> Allottments
+		{
+			get
+			{
+				return this._Allottments;
+			}
+			set
+			{
+				this._Allottments.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Hostel_User", Storage="_Users", ThisKey="hostel_id", OtherKey="hostel_id")]
 		public EntitySet<User> Users
 		{
@@ -1877,6 +1919,18 @@ namespace Online_Hostel_Management_System.Models
 			}
 		}
 		
+		private void attach_Allottments(Allottment entity)
+		{
+			this.SendPropertyChanging();
+			entity.Hostel = this;
+		}
+		
+		private void detach_Allottments(Allottment entity)
+		{
+			this.SendPropertyChanging();
+			entity.Hostel = null;
+		}
+		
 		private void attach_Users(User entity)
 		{
 			this.SendPropertyChanging();
@@ -1902,157 +1956,6 @@ namespace Online_Hostel_Management_System.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Request")]
-	public partial class Request : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _req_id;
-		
-		private string _req_msg;
-		
-		private System.Nullable<int> _allotte_id;
-		
-		private EntityRef<Allottment> _Allottment;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onreq_idChanging(int value);
-    partial void Onreq_idChanged();
-    partial void Onreq_msgChanging(string value);
-    partial void Onreq_msgChanged();
-    partial void Onallotte_idChanging(System.Nullable<int> value);
-    partial void Onallotte_idChanged();
-    #endregion
-		
-		public Request()
-		{
-			this._Allottment = default(EntityRef<Allottment>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_req_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int req_id
-		{
-			get
-			{
-				return this._req_id;
-			}
-			set
-			{
-				if ((this._req_id != value))
-				{
-					this.Onreq_idChanging(value);
-					this.SendPropertyChanging();
-					this._req_id = value;
-					this.SendPropertyChanged("req_id");
-					this.Onreq_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_req_msg", DbType="NVarChar(MAX)")]
-		public string req_msg
-		{
-			get
-			{
-				return this._req_msg;
-			}
-			set
-			{
-				if ((this._req_msg != value))
-				{
-					this.Onreq_msgChanging(value);
-					this.SendPropertyChanging();
-					this._req_msg = value;
-					this.SendPropertyChanged("req_msg");
-					this.Onreq_msgChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_allotte_id", DbType="Int")]
-		public System.Nullable<int> allotte_id
-		{
-			get
-			{
-				return this._allotte_id;
-			}
-			set
-			{
-				if ((this._allotte_id != value))
-				{
-					if (this._Allottment.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onallotte_idChanging(value);
-					this.SendPropertyChanging();
-					this._allotte_id = value;
-					this.SendPropertyChanged("allotte_id");
-					this.Onallotte_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Allottment_Request", Storage="_Allottment", ThisKey="allotte_id", OtherKey="allottee_id", IsForeignKey=true)]
-		public Allottment Allottment
-		{
-			get
-			{
-				return this._Allottment.Entity;
-			}
-			set
-			{
-				Allottment previousValue = this._Allottment.Entity;
-				if (((previousValue != value) 
-							|| (this._Allottment.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Allottment.Entity = null;
-						previousValue.Requests.Remove(this);
-					}
-					this._Allottment.Entity = value;
-					if ((value != null))
-					{
-						value.Requests.Add(this);
-						this._allotte_id = value.allottee_id;
-					}
-					else
-					{
-						this._allotte_id = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Allottment");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Room")]
 	public partial class Room : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -2060,6 +1963,8 @@ namespace Online_Hostel_Management_System.Models
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _room_id;
+		
+		private System.Nullable<int> _room_no;
 		
 		private string _room_type;
 		
@@ -2083,6 +1988,8 @@ namespace Online_Hostel_Management_System.Models
     partial void OnCreated();
     partial void Onroom_idChanging(int value);
     partial void Onroom_idChanged();
+    partial void Onroom_noChanging(System.Nullable<int> value);
+    partial void Onroom_noChanged();
     partial void Onroom_typeChanging(string value);
     partial void Onroom_typeChanged();
     partial void Onroom_capacityChanging(System.Nullable<int> value);
@@ -2104,7 +2011,7 @@ namespace Online_Hostel_Management_System.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_room_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_room_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int room_id
 		{
 			get
@@ -2120,6 +2027,26 @@ namespace Online_Hostel_Management_System.Models
 					this._room_id = value;
 					this.SendPropertyChanged("room_id");
 					this.Onroom_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_room_no", DbType="Int")]
+		public System.Nullable<int> room_no
+		{
+			get
+			{
+				return this._room_no;
+			}
+			set
+			{
+				if ((this._room_no != value))
+				{
+					this.Onroom_noChanging(value);
+					this.SendPropertyChanging();
+					this._room_no = value;
+					this.SendPropertyChanged("room_no");
+					this.Onroom_noChanged();
 				}
 			}
 		}
@@ -3496,141 +3423,6 @@ namespace Online_Hostel_Management_System.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.View_Rooms")]
-	public partial class View_Room
-	{
-		
-		private int _room_id;
-		
-		private string _room_type;
-		
-		private System.Nullable<int> _room_capacity;
-		
-		private string _room_status;
-		
-		private System.Nullable<System.DateTime> _time_of_addition;
-		
-		private System.Nullable<int> _hostel_id;
-		
-		private string _user_name;
-		
-		public View_Room()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_room_id", DbType="Int NOT NULL")]
-		public int room_id
-		{
-			get
-			{
-				return this._room_id;
-			}
-			set
-			{
-				if ((this._room_id != value))
-				{
-					this._room_id = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_room_type", DbType="NVarChar(MAX)")]
-		public string room_type
-		{
-			get
-			{
-				return this._room_type;
-			}
-			set
-			{
-				if ((this._room_type != value))
-				{
-					this._room_type = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_room_capacity", DbType="Int")]
-		public System.Nullable<int> room_capacity
-		{
-			get
-			{
-				return this._room_capacity;
-			}
-			set
-			{
-				if ((this._room_capacity != value))
-				{
-					this._room_capacity = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_room_status", DbType="NVarChar(MAX)")]
-		public string room_status
-		{
-			get
-			{
-				return this._room_status;
-			}
-			set
-			{
-				if ((this._room_status != value))
-				{
-					this._room_status = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_time_of_addition", DbType="DateTime")]
-		public System.Nullable<System.DateTime> time_of_addition
-		{
-			get
-			{
-				return this._time_of_addition;
-			}
-			set
-			{
-				if ((this._time_of_addition != value))
-				{
-					this._time_of_addition = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_hostel_id", DbType="Int")]
-		public System.Nullable<int> hostel_id
-		{
-			get
-			{
-				return this._hostel_id;
-			}
-			set
-			{
-				if ((this._hostel_id != value))
-				{
-					this._hostel_id = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_name", DbType="NVarChar(MAX)")]
-		public string user_name
-		{
-			get
-			{
-				return this._user_name;
-			}
-			set
-			{
-				if ((this._user_name != value))
-				{
-					this._user_name = value;
-				}
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.View_Users")]
 	public partial class View_User
 	{
@@ -3797,6 +3589,141 @@ namespace Online_Hostel_Management_System.Models
 				if ((this._USERNAME != value))
 				{
 					this._USERNAME = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.View_Rooms")]
+	public partial class View_Room
+	{
+		
+		private int _room_id;
+		
+		private string _room_type;
+		
+		private System.Nullable<int> _room_capacity;
+		
+		private string _room_status;
+		
+		private System.Nullable<System.DateTime> _time_of_addition;
+		
+		private System.Nullable<int> _hostel_id;
+		
+		private string _user_name;
+		
+		public View_Room()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_room_id", DbType="Int NOT NULL")]
+		public int room_id
+		{
+			get
+			{
+				return this._room_id;
+			}
+			set
+			{
+				if ((this._room_id != value))
+				{
+					this._room_id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_room_type", DbType="NVarChar(MAX)")]
+		public string room_type
+		{
+			get
+			{
+				return this._room_type;
+			}
+			set
+			{
+				if ((this._room_type != value))
+				{
+					this._room_type = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_room_capacity", DbType="Int")]
+		public System.Nullable<int> room_capacity
+		{
+			get
+			{
+				return this._room_capacity;
+			}
+			set
+			{
+				if ((this._room_capacity != value))
+				{
+					this._room_capacity = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_room_status", DbType="NVarChar(MAX)")]
+		public string room_status
+		{
+			get
+			{
+				return this._room_status;
+			}
+			set
+			{
+				if ((this._room_status != value))
+				{
+					this._room_status = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_time_of_addition", DbType="DateTime")]
+		public System.Nullable<System.DateTime> time_of_addition
+		{
+			get
+			{
+				return this._time_of_addition;
+			}
+			set
+			{
+				if ((this._time_of_addition != value))
+				{
+					this._time_of_addition = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_hostel_id", DbType="Int")]
+		public System.Nullable<int> hostel_id
+		{
+			get
+			{
+				return this._hostel_id;
+			}
+			set
+			{
+				if ((this._hostel_id != value))
+				{
+					this._hostel_id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_name", DbType="NVarChar(MAX)")]
+		public string user_name
+		{
+			get
+			{
+				return this._user_name;
+			}
+			set
+			{
+				if ((this._user_name != value))
+				{
+					this._user_name = value;
 				}
 			}
 		}
