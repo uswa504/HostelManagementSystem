@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Add Allotment";
 }
+@model dynamic
 <div class="brand clearfix">
     <a href="#" class="logo text-white" style="font-size:16px;" ;>Hostel Management System</a>
     <span class="menu-btn"><i class="fa fa-bars"></i></span>
@@ -117,7 +118,7 @@
                                                         <input type="text" name="edu_name0" id="edu_name" class="form-control" placeholder="Degree" required>
                                                     </div>
                                                     <div class="col-sm-4">
-                                                        <input type="text name="marks_obt0" id="marks_obt" class="form-control " placeholder="Marks Obt" required="required">
+                                                        <input type="text" name="marks_obt0" id="marks_obt" class="form-control " placeholder="Marks Obt" required="required">
                                                     </div>
                                                     <div class="col-sm-4">
                                                         <input type="text" name="total_marks0" id="total_marks" class="form-control" placeholder="Total Marks" required="required">
@@ -139,32 +140,34 @@
                                                     key += 1;
                                                     var inputs = [];
                                                     var html = `<div class="form-group"
-                                                                                                                                                                                            <div class = "add-edu">
-                                                                                                                                                                                        <div class="col-sm-8 col-sm-offset-2" style="margin-top:10px">
-                                                                                                                                                                                            <div class="col-sm-4">
-                                                                                                                                                                                                <input type="text" name="edu_name${key}" id="edu_name${key}" class="form-control" placeholder="Degree" required>
-                                                                                                                                                                                            </div>
-                                                                                                                                                                                            <div class="col-sm-4">
-                                                                                                                                                                                                <input type="text" name="marks_obt${key}" id="marks_obt${key}" class="form-control " placeholder="Marks Obt" required="required">
-                                                                                                                                                                                            </div>
-                                                                                                                                                                                            <div class="col-sm-4">
-                                                                                                                                                                                                <input type="text" name="total_marks${key}" id="total_marks${key}" class="form-control" placeholder="Total Marks" required="required">
-                                                                                                                                                                                            </div>
-                                                                                                                                                                                            <div class="col-sm-8">
-                                                                                                                                                                                                <input type="text" name="board${key}" id="board${key}" class="form-control " placeholder="Board/Uni" required="required">
-                                                                                                                                                                                            </div>
-                                                                                                                                                                                            <div class="col-sm-4">
-                                                                                                                                                                                                <input type="number" min="1980" max="2030" value = "2010" name="session${key}" id="Session${key}" class="form-control" placeholder="Session" required="required">
-                                                                                                                                                                                            </div>
-                                                                                                                                                                                        </div>
-                                                                                                                                                                                    </div>
-                                                                                                                                                                                        </div>`
+                                                                                                                                                                                                                                                                                    <div class = "add-edu">
+                                                                                                                                                                                                                                                                                <div class="col-sm-8 col-sm-offset-2" style="margin-top:10px">
+                                                                                                                                                                                                                                                                                    <div class="col-sm-4">
+                                                                                                                                                                                                                                                                                        <input type="text" name="edu_name${key}" id="edu_name${key}" class="form-control" placeholder="Degree" required>
+                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                    <div class="col-sm-4">
+                                                                                                                                                                                                                                                                                        <input type="text" name="marks_obt${key}" id="marks_obt${key}" class="form-control " placeholder="Marks Obt" required="required">
+                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                    <div class="col-sm-4">
+                                                                                                                                                                                                                                                                                        <input type="text" name="total_marks${key}" id="total_marks${key}" class="form-control" placeholder="Total Marks" required="required">
+                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                    <div class="col-sm-8">
+                                                                                                                                                                                                                                                                                        <input type="text" name="board${key}" id="board${key}" class="form-control " placeholder="Board/Uni" required="required">
+                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                    <div class="col-sm-4">
+                                                                                                                                                                                                                                                                                        <input type="number" min="1980" max="2030" value = "2010" name="session${key}" id="Session${key}" class="form-control" placeholder="Session" required="required">
+                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                                </div>`
                                                     $("#education").append(html);
                                                 }
-                                                $("#add_allottment").click(function () {
-                                                    $("form").append(`<input type='hidden' name='eduacation_no' value=${key}/>`);
+                                                $("form").submit(function (e) {
+                                                    e.preventDefault();
+                                                    $("form").append(`<input type='hidden' name='education_no' value='${key}'/>`);
                                                     $("form").submit();
-                                                });
+                                                })
+                                                
 
                                             </script>
                                         </div>
@@ -217,8 +220,8 @@
                                             <label class="col-sm-2 control-label">Institute/Department : </label>
                                             <div class="col-sm-8">
                                                 <select type="text" name="dep_name" id="dep_name" class="form-control" required>
-                                                    <option value="">Select Room Number</option>
-                                                    @foreach (var s in Model)
+                                                    <option value="">Select Department</option>
+                                                    @foreach (var s in Model.b)
                                                     {
                                                         <option value="@s.dep_id">@s.dep_name</option>
                                                     }
@@ -253,7 +256,7 @@
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">Batch: </label>
                                             <div class="col-sm-8">
-                                                <input type="number" min="1900" max="2099" step="1" value="2020" name="session" id="Session" class="form-control" placeholder="Session" required="required">>
+                                                <input type="number" min="1900" max="2099" step="1" value="2020" name="session" id="Session" class="form-control" placeholder="Session" required="required">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -267,7 +270,7 @@
                                             <div class="col-sm-8">
                                                 <select name="room_number" class="form-control" required="required">
                                                     <option value="">Select Room Number</option>
-                                                    @foreach (var s in Model)
+                                                    @foreach (var s in Model.a)
                                                     {
                                                         <option value="@s.room_id">@s.room_no</option>
                                                     }
@@ -298,7 +301,6 @@
 
                                         </script>
                                     </form>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -306,3 +308,4 @@
             </div>
         </div>
     </div>
+</div>

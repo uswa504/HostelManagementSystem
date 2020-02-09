@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Dynamic;
 using Online_Hostel_Management_System.Models;
 
 namespace Online_Hostel_Management_System.Controllers
@@ -22,8 +23,10 @@ namespace Online_Hostel_Management_System.Controllers
             if (Session["user_role"].ToString() == "hostel_clerk" || Session["user_role"].ToString() == "admin")
             {
                 int hostel = (int)Session["hostel"];
-                var a = dc.Rooms.Where(x=> x.hostel_id == hostel).ToList();
-                return View(a);
+                dynamic model = new ExpandoObject();
+                model.a = dc.Rooms.Where(x=> x.hostel_id == hostel).ToList();
+                model.b = dc.Departments.ToList();
+                return View(model);
             }
             else return RedirectToAction("Index", "Home"); ;
         }
@@ -65,7 +68,6 @@ namespace Online_Hostel_Management_System.Controllers
         {
             string username = Request["stud_username"];
             string passwd = Request["stud_passwd"];
-            int key = int.Parse(Request["education_no"]);
             System.Text.ASCIIEncoding encryptpwd = new System.Text.ASCIIEncoding();
             byte[] passwordArray = encryptpwd.GetBytes(passwd);
             int? hostel = null;
@@ -157,7 +159,9 @@ namespace Online_Hostel_Management_System.Controllers
             };
             dc.Sessions.InsertOnSubmit(session);
             dc.SubmitChanges();
-            for(int i=0; i<key; i++)
+            string n = Request["education_no"];
+            int key = int.Parse(n);
+            for (int i=0; i<key; i++)
             {
                 string edu_deg = Request["edu_name" + i];
                 int marks_obt = int.Parse(Request["marks_obt"+i]);
