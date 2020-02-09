@@ -61,7 +61,7 @@
       <Column Name="edu_marksObt" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="edu_totalMarks" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="[edu_board/uni]" Member="edu_board_uni" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="edu_session" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="edu_session" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="edu_addedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="time_of_addition" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="Student_Education" Member="Student" ThisKey="std_cnic" OtherKey="std_cnic" Type="Student" IsForeignKey="true" />
@@ -104,7 +104,7 @@
       <Column Name="dep_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="session_rollno" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="session_degree" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="session_batch" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="session_batch" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="session_startDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="session_endDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="session_duration" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
@@ -121,6 +121,7 @@
       <Column Name="std_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="std_fatherName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="std_fatherOccupation" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="std_fatherIncome" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="std_presentAddress" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="std_permanentAddress" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="std_phone" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />

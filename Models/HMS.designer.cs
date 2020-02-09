@@ -1341,7 +1341,7 @@ namespace Online_Hostel_Management_System.Models
 		
 		private string _edu_board_uni;
 		
-		private System.Nullable<System.DateTime> _edu_session;
+		private System.Nullable<int> _edu_session;
 		
 		private System.Nullable<int> _edu_addedBy;
 		
@@ -1365,7 +1365,7 @@ namespace Online_Hostel_Management_System.Models
     partial void Onedu_totalMarksChanged();
     partial void Onedu_board_uniChanging(string value);
     partial void Onedu_board_uniChanged();
-    partial void Onedu_sessionChanging(System.Nullable<System.DateTime> value);
+    partial void Onedu_sessionChanging(System.Nullable<int> value);
     partial void Onedu_sessionChanged();
     partial void Onedu_addedByChanging(System.Nullable<int> value);
     partial void Onedu_addedByChanged();
@@ -1503,8 +1503,8 @@ namespace Online_Hostel_Management_System.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_edu_session", DbType="Date")]
-		public System.Nullable<System.DateTime> edu_session
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_edu_session", DbType="Int")]
+		public System.Nullable<int> edu_session
 		{
 			get
 			{
@@ -2271,7 +2271,7 @@ namespace Online_Hostel_Management_System.Models
 		
 		private string _session_degree;
 		
-		private System.Nullable<System.DateTime> _session_batch;
+		private System.Nullable<int> _session_batch;
 		
 		private System.Nullable<System.DateTime> _session_startDate;
 		
@@ -2303,7 +2303,7 @@ namespace Online_Hostel_Management_System.Models
     partial void Onsession_rollnoChanged();
     partial void Onsession_degreeChanging(string value);
     partial void Onsession_degreeChanged();
-    partial void Onsession_batchChanging(System.Nullable<System.DateTime> value);
+    partial void Onsession_batchChanging(System.Nullable<int> value);
     partial void Onsession_batchChanged();
     partial void Onsession_startDateChanging(System.Nullable<System.DateTime> value);
     partial void Onsession_startDateChanged();
@@ -2434,8 +2434,8 @@ namespace Online_Hostel_Management_System.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_session_batch", DbType="Date")]
-		public System.Nullable<System.DateTime> session_batch
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_session_batch", DbType="Int")]
+		public System.Nullable<int> session_batch
 		{
 			get
 			{
@@ -2677,6 +2677,8 @@ namespace Online_Hostel_Management_System.Models
 		
 		private string _std_fatherOccupation;
 		
+		private System.Nullable<decimal> _std_fatherIncome;
+		
 		private string _std_presentAddress;
 		
 		private string _std_permanentAddress;
@@ -2723,6 +2725,8 @@ namespace Online_Hostel_Management_System.Models
     partial void Onstd_fatherNameChanged();
     partial void Onstd_fatherOccupationChanging(string value);
     partial void Onstd_fatherOccupationChanged();
+    partial void Onstd_fatherIncomeChanging(System.Nullable<decimal> value);
+    partial void Onstd_fatherIncomeChanged();
     partial void Onstd_presentAddressChanging(string value);
     partial void Onstd_presentAddressChanged();
     partial void Onstd_permanentAddressChanging(string value);
@@ -2836,6 +2840,26 @@ namespace Online_Hostel_Management_System.Models
 					this._std_fatherOccupation = value;
 					this.SendPropertyChanged("std_fatherOccupation");
 					this.Onstd_fatherOccupationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_std_fatherIncome", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> std_fatherIncome
+		{
+			get
+			{
+				return this._std_fatherIncome;
+			}
+			set
+			{
+				if ((this._std_fatherIncome != value))
+				{
+					this.Onstd_fatherIncomeChanging(value);
+					this.SendPropertyChanging();
+					this._std_fatherIncome = value;
+					this.SendPropertyChanged("std_fatherIncome");
+					this.Onstd_fatherIncomeChanged();
 				}
 			}
 		}

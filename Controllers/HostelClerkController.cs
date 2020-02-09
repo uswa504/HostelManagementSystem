@@ -61,16 +61,23 @@ namespace Online_Hostel_Management_System.Controllers
             else return RedirectToAction("Index", "Home");
         }
 
-        /*public ActionResult student_info()
+        public ActionResult student_info()
         {
             string username = Request["stud_username"];
             string passwd = Request["stud_passwd"];
+            int key = int.Parse(Request["education_no"]);
+            System.Text.ASCIIEncoding encryptpwd = new System.Text.ASCIIEncoding();
+            byte[] passwordArray = encryptpwd.GetBytes(passwd);
+            int? hostel = null;
             User user = new User
             {
                 user_name = username,
-                user_passwd = passwd,
+                user_passwd = passwordArray,
                 user_role = "student",
-                user_session = null
+                user_addedBy = (int)Session["user_id"],
+                time_of_addition = DateTime.Now,
+                user_activeStatus = "active",
+                hostel_id = hostel
             };
             dc.Users.InsertOnSubmit(user);
             dc.SubmitChanges();
@@ -78,7 +85,7 @@ namespace Online_Hostel_Management_System.Controllers
             decimal std_cnic = decimal.Parse(Request["cnic"]);
             string std_fatherName = Request["fname"];
             string std_fatherOccupation = Request["occupation"];
-            string std_fatherIncome = Request["income"];
+            decimal std_fatherIncome = decimal.Parse(Request["income"]);
             string std_presentAddress = Request["paddress"];
             string std_permanentAddress = Request["permanentaddress"];
             string district = Request["district"];
@@ -95,6 +102,7 @@ namespace Online_Hostel_Management_System.Controllers
                 std_name = std_name,
                 std_fatherName = std_fatherName,
                 std_fatherOccupation = std_fatherOccupation,
+                std_fatherIncome= std_fatherIncome,
                 std_presentAddress = std_presentAddress,
                 std_permanentAddress = std_permanentAddress,
                 std_phone = std_phone,
@@ -102,44 +110,76 @@ namespace Online_Hostel_Management_System.Controllers
                 std_district = district,
                 std_bloodGroup = std_bloodGroup,
                 std_HBSAg_report = std_HBSAg_report,
-                std_AntiCV_report = std_antiCV_report,
+                std_antiHCV_report = std_antiCV_report,
                 std_nationality = std_nationality,
+                std_activeStatus = "active",
+                std_addedBy = (int)Session["user_id"],
+                time_of_addition = DateTime.Now,
                 user_id = user.user_id
             };
             dc.Students.InsertOnSubmit(std);
             dc.SubmitChanges();
             int room_number = int.Parse(Request["room_number"]);
-            string room_type = Request["room_type"];
-            string stay_duration = Request["stay_duration"];
-            DateTime session_end = DateTime.Parse(Request["session_end"]);
-            DateTime sessionStart = DateTime.Parse(Request["session_start"]);
-            string total_dues = Request["total_dues"];
             Allottment allottment = new Allottment
             {
                 room_id = room_number,
-                hostel_id = (int)Session["hostel_assign"],
-                stay_duration = stay_duration,
-                session_start = sessionStart,
-                session_end = session_end,
+                hostel_id = (int)Session["hostel"],
+                allotte_type = "regular",
+                allotte_activeStatus = "active",
+                time_of_addition = DateTime.Now,
+                allotte_addedBy = (int)Session["user_id"],
                 std_cnic = std.std_cnic
             };
             dc.Allottments.InsertOnSubmit(allottment);
             dc.SubmitChanges();
-            string dpt_name = Request["dep_name"];
-            string dpt_rollno = Request["roll_no"];
-            string dpt_degree = Request["class"];
-            Department dept = new Department
+            int dpt_id = int.Parse(Request["dep_name"]);
+            string rollN0 = Request["rollno"];
+            string degree = Request["class"];
+            int batch = int.Parse(Request["session"]);
+            DateTime session_start = DateTime.Parse(Request["session_start"]);
+            DateTime session_end = DateTime.Parse(Request["session_end"]);
+            string start = session_start.ToString("yyyy");
+            string end = session_end.ToString("yyyy");
+            int duration = int.Parse(start) - int.Parse(end);
+            Session session = new Session
             {
-                dep_name = dpt_name,
-                dep_rollno = dpt_rollno,
-                dep_degree = dpt_degree,
-                dep_session = allottment.stay_duration,
-                std_cnic = std.std_cnic
+                dep_id = dpt_id,
+                std_cnic = std.std_cnic,
+                session_rollno = rollN0,
+                session_degree = degree,
+                session_startDate = session_start,
+                session_endDate = session_end,
+                session_duration = duration.ToString(),
+                session_activeStatus = "active",
+                session_addedBy = (int)Session["user_id"],
+                time_of_addition = DateTime.Now,
+                session_batch = batch
             };
-            dc.Departments.InsertOnSubmit(dept);
+            dc.Sessions.InsertOnSubmit(session);
             dc.SubmitChanges();
+            for(int i=0; i<key; i++)
+            {
+                string edu_deg = Request["edu_name" + i];
+                int marks_obt = int.Parse(Request["marks_obt"+i]);
+                int marks_total = int.Parse(Request["total_marks" + i]);
+                int edu_session = int.Parse(Request["session" + i]);
+                string board = Request["board"+i];
+                Education education = new Education
+                {
+                    std_cnic = std.std_cnic,
+                    edu_degree = edu_deg,
+                    edu_marksObt = marks_obt,
+                    edu_totalMarks = marks_total,
+                    edu_board_uni = board,
+                    edu_session = edu_session,
+                    edu_addedBy = (int)Session["user_id"],
+                    time_of_addition = DateTime.Now
+                };
+                dc.Educations.InsertOnSubmit(education);
+                dc.SubmitChanges();
+            }
             return RedirectToAction("add_allotment");
-        }*/
+        }
         public ActionResult Change_password()
         {
             if (Session["user_role"].ToString() == "hostel_clerk" || Session["user_role"].ToString() == "admin")
