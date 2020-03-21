@@ -161,14 +161,6 @@ namespace Online_Hostel_Management_System.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<View_Hostel> View_Hostels
-		{
-			get
-			{
-				return this.GetTable<View_Hostel>();
-			}
-		}
-		
 		public System.Data.Linq.Table<View_User> View_Users
 		{
 			get
@@ -177,11 +169,27 @@ namespace Online_Hostel_Management_System.Models
 			}
 		}
 		
+		public System.Data.Linq.Table<View_Hostel> View_Hostels
+		{
+			get
+			{
+				return this.GetTable<View_Hostel>();
+			}
+		}
+		
 		public System.Data.Linq.Table<View_Room> View_Rooms
 		{
 			get
 			{
 				return this.GetTable<View_Room>();
+			}
+		}
+		
+		public System.Data.Linq.Table<View_Allottment> View_Allottments
+		{
+			get
+			{
+				return this.GetTable<View_Allottment>();
 			}
 		}
 	}
@@ -355,7 +363,7 @@ namespace Online_Hostel_Management_System.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[time-of-addition]", Storage="_time_of_addition", DbType="DateTime")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_time_of_addition", DbType="DateTime")]
 		public System.Nullable<System.DateTime> time_of_addition
 		{
 			get
@@ -3258,6 +3266,177 @@ namespace Online_Hostel_Management_System.Models
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.View_Users")]
+	public partial class View_User
+	{
+		
+		private int _user_id;
+		
+		private string _user_name;
+		
+		private string _user_role;
+		
+		private System.Nullable<int> _user_addedBy;
+		
+		private string _user_activeStatus;
+		
+		private System.Nullable<System.DateTime> _time_of_addition;
+		
+		private System.Nullable<int> _hostel_id;
+		
+		private int _USERID;
+		
+		private string _USERNAME;
+		
+		public View_User()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_id", DbType="Int NOT NULL")]
+		public int user_id
+		{
+			get
+			{
+				return this._user_id;
+			}
+			set
+			{
+				if ((this._user_id != value))
+				{
+					this._user_id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_name", DbType="NVarChar(MAX)")]
+		public string user_name
+		{
+			get
+			{
+				return this._user_name;
+			}
+			set
+			{
+				if ((this._user_name != value))
+				{
+					this._user_name = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_role", DbType="NVarChar(MAX)")]
+		public string user_role
+		{
+			get
+			{
+				return this._user_role;
+			}
+			set
+			{
+				if ((this._user_role != value))
+				{
+					this._user_role = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_addedBy", DbType="Int")]
+		public System.Nullable<int> user_addedBy
+		{
+			get
+			{
+				return this._user_addedBy;
+			}
+			set
+			{
+				if ((this._user_addedBy != value))
+				{
+					this._user_addedBy = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_activeStatus", DbType="NVarChar(MAX)")]
+		public string user_activeStatus
+		{
+			get
+			{
+				return this._user_activeStatus;
+			}
+			set
+			{
+				if ((this._user_activeStatus != value))
+				{
+					this._user_activeStatus = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_time_of_addition", DbType="DateTime")]
+		public System.Nullable<System.DateTime> time_of_addition
+		{
+			get
+			{
+				return this._time_of_addition;
+			}
+			set
+			{
+				if ((this._time_of_addition != value))
+				{
+					this._time_of_addition = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_hostel_id", DbType="Int")]
+		public System.Nullable<int> hostel_id
+		{
+			get
+			{
+				return this._hostel_id;
+			}
+			set
+			{
+				if ((this._hostel_id != value))
+				{
+					this._hostel_id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USERID", DbType="Int NOT NULL")]
+		public int USERID
+		{
+			get
+			{
+				return this._USERID;
+			}
+			set
+			{
+				if ((this._USERID != value))
+				{
+					this._USERID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USERNAME", DbType="NVarChar(MAX)")]
+		public string USERNAME
+		{
+			get
+			{
+				return this._USERNAME;
+			}
+			set
+			{
+				if ((this._USERNAME != value))
+				{
+					this._USERNAME = value;
+				}
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.View_Hostel")]
 	public partial class View_Hostel
 	{
@@ -3447,182 +3626,13 @@ namespace Online_Hostel_Management_System.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.View_Users")]
-	public partial class View_User
-	{
-		
-		private int _user_id;
-		
-		private string _user_name;
-		
-		private string _user_role;
-		
-		private System.Nullable<int> _user_addedBy;
-		
-		private string _user_activeStatus;
-		
-		private System.Nullable<System.DateTime> _time_of_addition;
-		
-		private System.Nullable<int> _hostel_id;
-		
-		private int _USERID;
-		
-		private string _USERNAME;
-		
-		public View_User()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_id", DbType="Int NOT NULL")]
-		public int user_id
-		{
-			get
-			{
-				return this._user_id;
-			}
-			set
-			{
-				if ((this._user_id != value))
-				{
-					this._user_id = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_name", DbType="NVarChar(MAX)")]
-		public string user_name
-		{
-			get
-			{
-				return this._user_name;
-			}
-			set
-			{
-				if ((this._user_name != value))
-				{
-					this._user_name = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_role", DbType="NVarChar(MAX)")]
-		public string user_role
-		{
-			get
-			{
-				return this._user_role;
-			}
-			set
-			{
-				if ((this._user_role != value))
-				{
-					this._user_role = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_addedBy", DbType="Int")]
-		public System.Nullable<int> user_addedBy
-		{
-			get
-			{
-				return this._user_addedBy;
-			}
-			set
-			{
-				if ((this._user_addedBy != value))
-				{
-					this._user_addedBy = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_activeStatus", DbType="NVarChar(MAX)")]
-		public string user_activeStatus
-		{
-			get
-			{
-				return this._user_activeStatus;
-			}
-			set
-			{
-				if ((this._user_activeStatus != value))
-				{
-					this._user_activeStatus = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_time_of_addition", DbType="DateTime")]
-		public System.Nullable<System.DateTime> time_of_addition
-		{
-			get
-			{
-				return this._time_of_addition;
-			}
-			set
-			{
-				if ((this._time_of_addition != value))
-				{
-					this._time_of_addition = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_hostel_id", DbType="Int")]
-		public System.Nullable<int> hostel_id
-		{
-			get
-			{
-				return this._hostel_id;
-			}
-			set
-			{
-				if ((this._hostel_id != value))
-				{
-					this._hostel_id = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USERID", DbType="Int NOT NULL")]
-		public int USERID
-		{
-			get
-			{
-				return this._USERID;
-			}
-			set
-			{
-				if ((this._USERID != value))
-				{
-					this._USERID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USERNAME", DbType="NVarChar(MAX)")]
-		public string USERNAME
-		{
-			get
-			{
-				return this._USERNAME;
-			}
-			set
-			{
-				if ((this._USERNAME != value))
-				{
-					this._USERNAME = value;
-				}
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.View_Rooms")]
 	public partial class View_Room
 	{
 		
 		private int _room_id;
+		
+		private System.Nullable<int> _room_no;
 		
 		private string _room_type;
 		
@@ -3652,6 +3662,22 @@ namespace Online_Hostel_Management_System.Models
 				if ((this._room_id != value))
 				{
 					this._room_id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_room_no", DbType="Int")]
+		public System.Nullable<int> room_no
+		{
+			get
+			{
+				return this._room_no;
+			}
+			set
+			{
+				if ((this._room_no != value))
+				{
+					this._room_no = value;
 				}
 			}
 		}
@@ -3732,6 +3758,159 @@ namespace Online_Hostel_Management_System.Models
 				if ((this._hostel_id != value))
 				{
 					this._hostel_id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_name", DbType="NVarChar(MAX)")]
+		public string user_name
+		{
+			get
+			{
+				return this._user_name;
+			}
+			set
+			{
+				if ((this._user_name != value))
+				{
+					this._user_name = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.View_Allottment")]
+	public partial class View_Allottment
+	{
+		
+		private int _allottee_id;
+		
+		private string _allotte_type;
+		
+		private System.Nullable<int> _allotte_addedBy;
+		
+		private System.Nullable<System.DateTime> _time_of_addition;
+		
+		private string _allotte_activeStatus;
+		
+		private System.Nullable<int> _hostel_id;
+		
+		private System.Nullable<int> _room_no;
+		
+		private string _user_name;
+		
+		public View_Allottment()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_allottee_id", DbType="Int NOT NULL")]
+		public int allottee_id
+		{
+			get
+			{
+				return this._allottee_id;
+			}
+			set
+			{
+				if ((this._allottee_id != value))
+				{
+					this._allottee_id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_allotte_type", DbType="NVarChar(MAX)")]
+		public string allotte_type
+		{
+			get
+			{
+				return this._allotte_type;
+			}
+			set
+			{
+				if ((this._allotte_type != value))
+				{
+					this._allotte_type = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_allotte_addedBy", DbType="Int")]
+		public System.Nullable<int> allotte_addedBy
+		{
+			get
+			{
+				return this._allotte_addedBy;
+			}
+			set
+			{
+				if ((this._allotte_addedBy != value))
+				{
+					this._allotte_addedBy = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_time_of_addition", DbType="DateTime")]
+		public System.Nullable<System.DateTime> time_of_addition
+		{
+			get
+			{
+				return this._time_of_addition;
+			}
+			set
+			{
+				if ((this._time_of_addition != value))
+				{
+					this._time_of_addition = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_allotte_activeStatus", DbType="NVarChar(MAX)")]
+		public string allotte_activeStatus
+		{
+			get
+			{
+				return this._allotte_activeStatus;
+			}
+			set
+			{
+				if ((this._allotte_activeStatus != value))
+				{
+					this._allotte_activeStatus = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_hostel_id", DbType="Int")]
+		public System.Nullable<int> hostel_id
+		{
+			get
+			{
+				return this._hostel_id;
+			}
+			set
+			{
+				if ((this._hostel_id != value))
+				{
+					this._hostel_id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_room_no", DbType="Int")]
+		public System.Nullable<int> room_no
+		{
+			get
+			{
+				return this._room_no;
+			}
+			set
+			{
+				if ((this._room_no != value))
+				{
+					this._room_no = value;
 				}
 			}
 		}

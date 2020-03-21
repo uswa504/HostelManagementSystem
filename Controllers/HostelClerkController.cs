@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using Online_Hostel_Management_System.Models;
+using System;
 using System.Dynamic;
-using Online_Hostel_Management_System.Models;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace Online_Hostel_Management_System.Controllers
 {
@@ -17,6 +15,16 @@ namespace Online_Hostel_Management_System.Controllers
                 return View();
             }
             else return RedirectToAction("Index", "Home");
+        }
+        public ActionResult View_Allottment()
+        {
+            if (Session["user_role"].ToString() == "hostel_clerk" || Session["user_role"].ToString() == "admin")
+            {
+                int hostel = (int)Session["hostel"];
+                var a = dc.View_Allottments.Where(s=> s.hostel_id == hostel).ToList();
+                return View(a);
+            }
+            else return RedirectToAction("Index", "Home"); ;
         }
         public ActionResult Add_allotment()
         {
@@ -142,7 +150,7 @@ namespace Online_Hostel_Management_System.Controllers
             DateTime session_end = DateTime.Parse(Request["session_end"]);
             string start = session_start.ToString("yyyy");
             string end = session_end.ToString("yyyy");
-            int duration = int.Parse(start) - int.Parse(end);
+            int duration =  int.Parse(end) - int.Parse(start);
             Session session = new Session
             {
                 dep_id = dpt_id,
@@ -185,6 +193,22 @@ namespace Online_Hostel_Management_System.Controllers
             return RedirectToAction("add_allotment");
         }
         public ActionResult Change_password()
+        {
+            if (Session["user_role"].ToString() == "hostel_clerk" || Session["user_role"].ToString() == "admin")
+            {
+                return View();
+            }
+            else return RedirectToAction("Index", "Home");
+        }
+        public ActionResult View_Info()
+        {
+            if (Session["user_role"].ToString() == "hostel_clerk" || Session["user_role"].ToString() == "admin")
+            {
+                return View();
+            }
+            else return RedirectToAction("Index", "Home");
+        }
+        public ActionResult Update()
         {
             if (Session["user_role"].ToString() == "hostel_clerk" || Session["user_role"].ToString() == "admin")
             {

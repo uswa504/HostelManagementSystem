@@ -28,22 +28,26 @@
                             <table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
+                                        <th>Allottee Id</th>
+                                        <th>Allottee Type</th>
                                         <th>Room No</th>
-                                        <th>Room Type</th>
-                                        <th>Room Capacity</th>
+                                        <th>Allottee Status</th>
                                         <th>Time of Addition</th>
                                         <th>Room Added by</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 @foreach (var s in Model)
                                 {
-                                    <tr>
-                                        <td>@s.room_id</td>
-                                        <td>@s.room_type</td>
-                                        <td>@s.room_capacity</td>
-                                        <td>@s.time_of_addition</td>
-                                        <td>@s.user_name</td>
-                                    </tr>
+                            <tr>
+                                <td>@s.allottee_id</td>
+                                <td>@s.allotte_type</td>
+                                <td>@s.room_no</td>
+                                <td>@s.allotte_activeStatus</td>
+                                <td>@s.time_of_addition</td>
+                                <td>@s.user_name</td>
+                                <td><a>See Info</a></td>
+                            </tr>
                                 }
 
                             </table>

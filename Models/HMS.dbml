@@ -7,7 +7,7 @@
       <Column Name="std_cnic" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="allotte_type" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="allotte_addedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="[time-of-addition]" Member="time_of_addition" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="time_of_addition" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="allotte_activeStatus" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="hostel_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Allottment_Due" Member="Dues" ThisKey="allottee_id" OtherKey="allottee_id" Type="Due" />
@@ -141,6 +141,19 @@
       <Association Name="User_Student" Member="User" ThisKey="user_id" OtherKey="user_id" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.View_Users" Member="View_Users">
+    <Type Name="View_User">
+      <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="user_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="user_role" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="user_addedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="user_activeStatus" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="time_of_addition" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="hostel_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="USERID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="USERNAME" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.View_Hostel" Member="View_Hostels">
     <Type Name="View_Hostel">
       <Column Name="hostel_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -155,27 +168,27 @@
       <Column Name="user_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.View_Users" Member="View_Users">
-    <Type Name="View_User">
-      <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="user_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="user_role" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="user_addedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="user_activeStatus" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="time_of_addition" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="hostel_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="USERID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="USERNAME" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.View_Rooms" Member="View_Rooms">
     <Type Name="View_Room">
       <Column Name="room_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="room_no" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="room_type" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="room_capacity" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="room_status" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="time_of_addition" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="hostel_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="user_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.View_Allottment" Member="View_Allottments">
+    <Type Name="View_Allottment">
+      <Column Name="allottee_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="allotte_type" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="allotte_addedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="time_of_addition" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="allotte_activeStatus" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="hostel_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="room_no" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="user_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
     </Type>
   </Table>
