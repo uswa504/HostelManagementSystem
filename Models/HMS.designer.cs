@@ -192,6 +192,14 @@ namespace Online_Hostel_Management_System.Models
 				return this.GetTable<View_Allottment>();
 			}
 		}
+		
+		public System.Data.Linq.Table<View_Student> View_Students
+		{
+			get
+			{
+				return this.GetTable<View_Student>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Allottment")]
@@ -3787,7 +3795,11 @@ namespace Online_Hostel_Management_System.Models
 		
 		private string _allotte_type;
 		
+		private System.Nullable<decimal> _std_cnic;
+		
 		private System.Nullable<int> _allotte_addedBy;
+		
+		private string _std_name;
 		
 		private System.Nullable<System.DateTime> _time_of_addition;
 		
@@ -3835,6 +3847,22 @@ namespace Online_Hostel_Management_System.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_std_cnic", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> std_cnic
+		{
+			get
+			{
+				return this._std_cnic;
+			}
+			set
+			{
+				if ((this._std_cnic != value))
+				{
+					this._std_cnic = value;
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_allotte_addedBy", DbType="Int")]
 		public System.Nullable<int> allotte_addedBy
 		{
@@ -3847,6 +3875,22 @@ namespace Online_Hostel_Management_System.Models
 				if ((this._allotte_addedBy != value))
 				{
 					this._allotte_addedBy = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_std_name", DbType="NVarChar(MAX)")]
+		public string std_name
+		{
+			get
+			{
+				return this._std_name;
+			}
+			set
+			{
+				if ((this._std_name != value))
+				{
+					this._std_name = value;
 				}
 			}
 		}
@@ -3927,6 +3971,69 @@ namespace Online_Hostel_Management_System.Models
 				if ((this._user_name != value))
 				{
 					this._user_name = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.View_Student")]
+	public partial class View_Student
+	{
+		
+		private decimal _std_cnic;
+		
+		private string _std_name;
+		
+		private string _allotte_activeStatus;
+		
+		public View_Student()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_std_cnic", DbType="Decimal(18,0) NOT NULL")]
+		public decimal std_cnic
+		{
+			get
+			{
+				return this._std_cnic;
+			}
+			set
+			{
+				if ((this._std_cnic != value))
+				{
+					this._std_cnic = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_std_name", DbType="NVarChar(MAX)")]
+		public string std_name
+		{
+			get
+			{
+				return this._std_name;
+			}
+			set
+			{
+				if ((this._std_name != value))
+				{
+					this._std_name = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_allotte_activeStatus", DbType="NVarChar(MAX)")]
+		public string allotte_activeStatus
+		{
+			get
+			{
+				return this._allotte_activeStatus;
+			}
+			set
+			{
+				if ((this._allotte_activeStatus != value))
+				{
+					this._allotte_activeStatus = value;
 				}
 			}
 		}

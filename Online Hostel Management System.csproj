@@ -210,6 +210,7 @@
     <Content Include="Views\HostelClerk\View_rooms.cshtml" />
     <Content Include="Views\HostelClerk\View_Allottment.cshtml" />
     <Content Include="Views\HostelClerk\View_Info.cshtml" />
+    <Content Include="Views\HostelClerk\View_Students.cshtml" />
     <None Include="Views\Student\Change_password.cshtml" />
     <None Include="Views\Student\Dashboard.cshtml" />
     <None Include="Views\HostelClerk\Add_allotment.cshtml" />

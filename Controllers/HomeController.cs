@@ -52,7 +52,7 @@ namespace Online_Hostel_Management_System.Controllers
                 Session["user_role"] = "student";
                 Session["user_id"] = obj.user_id;
                 var a = dc.Students.First(x => x.user_id == obj.user_id);
-                var s = dc.Allottments.First(y => y.std_cnic == a.std_cnic);
+                var s = dc.Allottments.First(y => y.std_cnic == a.std_cnic && y.allotte_activeStatus == "active");
                 if (a == null)
                 {
                     //genearte alert

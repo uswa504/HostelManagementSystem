@@ -48,6 +48,15 @@ namespace Online_Hostel_Management_System.Controllers
             }
             else return RedirectToAction("Index", "Home");
         }
+        public ActionResult View_Students()
+        {
+            if (Session["user_role"].ToString() == "hostel_clerk" || Session["user_role"].ToString() == "admin")
+            {
+                var a = dc.View_Students.ToList();
+                return View(a);
+            }
+            else return RedirectToAction("Index", "Home");
+        }
         public ActionResult Add_room()
         {
             if (Session["user_role"].ToString() == "hostel_clerk" || Session["user_role"].ToString() == "admin")
@@ -169,7 +178,7 @@ namespace Online_Hostel_Management_System.Controllers
             dc.SubmitChanges();
             string n = Request["education_no"];
             int key = int.Parse(n);
-            for (int i=0; i<key; i++)
+            for (int i=0; i<=key; i++)
             {
                 string edu_deg = Request["edu_name" + i];
                 int marks_obt = int.Parse(Request["marks_obt"+i]);
@@ -200,19 +209,18 @@ namespace Online_Hostel_Management_System.Controllers
             }
             else return RedirectToAction("Index", "Home");
         }
-        public ActionResult View_Info()
+        public ActionResult View_Info(int id)
         {
             if (Session["user_role"].ToString() == "hostel_clerk" || Session["user_role"].ToString() == "admin")
             {
-                return View();
-            }
-            else return RedirectToAction("Index", "Home");
-        }
-        public ActionResult Update()
-        {
-            if (Session["user_role"].ToString() == "hostel_clerk" || Session["user_role"].ToString() == "admin")
-            {
-                return View();
+                dynamic model = new ExpandoObject();
+                var a = dc.Allottments.First(x => x.allottee_id == id && x.allotte_activeStatus == "active");
+                decimal cnic = (decimal)a.std_cnic;
+                model.a = dc.Educations.Where(x => x.std_cnic ==cnic).Count();
+                model.b = dc.Educations.Where(x => x.std_cnic == cnic).ToList();
+                model.c = dc.Sessions.Where(x => x.std_cnic == cnic && x.session_activeStatus == "active");
+                model.d = dc.Students.Where(x => x.std_cnic == cnic);
+                return View(model);
             }
             else return RedirectToAction("Index", "Home");
         }
