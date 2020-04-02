@@ -47,10 +47,19 @@
                                 <td>@s.std_name</td>
                                 <td>@s.allotte_type</td>
                                 <td>@s.room_no</td>
-                                <td>@s.allotte_activeStatus</td>
+                                <td><select name="status" class="form-control">
+                                        <option value="@s.allotte_activeStatus">@s.allotte_activeStatus</option>
+                                    @if (s.allotte_activeStatus == "active")
+                                    {
+                                    <option value="inactive">Inactive</option>
+                                    }
+                                    else
+                                    {<option value="active">Active</option>}
+                                    </select></td>
                                 <td>@s.time_of_addition</td>
                                 <td>@s.user_name</td>
-                                <td><a href="/HostelClerk/View_Info/@s.allottee_id">See Info</a></td>
+                                <td><a href="/HostelClerk/Update/@s.allottee_id">Update</a>
+                                <a href="/HostelClerk/View_Info/@s.allottee_id">See Info</a></td>
                             </tr>
                                 }
 

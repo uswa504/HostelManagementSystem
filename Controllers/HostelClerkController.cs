@@ -224,6 +224,23 @@ namespace Online_Hostel_Management_System.Controllers
             }
             else return RedirectToAction("Index", "Home");
         }
+        public ActionResult Update(int id)
+        {
+            if (Session["user_role"].ToString() == "hostel_clerk" || Session["user_role"].ToString() == "admin")
+            {
+                string status = Request["status"];
+                var a = dc.Allottments.First(s => s.allottee_id == id);
+                if (a != null)
+                {
+                    a.allotte_activeStatus = status;
+                    dc.SubmitChanges();
+                    return RedirectToAction("View_Allottment");
+                }
+                else
+                    return RedirectToAction("View_Allottment");
+            }
+            else return RedirectToAction("Index", "Home");
+        }
         public ActionResult Change()
         {
             if (Session["user_role"].ToString() == "hostel_clerk" || Session["user_role"].ToString() == "admin")
