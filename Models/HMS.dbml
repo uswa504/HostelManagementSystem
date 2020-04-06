@@ -53,20 +53,6 @@
       <Association Name="Allottment_Due" Member="Allottment" ThisKey="allottee_id" OtherKey="allottee_id" Type="Allottment" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Education" Member="Educations">
-    <Type Name="Education">
-      <Column Name="edu_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="std_cnic" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="edu_degree" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="edu_marksObt" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="edu_totalMarks" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="[edu_board/uni]" Member="edu_board_uni" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="edu_session" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="edu_addedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="time_of_addition" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Association Name="Student_Education" Member="Student" ThisKey="std_cnic" OtherKey="std_cnic" Type="Student" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Hostel" Member="Hostels">
     <Type Name="Hostel">
       <Column Name="hostel_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -115,32 +101,6 @@
       <Association Name="Student_Session" Member="Student" ThisKey="std_cnic" OtherKey="std_cnic" Type="Student" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Student" Member="Students">
-    <Type Name="Student">
-      <Column Name="std_cnic" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="std_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="std_fatherName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="std_fatherOccupation" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="std_fatherIncome" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="std_presentAddress" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="std_permanentAddress" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="std_phone" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="std_parentPhone" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="std_district" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="std_bloodGroup" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="std_HBSAg_report" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="std_antiHCV_report" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="std_nationality" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="user_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="std_addedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="time_of_addition" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="std_activeStatus" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Association Name="Student_Allottment" Member="Allottments" ThisKey="std_cnic" OtherKey="std_cnic" Type="Allottment" />
-      <Association Name="Student_Education" Member="Educations" ThisKey="std_cnic" OtherKey="std_cnic" Type="Education" />
-      <Association Name="Student_Session" Member="Sessions" ThisKey="std_cnic" OtherKey="std_cnic" Type="Session" />
-      <Association Name="User_Student" Member="User" ThisKey="user_id" OtherKey="user_id" Type="User" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.View_Users" Member="View_Users">
     <Type Name="View_User">
       <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -180,6 +140,55 @@
       <Column Name="user_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.Education" Member="Educations">
+    <Type Name="Education">
+      <Column Name="edu_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="std_cnic" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="edu_degree" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="edu_marksObt" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="edu_totalMarks" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="edu_board_uni" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="edu_session" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="edu_addedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="time_of_addition" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Student_Education" Member="Student" ThisKey="std_cnic" OtherKey="std_cnic" Type="Student" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Student" Member="Students">
+    <Type Name="Student">
+      <Column Name="std_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="std_cnic" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="std_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="std_fatherName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="std_fatherOccupation" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="std_fatherIncome" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="std_presentAddress" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="std_permanentAddress" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="std_phone" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="std_parentPhone" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="std_district" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="std_bloodGroup" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="std_HBSAg_report" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="std_antiHCV_report" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="std_nationality" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="user_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="std_addedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="time_of_addition" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="std_activeStatus" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Student_Allottment" Member="Allottments" ThisKey="std_cnic" OtherKey="std_cnic" Type="Allottment" />
+      <Association Name="Student_Session" Member="Sessions" ThisKey="std_cnic" OtherKey="std_cnic" Type="Session" />
+      <Association Name="Student_Education" Member="Educations" ThisKey="std_cnic" OtherKey="std_cnic" Type="Education" />
+      <Association Name="User_Student" Member="User" ThisKey="user_id" OtherKey="user_id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.View_Student" Member="View_Students">
+    <Type Name="View_Student">
+      <Column Name="std_cnic" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="std_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="allotte_activeStatus" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="std_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
   <Table Name="dbo.View_Allottment" Member="View_Allottments">
     <Type Name="View_Allottment">
       <Column Name="allottee_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -192,13 +201,6 @@
       <Column Name="hostel_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="room_no" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="user_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.View_Student" Member="View_Students">
-    <Type Name="View_Student">
-      <Column Name="std_cnic" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
-      <Column Name="std_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="allotte_activeStatus" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

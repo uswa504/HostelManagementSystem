@@ -205,6 +205,7 @@
     <Content Include="Views\ChairmanHallCouncil\View_rooms.cshtml" />
     <Content Include="Views\ChairmanHallCouncil\Change_password.cshtml" />
     <Content Include="Views\ChairmanHallCouncil\Update_hostel.cshtml" />
+    <Content Include="Views\HostelClerk\Add.cshtml" />
     <None Include="Views\HostelClerk\Addroom.cshtml" />
     <Content Include="Views\HostelClerk\Change_password.cshtml" />
     <Content Include="Views\HostelClerk\View_rooms.cshtml" />

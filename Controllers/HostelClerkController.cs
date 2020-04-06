@@ -38,6 +38,23 @@ namespace Online_Hostel_Management_System.Controllers
             }
             else return RedirectToAction("Index", "Home"); ;
         }
+        public ActionResult Add(int id)
+        {
+            if (Session["user_role"].ToString() == "hostel_clerk" || Session["user_role"].ToString() == "admin")
+            {
+                int hostel = (int)Session["hostel"];
+                dynamic model = new ExpandoObject();
+                var a = dc.Students.First(x => x.std_id == id);
+                decimal cnic = (decimal)a.std_cnic;
+                model.a = dc.Departments.ToList();
+                model.b = dc.Educations.Where(x => x.std_cnic == cnic).ToList();
+                model.c = dc.Sessions.Where(x => x.std_cnic == cnic && x.session_activeStatus == "active");
+                model.d = dc.Students.Where(x => x.std_cnic == cnic);
+                model.e = dc.Rooms.Where(x => x.hostel_id == hostel).ToList();
+                return View(model);
+            }
+            else return RedirectToAction("Index", "Home"); ;
+        }
         public ActionResult View_rooms()
         {
             if (Session["user_role"].ToString() == "hostel_clerk" || Session["user_role"].ToString() == "admin")
@@ -216,7 +233,7 @@ namespace Online_Hostel_Management_System.Controllers
                 dynamic model = new ExpandoObject();
                 var a = dc.Allottments.First(x => x.allottee_id == id && x.allotte_activeStatus == "active");
                 decimal cnic = (decimal)a.std_cnic;
-                model.a = dc.Educations.Where(x => x.std_cnic ==cnic).Count();
+                model.a = dc.Departments.ToList();
                 model.b = dc.Educations.Where(x => x.std_cnic == cnic).ToList();
                 model.c = dc.Sessions.Where(x => x.std_cnic == cnic && x.session_activeStatus == "active");
                 model.d = dc.Students.Where(x => x.std_cnic == cnic);

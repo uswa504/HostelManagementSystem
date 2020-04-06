@@ -106,101 +106,113 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-2 control-label">Cell Number (Guardian): </label>
                                                     <div class="col-sm-8">
-                                                        <input type="text" value="@s.std_parentPhone" name="grd_num" id="grd_num" class="form-control" disabled">
+                                                        <input type="text" value="@s.std_parentPhone" name="grd_num" id="grd_num" class="form-control" disabled>
                                                     </div>
                                                 </div>
+                                                
                                                 <div class="form-group" id="education">
                                                     <label class="col-sm-2 control-label">Education: </label>
-                                                    <div class="add-edu">
-                                                        <div class="col-sm-8">
-                                                            <div class="col-sm-4">
-                                                                <input type="text" name="edu_name0" id="edu_name" class="form-control" placeholder="Degree" disabled>
-                                                            </div>
-                                                            <div class="col-sm-4">
-                                                                <input type="text" name="marks_obt0" id="marks_obt" class="form-control " placeholder="Marks Obt" disabled>
-                                                            </div>
-                                                            <div class="col-sm-4">
-                                                                <input type="text" name="total_marks0" id="total_marks" class="form-control" placeholder="Total Marks" disabled>
-                                                            </div>
-                                                            <div class="col-sm-8">
-                                                                <input type="text" name="board0" id="board" class="form-control " placeholder="Board/Uni" disabled>
-                                                            </div>
-                                                            <div class="col-sm-4">
-                                                                <input type="number" min="1980" max="2030" value="2010" name="session0" id="Session" class="form-control" placeholder="Session" disabled>
-                                                            </div>
+                                                    <div class="col-sm-8">
+                                                        <table class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Degree</th>
+                                                                    <th>Total Marks</th>
+                                                                    <th>Obt. Marks</th>
+                                                                    <th>Year of Passing</th>
+                                                                    <th>Board/Uni</th>
+                                                                </tr>
+                                                            </thead>
+                                                            @foreach (var b in Model.b)
+                                                            {
+                                                                <tr>
+                                                                    <td>@b.edu_degree</td>
+                                                                    <td>@b.edu_totalMarks</td>
+                                                                    <td>@b.edu_marksObt</td>
+                                                                    <td>@b.edu_session</td>
+                                                                    <td>@b.edu_board_uni</td>
+                                                                </tr>
+                                                            }
+                                                        </table>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label">Blood Group </label>
-                                                    <div class="col-sm-8">
-                                                        <input type="text" value="@s.std_bloodGroup" name="blood" class="form-control" disabled">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">Blood Group </label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" value="@s.std_bloodGroup" name="blood" class="form-control" disabled>
+                                                        </div>
                                                     </div>
-                                                </div>
 
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label">Hepatits Report (HBSAg): </label>
-                                                    <div class="col-sm-8">
-                                                        <input type="text" value="@s.std_HBSAg_report" name="hbs" class="form-control" disabled">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">Hepatits Report (HBSAg): </label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" value="@s.std_HBSAg_report" name="hbs" class="form-control" disabled>
+                                                        </div>
                                                     </div>
-                                                </div>
 
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label">Hepatits Report (Anti HCV): </label>
-                                                    <div class="col-sm-8">
-                                                        <input type="text" value="@s.std_antiHCV_report" name="hcv" class="form-control" disabled">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">Hepatits Report (Anti HCV): </label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" value="@s.std_antiHCV_report" name="hcv" class="form-control" disabled>
+                                                        </div>
                                                     </div>
-                                                </div>
 
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label">Nationality: </label>
-                                                    <div class="col-sm-8">
-                                                        <input type="text" value="@s.std_nationality" name="nationality" id="nationality" class="form-control" disabled>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">Nationality: </label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" value="@s.std_nationality" name="nationality" id="nationality" class="form-control" disabled>
+                                                        </div>
                                                     </div>
-                                                </div>
                                             }
                                             foreach (var a in Model.c)
                                             {
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label">Institute/Department : </label>
-                                                <div class="col-sm-8">
-                                                    <input type="text" value="@a.dep_id" name="dep" class="form-control" disabled">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label">Degree in which Admitted: </label>
-                                                <div class="col-sm-8">
-                                                    <input type="text" value="@a.session_degree" name="class" id="class" class="form-control" disabled>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label">Roll Number: </label>
-                                                <div class="col-sm-8">
-                                                    <input type="text" name="roll_no" value="@a.session_rollno" id="roll_no" class="form-control" disabled />
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label">Session Start: </label>
-                                                <div class="col-sm-8">
-                                                    <input type="text" value="@a.session_startDate" name="session_start" class="form-control" disabled>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label">Session End: </label>
-                                                <div class="col-sm-8">
-                                                    <input type="text" value="@a.session_endDate" name="session_end" class="form-control" disabled>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label">Batch: </label>
-                                                <div class="col-sm-8">
-                                                    <input type="text" value="@a.session_batch" name="session" id="Session" class="form-control" placeholder="Session" disabled>
-                                                </div>
-                                            </div>
+                                                foreach(var x in Model.a)
+                                                {
+                                                    if (a.dep_id == x.dep_id)
+                                                    {
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">Institute/Department : </label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" value="@x.dep_name" name="dep" class="form-control" disabled">
+                                                        </div>
+                                                    </div>
+                                                    }
                                                 }
-                                            }
-                                    </form>
+
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">Degree in which Admitted: </label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" value="@a.session_degree" name="class" id="class" class="form-control" disabled>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">Roll Number: </label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" name="roll_no" value="@a.session_rollno" id="roll_no" class="form-control" disabled />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">Session Start: </label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" value="@a.session_startDate" name="session_start" class="form-control" disabled>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">Session End: </label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" value="@a.session_endDate" name="session_end" class="form-control" disabled>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">Batch: </label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" value="@a.session_batch" name="session" id="Session" class="form-control" placeholder="Session" disabled>
+                                                        </div>
+                                                    </div>
+                                                    }
+                                                    }
+</form>
                             </div>
                         </div>
                     </div>
