@@ -51,6 +51,7 @@ namespace Online_Hostel_Management_System.Controllers
                 model.c = dc.Sessions.Where(x => x.std_cnic == cnic && x.session_activeStatus == "active");
                 model.d = dc.Students.Where(x => x.std_cnic == cnic);
                 model.e = dc.Rooms.Where(x => x.hostel_id == hostel).ToList();
+                model.f = dc.Users.Where(b=> b.user_id == a.user_id);
                 return View(model);
             }
             else return RedirectToAction("Index", "Home"); ;
@@ -216,6 +217,10 @@ namespace Online_Hostel_Management_System.Controllers
                 dc.Educations.InsertOnSubmit(education);
                 dc.SubmitChanges();
             }
+            return RedirectToAction("add_allotment");
+        }
+        public ActionResult Assign()
+        {
             return RedirectToAction("add_allotment");
         }
         public ActionResult Change_password()
