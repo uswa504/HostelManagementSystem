@@ -48,15 +48,15 @@ namespace Online_Hostel_Management_System.Models
     partial void InsertRoom(Room instance);
     partial void UpdateRoom(Room instance);
     partial void DeleteRoom(Room instance);
-    partial void InsertSession(Session instance);
-    partial void UpdateSession(Session instance);
-    partial void DeleteSession(Session instance);
     partial void InsertEducation(Education instance);
     partial void UpdateEducation(Education instance);
     partial void DeleteEducation(Education instance);
     partial void InsertStudent(Student instance);
     partial void UpdateStudent(Student instance);
     partial void DeleteStudent(Student instance);
+    partial void InsertSession(Session instance);
+    partial void UpdateSession(Session instance);
+    partial void DeleteSession(Session instance);
     #endregion
 		
 		public HMSDataContext() : 
@@ -137,14 +137,6 @@ namespace Online_Hostel_Management_System.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<Session> Sessions
-		{
-			get
-			{
-				return this.GetTable<Session>();
-			}
-		}
-		
 		public System.Data.Linq.Table<View_User> View_Users
 		{
 			get
@@ -185,19 +177,27 @@ namespace Online_Hostel_Management_System.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<View_Student> View_Students
-		{
-			get
-			{
-				return this.GetTable<View_Student>();
-			}
-		}
-		
 		public System.Data.Linq.Table<View_Allottment> View_Allottments
 		{
 			get
 			{
 				return this.GetTable<View_Allottment>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Session> Sessions
+		{
+			get
+			{
+				return this.GetTable<Session>();
+			}
+		}
+		
+		public System.Data.Linq.Table<View_Student> View_Students
+		{
+			get
+			{
+				return this.GetTable<View_Student>();
 			}
 		}
 	}
@@ -1976,414 +1976,6 @@ namespace Online_Hostel_Management_System.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Session")]
-	public partial class Session : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _session_id;
-		
-		private System.Nullable<decimal> _std_cnic;
-		
-		private System.Nullable<int> _dep_id;
-		
-		private string _session_rollno;
-		
-		private string _session_degree;
-		
-		private System.Nullable<int> _session_batch;
-		
-		private System.Nullable<System.DateTime> _session_startDate;
-		
-		private System.Nullable<System.DateTime> _session_endDate;
-		
-		private string _session_duration;
-		
-		private System.Nullable<int> _session_addedBy;
-		
-		private string _session_activeStatus;
-		
-		private System.Nullable<System.DateTime> _time_of_addition;
-		
-		private EntityRef<Department> _Department;
-		
-		private EntityRef<Student> _Student;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onsession_idChanging(int value);
-    partial void Onsession_idChanged();
-    partial void Onstd_cnicChanging(System.Nullable<decimal> value);
-    partial void Onstd_cnicChanged();
-    partial void Ondep_idChanging(System.Nullable<int> value);
-    partial void Ondep_idChanged();
-    partial void Onsession_rollnoChanging(string value);
-    partial void Onsession_rollnoChanged();
-    partial void Onsession_degreeChanging(string value);
-    partial void Onsession_degreeChanged();
-    partial void Onsession_batchChanging(System.Nullable<int> value);
-    partial void Onsession_batchChanged();
-    partial void Onsession_startDateChanging(System.Nullable<System.DateTime> value);
-    partial void Onsession_startDateChanged();
-    partial void Onsession_endDateChanging(System.Nullable<System.DateTime> value);
-    partial void Onsession_endDateChanged();
-    partial void Onsession_durationChanging(string value);
-    partial void Onsession_durationChanged();
-    partial void Onsession_addedByChanging(System.Nullable<int> value);
-    partial void Onsession_addedByChanged();
-    partial void Onsession_activeStatusChanging(string value);
-    partial void Onsession_activeStatusChanged();
-    partial void Ontime_of_additionChanging(System.Nullable<System.DateTime> value);
-    partial void Ontime_of_additionChanged();
-    #endregion
-		
-		public Session()
-		{
-			this._Department = default(EntityRef<Department>);
-			this._Student = default(EntityRef<Student>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_session_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int session_id
-		{
-			get
-			{
-				return this._session_id;
-			}
-			set
-			{
-				if ((this._session_id != value))
-				{
-					this.Onsession_idChanging(value);
-					this.SendPropertyChanging();
-					this._session_id = value;
-					this.SendPropertyChanged("session_id");
-					this.Onsession_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_std_cnic", DbType="Decimal(18,0)")]
-		public System.Nullable<decimal> std_cnic
-		{
-			get
-			{
-				return this._std_cnic;
-			}
-			set
-			{
-				if ((this._std_cnic != value))
-				{
-					if (this._Student.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onstd_cnicChanging(value);
-					this.SendPropertyChanging();
-					this._std_cnic = value;
-					this.SendPropertyChanged("std_cnic");
-					this.Onstd_cnicChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dep_id", DbType="Int")]
-		public System.Nullable<int> dep_id
-		{
-			get
-			{
-				return this._dep_id;
-			}
-			set
-			{
-				if ((this._dep_id != value))
-				{
-					if (this._Department.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Ondep_idChanging(value);
-					this.SendPropertyChanging();
-					this._dep_id = value;
-					this.SendPropertyChanged("dep_id");
-					this.Ondep_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_session_rollno", DbType="NVarChar(MAX)")]
-		public string session_rollno
-		{
-			get
-			{
-				return this._session_rollno;
-			}
-			set
-			{
-				if ((this._session_rollno != value))
-				{
-					this.Onsession_rollnoChanging(value);
-					this.SendPropertyChanging();
-					this._session_rollno = value;
-					this.SendPropertyChanged("session_rollno");
-					this.Onsession_rollnoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_session_degree", DbType="NVarChar(MAX)")]
-		public string session_degree
-		{
-			get
-			{
-				return this._session_degree;
-			}
-			set
-			{
-				if ((this._session_degree != value))
-				{
-					this.Onsession_degreeChanging(value);
-					this.SendPropertyChanging();
-					this._session_degree = value;
-					this.SendPropertyChanged("session_degree");
-					this.Onsession_degreeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_session_batch", DbType="Int")]
-		public System.Nullable<int> session_batch
-		{
-			get
-			{
-				return this._session_batch;
-			}
-			set
-			{
-				if ((this._session_batch != value))
-				{
-					this.Onsession_batchChanging(value);
-					this.SendPropertyChanging();
-					this._session_batch = value;
-					this.SendPropertyChanged("session_batch");
-					this.Onsession_batchChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_session_startDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> session_startDate
-		{
-			get
-			{
-				return this._session_startDate;
-			}
-			set
-			{
-				if ((this._session_startDate != value))
-				{
-					this.Onsession_startDateChanging(value);
-					this.SendPropertyChanging();
-					this._session_startDate = value;
-					this.SendPropertyChanged("session_startDate");
-					this.Onsession_startDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_session_endDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> session_endDate
-		{
-			get
-			{
-				return this._session_endDate;
-			}
-			set
-			{
-				if ((this._session_endDate != value))
-				{
-					this.Onsession_endDateChanging(value);
-					this.SendPropertyChanging();
-					this._session_endDate = value;
-					this.SendPropertyChanged("session_endDate");
-					this.Onsession_endDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_session_duration", DbType="NVarChar(MAX)")]
-		public string session_duration
-		{
-			get
-			{
-				return this._session_duration;
-			}
-			set
-			{
-				if ((this._session_duration != value))
-				{
-					this.Onsession_durationChanging(value);
-					this.SendPropertyChanging();
-					this._session_duration = value;
-					this.SendPropertyChanged("session_duration");
-					this.Onsession_durationChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_session_addedBy", DbType="Int")]
-		public System.Nullable<int> session_addedBy
-		{
-			get
-			{
-				return this._session_addedBy;
-			}
-			set
-			{
-				if ((this._session_addedBy != value))
-				{
-					this.Onsession_addedByChanging(value);
-					this.SendPropertyChanging();
-					this._session_addedBy = value;
-					this.SendPropertyChanged("session_addedBy");
-					this.Onsession_addedByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_session_activeStatus", DbType="NVarChar(MAX)")]
-		public string session_activeStatus
-		{
-			get
-			{
-				return this._session_activeStatus;
-			}
-			set
-			{
-				if ((this._session_activeStatus != value))
-				{
-					this.Onsession_activeStatusChanging(value);
-					this.SendPropertyChanging();
-					this._session_activeStatus = value;
-					this.SendPropertyChanged("session_activeStatus");
-					this.Onsession_activeStatusChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_time_of_addition", DbType="DateTime")]
-		public System.Nullable<System.DateTime> time_of_addition
-		{
-			get
-			{
-				return this._time_of_addition;
-			}
-			set
-			{
-				if ((this._time_of_addition != value))
-				{
-					this.Ontime_of_additionChanging(value);
-					this.SendPropertyChanging();
-					this._time_of_addition = value;
-					this.SendPropertyChanged("time_of_addition");
-					this.Ontime_of_additionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Department_Session", Storage="_Department", ThisKey="dep_id", OtherKey="dep_id", IsForeignKey=true)]
-		public Department Department
-		{
-			get
-			{
-				return this._Department.Entity;
-			}
-			set
-			{
-				Department previousValue = this._Department.Entity;
-				if (((previousValue != value) 
-							|| (this._Department.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Department.Entity = null;
-						previousValue.Sessions.Remove(this);
-					}
-					this._Department.Entity = value;
-					if ((value != null))
-					{
-						value.Sessions.Add(this);
-						this._dep_id = value.dep_id;
-					}
-					else
-					{
-						this._dep_id = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Department");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Student_Session", Storage="_Student", ThisKey="std_cnic", OtherKey="std_cnic", IsForeignKey=true)]
-		public Student Student
-		{
-			get
-			{
-				return this._Student.Entity;
-			}
-			set
-			{
-				Student previousValue = this._Student.Entity;
-				if (((previousValue != value) 
-							|| (this._Student.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Student.Entity = null;
-						previousValue.Sessions.Remove(this);
-					}
-					this._Student.Entity = value;
-					if ((value != null))
-					{
-						value.Sessions.Add(this);
-						this._std_cnic = value.std_cnic;
-					}
-					else
-					{
-						this._std_cnic = default(Nullable<decimal>);
-					}
-					this.SendPropertyChanged("Student");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.View_Users")]
 	public partial class View_User
 	{
@@ -3238,9 +2830,9 @@ namespace Online_Hostel_Management_System.Models
 		
 		private EntitySet<Allottment> _Allottments;
 		
-		private EntitySet<Session> _Sessions;
-		
 		private EntitySet<Education> _Educations;
+		
+		private EntitySet<Session> _Sessions;
 		
 		private EntityRef<User> _User;
 		
@@ -3291,8 +2883,8 @@ namespace Online_Hostel_Management_System.Models
 		public Student()
 		{
 			this._Allottments = new EntitySet<Allottment>(new Action<Allottment>(this.attach_Allottments), new Action<Allottment>(this.detach_Allottments));
-			this._Sessions = new EntitySet<Session>(new Action<Session>(this.attach_Sessions), new Action<Session>(this.detach_Sessions));
 			this._Educations = new EntitySet<Education>(new Action<Education>(this.attach_Educations), new Action<Education>(this.detach_Educations));
+			this._Sessions = new EntitySet<Session>(new Action<Session>(this.attach_Sessions), new Action<Session>(this.detach_Sessions));
 			this._User = default(EntityRef<User>);
 			OnCreated();
 		}
@@ -3694,19 +3286,6 @@ namespace Online_Hostel_Management_System.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Student_Session", Storage="_Sessions", ThisKey="std_cnic", OtherKey="std_cnic")]
-		public EntitySet<Session> Sessions
-		{
-			get
-			{
-				return this._Sessions;
-			}
-			set
-			{
-				this._Sessions.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Student_Education", Storage="_Educations", ThisKey="std_cnic", OtherKey="std_cnic")]
 		public EntitySet<Education> Educations
 		{
@@ -3717,6 +3296,19 @@ namespace Online_Hostel_Management_System.Models
 			set
 			{
 				this._Educations.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Student_Session", Storage="_Sessions", ThisKey="std_cnic", OtherKey="std_cnic")]
+		public EntitySet<Session> Sessions
+		{
+			get
+			{
+				return this._Sessions;
+			}
+			set
+			{
+				this._Sessions.Assign(value);
 			}
 		}
 		
@@ -3786,18 +3378,6 @@ namespace Online_Hostel_Management_System.Models
 			entity.Student = null;
 		}
 		
-		private void attach_Sessions(Session entity)
-		{
-			this.SendPropertyChanging();
-			entity.Student = this;
-		}
-		
-		private void detach_Sessions(Session entity)
-		{
-			this.SendPropertyChanging();
-			entity.Student = null;
-		}
-		
 		private void attach_Educations(Education entity)
 		{
 			this.SendPropertyChanging();
@@ -3809,86 +3389,17 @@ namespace Online_Hostel_Management_System.Models
 			this.SendPropertyChanging();
 			entity.Student = null;
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.View_Student")]
-	public partial class View_Student
-	{
 		
-		private decimal _std_cnic;
-		
-		private string _std_name;
-		
-		private string _allotte_activeStatus;
-		
-		private int _std_id;
-		
-		public View_Student()
+		private void attach_Sessions(Session entity)
 		{
+			this.SendPropertyChanging();
+			entity.Student = this;
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_std_cnic", DbType="Decimal(18,0) NOT NULL")]
-		public decimal std_cnic
+		private void detach_Sessions(Session entity)
 		{
-			get
-			{
-				return this._std_cnic;
-			}
-			set
-			{
-				if ((this._std_cnic != value))
-				{
-					this._std_cnic = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_std_name", DbType="NVarChar(MAX)")]
-		public string std_name
-		{
-			get
-			{
-				return this._std_name;
-			}
-			set
-			{
-				if ((this._std_name != value))
-				{
-					this._std_name = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_allotte_activeStatus", DbType="NVarChar(MAX)")]
-		public string allotte_activeStatus
-		{
-			get
-			{
-				return this._allotte_activeStatus;
-			}
-			set
-			{
-				if ((this._allotte_activeStatus != value))
-				{
-					this._allotte_activeStatus = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_std_id", DbType="Int NOT NULL")]
-		public int std_id
-		{
-			get
-			{
-				return this._std_id;
-			}
-			set
-			{
-				if ((this._std_id != value))
-				{
-					this._std_id = value;
-				}
-			}
+			this.SendPropertyChanging();
+			entity.Student = null;
 		}
 	}
 	
@@ -4076,6 +3587,495 @@ namespace Online_Hostel_Management_System.Models
 				if ((this._user_name != value))
 				{
 					this._user_name = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Session")]
+	public partial class Session : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _session_id;
+		
+		private System.Nullable<decimal> _std_cnic;
+		
+		private System.Nullable<int> _dep_id;
+		
+		private string _session_rollno;
+		
+		private string _session_degree;
+		
+		private System.Nullable<int> _session_batch;
+		
+		private System.Nullable<System.DateTime> _session_startDate;
+		
+		private System.Nullable<System.DateTime> _session_endDate;
+		
+		private string _session_duration;
+		
+		private System.Nullable<int> _session_addedBy;
+		
+		private string _session_activeStatus;
+		
+		private System.Nullable<System.DateTime> _time_of_addition;
+		
+		private EntityRef<Department> _Department;
+		
+		private EntityRef<Student> _Student;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onsession_idChanging(int value);
+    partial void Onsession_idChanged();
+    partial void Onstd_cnicChanging(System.Nullable<decimal> value);
+    partial void Onstd_cnicChanged();
+    partial void Ondep_idChanging(System.Nullable<int> value);
+    partial void Ondep_idChanged();
+    partial void Onsession_rollnoChanging(string value);
+    partial void Onsession_rollnoChanged();
+    partial void Onsession_degreeChanging(string value);
+    partial void Onsession_degreeChanged();
+    partial void Onsession_batchChanging(System.Nullable<int> value);
+    partial void Onsession_batchChanged();
+    partial void Onsession_startDateChanging(System.Nullable<System.DateTime> value);
+    partial void Onsession_startDateChanged();
+    partial void Onsession_endDateChanging(System.Nullable<System.DateTime> value);
+    partial void Onsession_endDateChanged();
+    partial void Onsession_durationChanging(string value);
+    partial void Onsession_durationChanged();
+    partial void Onsession_addedByChanging(System.Nullable<int> value);
+    partial void Onsession_addedByChanged();
+    partial void Onsession_activeStatusChanging(string value);
+    partial void Onsession_activeStatusChanged();
+    partial void Ontime_of_additionChanging(System.Nullable<System.DateTime> value);
+    partial void Ontime_of_additionChanged();
+    #endregion
+		
+		public Session()
+		{
+			this._Department = default(EntityRef<Department>);
+			this._Student = default(EntityRef<Student>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_session_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int session_id
+		{
+			get
+			{
+				return this._session_id;
+			}
+			set
+			{
+				if ((this._session_id != value))
+				{
+					this.Onsession_idChanging(value);
+					this.SendPropertyChanging();
+					this._session_id = value;
+					this.SendPropertyChanged("session_id");
+					this.Onsession_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_std_cnic", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> std_cnic
+		{
+			get
+			{
+				return this._std_cnic;
+			}
+			set
+			{
+				if ((this._std_cnic != value))
+				{
+					if (this._Student.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onstd_cnicChanging(value);
+					this.SendPropertyChanging();
+					this._std_cnic = value;
+					this.SendPropertyChanged("std_cnic");
+					this.Onstd_cnicChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dep_id", DbType="Int")]
+		public System.Nullable<int> dep_id
+		{
+			get
+			{
+				return this._dep_id;
+			}
+			set
+			{
+				if ((this._dep_id != value))
+				{
+					if (this._Department.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Ondep_idChanging(value);
+					this.SendPropertyChanging();
+					this._dep_id = value;
+					this.SendPropertyChanged("dep_id");
+					this.Ondep_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_session_rollno", DbType="NVarChar(MAX)")]
+		public string session_rollno
+		{
+			get
+			{
+				return this._session_rollno;
+			}
+			set
+			{
+				if ((this._session_rollno != value))
+				{
+					this.Onsession_rollnoChanging(value);
+					this.SendPropertyChanging();
+					this._session_rollno = value;
+					this.SendPropertyChanged("session_rollno");
+					this.Onsession_rollnoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_session_degree", DbType="NVarChar(MAX)")]
+		public string session_degree
+		{
+			get
+			{
+				return this._session_degree;
+			}
+			set
+			{
+				if ((this._session_degree != value))
+				{
+					this.Onsession_degreeChanging(value);
+					this.SendPropertyChanging();
+					this._session_degree = value;
+					this.SendPropertyChanged("session_degree");
+					this.Onsession_degreeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_session_batch", DbType="Int")]
+		public System.Nullable<int> session_batch
+		{
+			get
+			{
+				return this._session_batch;
+			}
+			set
+			{
+				if ((this._session_batch != value))
+				{
+					this.Onsession_batchChanging(value);
+					this.SendPropertyChanging();
+					this._session_batch = value;
+					this.SendPropertyChanged("session_batch");
+					this.Onsession_batchChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_session_startDate", DbType="Date")]
+		public System.Nullable<System.DateTime> session_startDate
+		{
+			get
+			{
+				return this._session_startDate;
+			}
+			set
+			{
+				if ((this._session_startDate != value))
+				{
+					this.Onsession_startDateChanging(value);
+					this.SendPropertyChanging();
+					this._session_startDate = value;
+					this.SendPropertyChanged("session_startDate");
+					this.Onsession_startDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_session_endDate", DbType="Date")]
+		public System.Nullable<System.DateTime> session_endDate
+		{
+			get
+			{
+				return this._session_endDate;
+			}
+			set
+			{
+				if ((this._session_endDate != value))
+				{
+					this.Onsession_endDateChanging(value);
+					this.SendPropertyChanging();
+					this._session_endDate = value;
+					this.SendPropertyChanged("session_endDate");
+					this.Onsession_endDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_session_duration", DbType="NVarChar(MAX)")]
+		public string session_duration
+		{
+			get
+			{
+				return this._session_duration;
+			}
+			set
+			{
+				if ((this._session_duration != value))
+				{
+					this.Onsession_durationChanging(value);
+					this.SendPropertyChanging();
+					this._session_duration = value;
+					this.SendPropertyChanged("session_duration");
+					this.Onsession_durationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_session_addedBy", DbType="Int")]
+		public System.Nullable<int> session_addedBy
+		{
+			get
+			{
+				return this._session_addedBy;
+			}
+			set
+			{
+				if ((this._session_addedBy != value))
+				{
+					this.Onsession_addedByChanging(value);
+					this.SendPropertyChanging();
+					this._session_addedBy = value;
+					this.SendPropertyChanged("session_addedBy");
+					this.Onsession_addedByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_session_activeStatus", DbType="NVarChar(MAX)")]
+		public string session_activeStatus
+		{
+			get
+			{
+				return this._session_activeStatus;
+			}
+			set
+			{
+				if ((this._session_activeStatus != value))
+				{
+					this.Onsession_activeStatusChanging(value);
+					this.SendPropertyChanging();
+					this._session_activeStatus = value;
+					this.SendPropertyChanged("session_activeStatus");
+					this.Onsession_activeStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_time_of_addition", DbType="DateTime")]
+		public System.Nullable<System.DateTime> time_of_addition
+		{
+			get
+			{
+				return this._time_of_addition;
+			}
+			set
+			{
+				if ((this._time_of_addition != value))
+				{
+					this.Ontime_of_additionChanging(value);
+					this.SendPropertyChanging();
+					this._time_of_addition = value;
+					this.SendPropertyChanged("time_of_addition");
+					this.Ontime_of_additionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Department_Session", Storage="_Department", ThisKey="dep_id", OtherKey="dep_id", IsForeignKey=true)]
+		public Department Department
+		{
+			get
+			{
+				return this._Department.Entity;
+			}
+			set
+			{
+				Department previousValue = this._Department.Entity;
+				if (((previousValue != value) 
+							|| (this._Department.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Department.Entity = null;
+						previousValue.Sessions.Remove(this);
+					}
+					this._Department.Entity = value;
+					if ((value != null))
+					{
+						value.Sessions.Add(this);
+						this._dep_id = value.dep_id;
+					}
+					else
+					{
+						this._dep_id = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Department");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Student_Session", Storage="_Student", ThisKey="std_cnic", OtherKey="std_cnic", IsForeignKey=true)]
+		public Student Student
+		{
+			get
+			{
+				return this._Student.Entity;
+			}
+			set
+			{
+				Student previousValue = this._Student.Entity;
+				if (((previousValue != value) 
+							|| (this._Student.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Student.Entity = null;
+						previousValue.Sessions.Remove(this);
+					}
+					this._Student.Entity = value;
+					if ((value != null))
+					{
+						value.Sessions.Add(this);
+						this._std_cnic = value.std_cnic;
+					}
+					else
+					{
+						this._std_cnic = default(Nullable<decimal>);
+					}
+					this.SendPropertyChanged("Student");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.View_Student")]
+	public partial class View_Student
+	{
+		
+		private decimal _std_cnic;
+		
+		private string _std_name;
+		
+		private string _allotte_activeStatus;
+		
+		private int _std_id;
+		
+		public View_Student()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_std_cnic", DbType="Decimal(18,0) NOT NULL")]
+		public decimal std_cnic
+		{
+			get
+			{
+				return this._std_cnic;
+			}
+			set
+			{
+				if ((this._std_cnic != value))
+				{
+					this._std_cnic = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_std_name", DbType="NVarChar(MAX)")]
+		public string std_name
+		{
+			get
+			{
+				return this._std_name;
+			}
+			set
+			{
+				if ((this._std_name != value))
+				{
+					this._std_name = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_allotte_activeStatus", DbType="NVarChar(MAX)")]
+		public string allotte_activeStatus
+		{
+			get
+			{
+				return this._allotte_activeStatus;
+			}
+			set
+			{
+				if ((this._allotte_activeStatus != value))
+				{
+					this._allotte_activeStatus = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_std_id", DbType="Int NOT NULL")]
+		public int std_id
+		{
+			get
+			{
+				return this._std_id;
+			}
+			set
+			{
+				if ((this._std_id != value))
+				{
+					this._std_id = value;
 				}
 			}
 		}
