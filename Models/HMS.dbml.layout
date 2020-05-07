@@ -45,7 +45,7 @@
         <classShapeMoniker Id="10b86358-39b9-4ef2-898b-18917120ac02" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.48437375 : 9.2901025390625); (1.48437375 : 13.03125); (2.19791916666667 : 13.03125 : JumpStart); (2.36458583333333 : 13.03125 : JumpEnd); (7.94791466666667 : 13.03125 : JumpStart); (8.11458133333333 : 13.03125 : JumpEnd); (9 : 13.03125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(1.48437375 : 9.2901025390625); (1.48437375 : 13.03125); (2.19791916666667 : 13.03125 : JumpStart); (2.36458583333333 : 13.03125 : JumpEnd); (9 : 13.03125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/HMSDataContext/Hostel/Hostel_Allottment" />
       <nodes>
         <classShapeMoniker Id="20ff1bed-b94b-4d96-8a6f-6bfb0c4a460b" />
@@ -143,17 +143,17 @@
         <classShapeMoniker Id="085b9bdd-7987-42a2-947c-7aaf41758cee" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(9.125 : 8.9999995); (10.8229166666667 : 8.9999995 : JumpStart); (10.9895833333333 : 8.9999995 : JumpEnd); (13.75 : 8.9999995); (13.75 : 9.75)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(9.125 : 8.9999995); (13.75 : 8.9999995); (13.75 : 9.75)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/HMSDataContext/Student/Student_Session" />
       <nodes>
         <classShapeMoniker Id="f49fa218-76fb-4ba5-90db-72bd869da3f4" />
         <classShapeMoniker Id="085b9bdd-7987-42a2-947c-7aaf41758cee" />
       </nodes>
     </associationConnector>
-    <classShape Id="a237d36e-0baf-4475-aebf-8f61d7c91c24" absoluteBounds="2.125, 1.25, 2, 1.5785953776041666">
+    <classShape Id="4a300a49-6ed1-49c3-8f5a-cc01c756634f" absoluteBounds="2.125, 1.625, 2, 1.5785953776041666">
       <DataClassMoniker Name="/HMSDataContext/View_Student" />
       <nestedChildShapes>
-        <elementListCompartment Id="bb445db6-77c2-4ab0-8d5e-2f0fa3347dbd" absoluteBounds="2.14, 1.71, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="8d794938-d562-4bee-931e-a29042fa1dfd" absoluteBounds="2.14, 2.085, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

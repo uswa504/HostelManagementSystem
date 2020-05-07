@@ -41,16 +41,8 @@
                             <tr>
                                 <td>@s.std_cnic</td>
                                 <td>@s.std_name</td>
-                                <td>@s.allotte_activeStatus</td>
-                                @if (s.allotte_activeStatus == "active")
-                                {
-                                    <td> </td>
-                                }
-                                else
-                                {
-
-                                    <td><a href="/HostelClerk/Add/@s.std_id">Add Allottment</a></td>
-                                }
+                                <td>inactive</td>
+                                <td><a href="/HostelClerk/Add/@s.std_id">Add Allottment</a></td>
                             </tr>
                                   
                                   }

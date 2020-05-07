@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Dynamic;
 using Online_Hostel_Management_System.Models;
 
 namespace Online_Hostel_Management_System.Controllers
@@ -15,8 +16,14 @@ namespace Online_Hostel_Management_System.Controllers
             if (Session["user_role"].ToString() == "student")
             {
                 decimal cnic = (decimal)Session["user_cnic"];
-                var a = dc.Allottments.Where(x => x.std_cnic == cnic);
-                return View(a);
+
+                dynamic model = new ExpandoObject();
+                model.a = dc.Allottments.Where(x => x.std_cnic == cnic && x.allotte_activeStatus == "active");
+                model.b = dc.Students.Where(y => y.std_cnic == cnic);
+                var t = dc.Allottments.First(y => y.std_cnic == cnic);
+                model.c = dc.Hostels.Where(z => z.hostel_id == t.hostel_id);
+                //model.d = dc.Rooms.First(c => c.hostel_id == t.hostel_id);
+                return View(model);
             }
             else return RedirectToAction("Index", "Home");
         }
