@@ -39,9 +39,6 @@ namespace Online_Hostel_Management_System.Models
     partial void InsertDepartment(Department instance);
     partial void UpdateDepartment(Department instance);
     partial void DeleteDepartment(Department instance);
-    partial void InsertDue(Due instance);
-    partial void UpdateDue(Due instance);
-    partial void DeleteDue(Due instance);
     partial void InsertHostel(Hostel instance);
     partial void UpdateHostel(Hostel instance);
     partial void DeleteHostel(Hostel instance);
@@ -57,6 +54,9 @@ namespace Online_Hostel_Management_System.Models
     partial void InsertSession(Session instance);
     partial void UpdateSession(Session instance);
     partial void DeleteSession(Session instance);
+    partial void InsertDue(Due instance);
+    partial void UpdateDue(Due instance);
+    partial void DeleteDue(Due instance);
     #endregion
 		
 		public HMSDataContext() : 
@@ -110,14 +110,6 @@ namespace Online_Hostel_Management_System.Models
 			get
 			{
 				return this.GetTable<Department>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Due> Dues
-		{
-			get
-			{
-				return this.GetTable<Due>();
 			}
 		}
 		
@@ -198,6 +190,22 @@ namespace Online_Hostel_Management_System.Models
 			get
 			{
 				return this.GetTable<View_Student>();
+			}
+		}
+		
+		public System.Data.Linq.Table<View_StudentsMess> View_StudentsMesses
+		{
+			get
+			{
+				return this.GetTable<View_StudentsMess>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Due> Dues
+		{
+			get
+			{
+				return this.GetTable<Due>();
 			}
 		}
 	}
@@ -993,349 +1001,6 @@ namespace Online_Hostel_Management_System.Models
 		{
 			this.SendPropertyChanging();
 			entity.Department = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Dues")]
-	public partial class Due : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _dues_id;
-		
-		private string _dues_type;
-		
-		private System.Nullable<int> _dues_amount;
-		
-		private string _dues_month;
-		
-		private System.Nullable<System.DateTime> _dues_lastDate;
-		
-		private System.Nullable<System.DateTime> _dues_paidDate;
-		
-		private string _dues_paidStatus;
-		
-		private string _dues_recipt_no;
-		
-		private System.Nullable<int> _allottee_id;
-		
-		private System.Nullable<int> _dues_addedBy;
-		
-		private System.Nullable<System.DateTime> _time_of_addition;
-		
-		private EntityRef<Allottment> _Allottment;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Ondues_idChanging(int value);
-    partial void Ondues_idChanged();
-    partial void Ondues_typeChanging(string value);
-    partial void Ondues_typeChanged();
-    partial void Ondues_amountChanging(System.Nullable<int> value);
-    partial void Ondues_amountChanged();
-    partial void Ondues_monthChanging(string value);
-    partial void Ondues_monthChanged();
-    partial void Ondues_lastDateChanging(System.Nullable<System.DateTime> value);
-    partial void Ondues_lastDateChanged();
-    partial void Ondues_paidDateChanging(System.Nullable<System.DateTime> value);
-    partial void Ondues_paidDateChanged();
-    partial void Ondues_paidStatusChanging(string value);
-    partial void Ondues_paidStatusChanged();
-    partial void Ondues_recipt_noChanging(string value);
-    partial void Ondues_recipt_noChanged();
-    partial void Onallottee_idChanging(System.Nullable<int> value);
-    partial void Onallottee_idChanged();
-    partial void Ondues_addedByChanging(System.Nullable<int> value);
-    partial void Ondues_addedByChanged();
-    partial void Ontime_of_additionChanging(System.Nullable<System.DateTime> value);
-    partial void Ontime_of_additionChanged();
-    #endregion
-		
-		public Due()
-		{
-			this._Allottment = default(EntityRef<Allottment>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dues_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int dues_id
-		{
-			get
-			{
-				return this._dues_id;
-			}
-			set
-			{
-				if ((this._dues_id != value))
-				{
-					this.Ondues_idChanging(value);
-					this.SendPropertyChanging();
-					this._dues_id = value;
-					this.SendPropertyChanged("dues_id");
-					this.Ondues_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dues_type", DbType="NVarChar(MAX)")]
-		public string dues_type
-		{
-			get
-			{
-				return this._dues_type;
-			}
-			set
-			{
-				if ((this._dues_type != value))
-				{
-					this.Ondues_typeChanging(value);
-					this.SendPropertyChanging();
-					this._dues_type = value;
-					this.SendPropertyChanged("dues_type");
-					this.Ondues_typeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dues_amount", DbType="Int")]
-		public System.Nullable<int> dues_amount
-		{
-			get
-			{
-				return this._dues_amount;
-			}
-			set
-			{
-				if ((this._dues_amount != value))
-				{
-					this.Ondues_amountChanging(value);
-					this.SendPropertyChanging();
-					this._dues_amount = value;
-					this.SendPropertyChanged("dues_amount");
-					this.Ondues_amountChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dues_month", DbType="NVarChar(MAX)")]
-		public string dues_month
-		{
-			get
-			{
-				return this._dues_month;
-			}
-			set
-			{
-				if ((this._dues_month != value))
-				{
-					this.Ondues_monthChanging(value);
-					this.SendPropertyChanging();
-					this._dues_month = value;
-					this.SendPropertyChanged("dues_month");
-					this.Ondues_monthChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dues_lastDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> dues_lastDate
-		{
-			get
-			{
-				return this._dues_lastDate;
-			}
-			set
-			{
-				if ((this._dues_lastDate != value))
-				{
-					this.Ondues_lastDateChanging(value);
-					this.SendPropertyChanging();
-					this._dues_lastDate = value;
-					this.SendPropertyChanged("dues_lastDate");
-					this.Ondues_lastDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dues_paidDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> dues_paidDate
-		{
-			get
-			{
-				return this._dues_paidDate;
-			}
-			set
-			{
-				if ((this._dues_paidDate != value))
-				{
-					this.Ondues_paidDateChanging(value);
-					this.SendPropertyChanging();
-					this._dues_paidDate = value;
-					this.SendPropertyChanged("dues_paidDate");
-					this.Ondues_paidDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dues_paidStatus", DbType="NVarChar(MAX)")]
-		public string dues_paidStatus
-		{
-			get
-			{
-				return this._dues_paidStatus;
-			}
-			set
-			{
-				if ((this._dues_paidStatus != value))
-				{
-					this.Ondues_paidStatusChanging(value);
-					this.SendPropertyChanging();
-					this._dues_paidStatus = value;
-					this.SendPropertyChanged("dues_paidStatus");
-					this.Ondues_paidStatusChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dues_recipt_no", DbType="NVarChar(MAX)")]
-		public string dues_recipt_no
-		{
-			get
-			{
-				return this._dues_recipt_no;
-			}
-			set
-			{
-				if ((this._dues_recipt_no != value))
-				{
-					this.Ondues_recipt_noChanging(value);
-					this.SendPropertyChanging();
-					this._dues_recipt_no = value;
-					this.SendPropertyChanged("dues_recipt_no");
-					this.Ondues_recipt_noChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_allottee_id", DbType="Int")]
-		public System.Nullable<int> allottee_id
-		{
-			get
-			{
-				return this._allottee_id;
-			}
-			set
-			{
-				if ((this._allottee_id != value))
-				{
-					if (this._Allottment.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onallottee_idChanging(value);
-					this.SendPropertyChanging();
-					this._allottee_id = value;
-					this.SendPropertyChanged("allottee_id");
-					this.Onallottee_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dues_addedBy", DbType="Int")]
-		public System.Nullable<int> dues_addedBy
-		{
-			get
-			{
-				return this._dues_addedBy;
-			}
-			set
-			{
-				if ((this._dues_addedBy != value))
-				{
-					this.Ondues_addedByChanging(value);
-					this.SendPropertyChanging();
-					this._dues_addedBy = value;
-					this.SendPropertyChanged("dues_addedBy");
-					this.Ondues_addedByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_time_of_addition", DbType="DateTime")]
-		public System.Nullable<System.DateTime> time_of_addition
-		{
-			get
-			{
-				return this._time_of_addition;
-			}
-			set
-			{
-				if ((this._time_of_addition != value))
-				{
-					this.Ontime_of_additionChanging(value);
-					this.SendPropertyChanging();
-					this._time_of_addition = value;
-					this.SendPropertyChanged("time_of_addition");
-					this.Ontime_of_additionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Allottment_Due", Storage="_Allottment", ThisKey="allottee_id", OtherKey="allottee_id", IsForeignKey=true)]
-		public Allottment Allottment
-		{
-			get
-			{
-				return this._Allottment.Entity;
-			}
-			set
-			{
-				Allottment previousValue = this._Allottment.Entity;
-				if (((previousValue != value) 
-							|| (this._Allottment.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Allottment.Entity = null;
-						previousValue.Dues.Remove(this);
-					}
-					this._Allottment.Entity = value;
-					if ((value != null))
-					{
-						value.Dues.Add(this);
-						this._allottee_id = value.allottee_id;
-					}
-					else
-					{
-						this._allottee_id = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Allottment");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 	
@@ -4077,6 +3742,484 @@ namespace Online_Hostel_Management_System.Models
 				{
 					this._std_id = value;
 				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.View_StudentsMess")]
+	public partial class View_StudentsMess
+	{
+		
+		private System.Nullable<int> _dues_amount;
+		
+		private System.Nullable<System.DateTime> _dues_lastDate;
+		
+		private System.Nullable<System.DateTime> _dues_paidDate;
+		
+		private string _dues_paidStatus;
+		
+		private string _dues_recipt_no;
+		
+		private string _allotte_activeStatus;
+		
+		private int _allottee_id;
+		
+		public View_StudentsMess()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dues_amount", DbType="Int")]
+		public System.Nullable<int> dues_amount
+		{
+			get
+			{
+				return this._dues_amount;
+			}
+			set
+			{
+				if ((this._dues_amount != value))
+				{
+					this._dues_amount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dues_lastDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> dues_lastDate
+		{
+			get
+			{
+				return this._dues_lastDate;
+			}
+			set
+			{
+				if ((this._dues_lastDate != value))
+				{
+					this._dues_lastDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dues_paidDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> dues_paidDate
+		{
+			get
+			{
+				return this._dues_paidDate;
+			}
+			set
+			{
+				if ((this._dues_paidDate != value))
+				{
+					this._dues_paidDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dues_paidStatus", DbType="NVarChar(MAX)")]
+		public string dues_paidStatus
+		{
+			get
+			{
+				return this._dues_paidStatus;
+			}
+			set
+			{
+				if ((this._dues_paidStatus != value))
+				{
+					this._dues_paidStatus = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dues_recipt_no", DbType="NVarChar(MAX)")]
+		public string dues_recipt_no
+		{
+			get
+			{
+				return this._dues_recipt_no;
+			}
+			set
+			{
+				if ((this._dues_recipt_no != value))
+				{
+					this._dues_recipt_no = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_allotte_activeStatus", DbType="NVarChar(MAX)")]
+		public string allotte_activeStatus
+		{
+			get
+			{
+				return this._allotte_activeStatus;
+			}
+			set
+			{
+				if ((this._allotte_activeStatus != value))
+				{
+					this._allotte_activeStatus = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_allottee_id", DbType="Int NOT NULL")]
+		public int allottee_id
+		{
+			get
+			{
+				return this._allottee_id;
+			}
+			set
+			{
+				if ((this._allottee_id != value))
+				{
+					this._allottee_id = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Dues")]
+	public partial class Due : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _dues_id;
+		
+		private string _dues_type;
+		
+		private System.Nullable<int> _dues_amount;
+		
+		private string _dues_session_month;
+		
+		private System.Nullable<System.DateTime> _dues_lastDate;
+		
+		private System.Nullable<System.DateTime> _dues_paidDate;
+		
+		private string _dues_paidStatus;
+		
+		private string _dues_recipt_no;
+		
+		private System.Nullable<int> _allottee_id;
+		
+		private System.Nullable<int> _dues_addedBy;
+		
+		private System.Nullable<System.DateTime> _time_of_addition;
+		
+		private EntityRef<Allottment> _Allottment;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Ondues_idChanging(int value);
+    partial void Ondues_idChanged();
+    partial void Ondues_typeChanging(string value);
+    partial void Ondues_typeChanged();
+    partial void Ondues_amountChanging(System.Nullable<int> value);
+    partial void Ondues_amountChanged();
+    partial void Ondues_session_monthChanging(string value);
+    partial void Ondues_session_monthChanged();
+    partial void Ondues_lastDateChanging(System.Nullable<System.DateTime> value);
+    partial void Ondues_lastDateChanged();
+    partial void Ondues_paidDateChanging(System.Nullable<System.DateTime> value);
+    partial void Ondues_paidDateChanged();
+    partial void Ondues_paidStatusChanging(string value);
+    partial void Ondues_paidStatusChanged();
+    partial void Ondues_recipt_noChanging(string value);
+    partial void Ondues_recipt_noChanged();
+    partial void Onallottee_idChanging(System.Nullable<int> value);
+    partial void Onallottee_idChanged();
+    partial void Ondues_addedByChanging(System.Nullable<int> value);
+    partial void Ondues_addedByChanged();
+    partial void Ontime_of_additionChanging(System.Nullable<System.DateTime> value);
+    partial void Ontime_of_additionChanged();
+    #endregion
+		
+		public Due()
+		{
+			this._Allottment = default(EntityRef<Allottment>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dues_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int dues_id
+		{
+			get
+			{
+				return this._dues_id;
+			}
+			set
+			{
+				if ((this._dues_id != value))
+				{
+					this.Ondues_idChanging(value);
+					this.SendPropertyChanging();
+					this._dues_id = value;
+					this.SendPropertyChanged("dues_id");
+					this.Ondues_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dues_type", DbType="NVarChar(MAX)")]
+		public string dues_type
+		{
+			get
+			{
+				return this._dues_type;
+			}
+			set
+			{
+				if ((this._dues_type != value))
+				{
+					this.Ondues_typeChanging(value);
+					this.SendPropertyChanging();
+					this._dues_type = value;
+					this.SendPropertyChanged("dues_type");
+					this.Ondues_typeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dues_amount", DbType="Int")]
+		public System.Nullable<int> dues_amount
+		{
+			get
+			{
+				return this._dues_amount;
+			}
+			set
+			{
+				if ((this._dues_amount != value))
+				{
+					this.Ondues_amountChanging(value);
+					this.SendPropertyChanging();
+					this._dues_amount = value;
+					this.SendPropertyChanged("dues_amount");
+					this.Ondues_amountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dues_session_month", DbType="NVarChar(MAX)")]
+		public string dues_session_month
+		{
+			get
+			{
+				return this._dues_session_month;
+			}
+			set
+			{
+				if ((this._dues_session_month != value))
+				{
+					this.Ondues_session_monthChanging(value);
+					this.SendPropertyChanging();
+					this._dues_session_month = value;
+					this.SendPropertyChanged("dues_session_month");
+					this.Ondues_session_monthChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dues_lastDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> dues_lastDate
+		{
+			get
+			{
+				return this._dues_lastDate;
+			}
+			set
+			{
+				if ((this._dues_lastDate != value))
+				{
+					this.Ondues_lastDateChanging(value);
+					this.SendPropertyChanging();
+					this._dues_lastDate = value;
+					this.SendPropertyChanged("dues_lastDate");
+					this.Ondues_lastDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dues_paidDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> dues_paidDate
+		{
+			get
+			{
+				return this._dues_paidDate;
+			}
+			set
+			{
+				if ((this._dues_paidDate != value))
+				{
+					this.Ondues_paidDateChanging(value);
+					this.SendPropertyChanging();
+					this._dues_paidDate = value;
+					this.SendPropertyChanged("dues_paidDate");
+					this.Ondues_paidDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dues_paidStatus", DbType="NVarChar(MAX)")]
+		public string dues_paidStatus
+		{
+			get
+			{
+				return this._dues_paidStatus;
+			}
+			set
+			{
+				if ((this._dues_paidStatus != value))
+				{
+					this.Ondues_paidStatusChanging(value);
+					this.SendPropertyChanging();
+					this._dues_paidStatus = value;
+					this.SendPropertyChanged("dues_paidStatus");
+					this.Ondues_paidStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dues_recipt_no", DbType="NVarChar(MAX)")]
+		public string dues_recipt_no
+		{
+			get
+			{
+				return this._dues_recipt_no;
+			}
+			set
+			{
+				if ((this._dues_recipt_no != value))
+				{
+					this.Ondues_recipt_noChanging(value);
+					this.SendPropertyChanging();
+					this._dues_recipt_no = value;
+					this.SendPropertyChanged("dues_recipt_no");
+					this.Ondues_recipt_noChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_allottee_id", DbType="Int")]
+		public System.Nullable<int> allottee_id
+		{
+			get
+			{
+				return this._allottee_id;
+			}
+			set
+			{
+				if ((this._allottee_id != value))
+				{
+					if (this._Allottment.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onallottee_idChanging(value);
+					this.SendPropertyChanging();
+					this._allottee_id = value;
+					this.SendPropertyChanged("allottee_id");
+					this.Onallottee_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dues_addedBy", DbType="Int")]
+		public System.Nullable<int> dues_addedBy
+		{
+			get
+			{
+				return this._dues_addedBy;
+			}
+			set
+			{
+				if ((this._dues_addedBy != value))
+				{
+					this.Ondues_addedByChanging(value);
+					this.SendPropertyChanging();
+					this._dues_addedBy = value;
+					this.SendPropertyChanged("dues_addedBy");
+					this.Ondues_addedByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_time_of_addition", DbType="DateTime")]
+		public System.Nullable<System.DateTime> time_of_addition
+		{
+			get
+			{
+				return this._time_of_addition;
+			}
+			set
+			{
+				if ((this._time_of_addition != value))
+				{
+					this.Ontime_of_additionChanging(value);
+					this.SendPropertyChanging();
+					this._time_of_addition = value;
+					this.SendPropertyChanged("time_of_addition");
+					this.Ontime_of_additionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Allottment_Due", Storage="_Allottment", ThisKey="allottee_id", OtherKey="allottee_id", IsForeignKey=true)]
+		public Allottment Allottment
+		{
+			get
+			{
+				return this._Allottment.Entity;
+			}
+			set
+			{
+				Allottment previousValue = this._Allottment.Entity;
+				if (((previousValue != value) 
+							|| (this._Allottment.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Allottment.Entity = null;
+						previousValue.Dues.Remove(this);
+					}
+					this._Allottment.Entity = value;
+					if ((value != null))
+					{
+						value.Dues.Add(this);
+						this._allottee_id = value.allottee_id;
+					}
+					else
+					{
+						this._allottee_id = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Allottment");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

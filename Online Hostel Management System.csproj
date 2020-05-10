@@ -220,7 +220,8 @@
     <Content Include="Views\Superitendant\adduser.cshtml" />
     <Content Include="Views\Superitendant\Change_password.cshtml" />
     <Content Include="Views\Superitendant\View_rooms.cshtml" />
-    <None Include="Views\Warden\Manage_Dues.cshtml" />
+    <Content Include="Views\Warden\Manage_AnnualDues.cshtml" />
+    <None Include="Views\Warden\Manage_MessDues.cshtml" />
     <Content Include="Views\ChairmanHallCouncil\Addhostel.cshtml" />
     <None Include="Views\HallCouncilClerk\addhostel.cshtml" />
     <None Include="Views\HallCouncilClerk\adduser.cshtml" />
@@ -242,6 +243,8 @@
     <Content Include="Views\ViceChancellor\Change_password.cshtml" />
     <Content Include="Views\ViceChancellor\View_rooms.cshtml" />
     <Content Include="Views\Warden\View_rooms.cshtml" />
+    <Content Include="Views\Warden\View_StudentsMess.cshtml" />
+    <Content Include="Views\Warden\View_AnnualRecords.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

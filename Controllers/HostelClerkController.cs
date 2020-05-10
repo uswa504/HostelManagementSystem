@@ -197,6 +197,24 @@ namespace Online_Hostel_Management_System.Controllers
             };
             dc.Sessions.InsertOnSubmit(session);
             dc.SubmitChanges();
+            for (int i = 0; i < duration; i++)
+            {
+                Due dues = new Due()
+                {
+                    dues_type = "annual",
+                    dues_amount = null,
+                    dues_session_month = (batch + i).ToString(),
+                    dues_lastDate = null,
+                    dues_paidDate = null,
+                    dues_paidStatus = null,
+                    dues_recipt_no = null,
+                    allottee_id = allottment.allottee_id,
+                    dues_addedBy = null,
+                    time_of_addition = DateTime.Now,
+                };
+                dc.Dues.InsertOnSubmit(dues);
+                dc.SubmitChanges();
+            }
             string edu_deg0 = Request["edu_name0"];
             int marks_obt0 = int.Parse(Request["marks_obt0"]);
             int marks_total0 = int.Parse(Request["total_marks0"]);

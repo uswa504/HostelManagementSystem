@@ -22,7 +22,9 @@ namespace Online_Hostel_Management_System.Controllers
                 model.b = dc.Students.Where(y => y.std_cnic == cnic);
                 var t = dc.Allottments.First(y => y.std_cnic == cnic);
                 model.c = dc.Hostels.Where(z => z.hostel_id == t.hostel_id);
-                //model.d = dc.Rooms.First(c => c.hostel_id == t.hostel_id);
+                model.d = dc.Rooms.Where(c => c.hostel_id == t.hostel_id && c.room_id == t.room_id);
+                var q = dc.Sessions.First(x => x.std_cnic == cnic && x.session_activeStatus == "active");
+                //ViewBag.stay_duration = (q.session_endDate - q.session_startDate)+"years";
                 return View(model);
             }
             else return RedirectToAction("Index", "Home");

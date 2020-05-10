@@ -54,12 +54,12 @@
                             }
                         }
 
-                        @{foreach (var s in Model.c)
+                        @{foreach (var s in Model.d)
                             {
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Room No: </label>
                                     <div class="col-sm-8">
-                                        <input type="text" name="room_no" value="" id="room_no" class="form-control" disabled>
+                                        <input type="text" name="room_no" value="@s.room_no" id="room_no" class="form-control" disabled>
                                     </div>
                                 </div>
                                 }

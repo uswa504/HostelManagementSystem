@@ -37,22 +37,6 @@
       <Association Name="Department_Session" Member="Sessions" ThisKey="dep_id" OtherKey="dep_id" Type="Session" />
     </Type>
   </Table>
-  <Table Name="dbo.Dues" Member="Dues">
-    <Type Name="Due">
-      <Column Name="dues_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="dues_type" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="dues_amount" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="dues_month" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="dues_lastDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="dues_paidDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="dues_paidStatus" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="dues_recipt_no" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="allottee_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="dues_addedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="time_of_addition" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Association Name="Allottment_Due" Member="Allottment" ThisKey="allottee_id" OtherKey="allottee_id" Type="Allottment" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Hostel" Member="Hostels">
     <Type Name="Hostel">
       <Column Name="hostel_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -201,6 +185,33 @@
       <Column Name="std_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="allotte_activeStatus" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="std_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.View_StudentsMess" Member="View_StudentsMesses">
+    <Type Name="View_StudentsMess">
+      <Column Name="dues_amount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="dues_lastDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="dues_paidDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="dues_paidStatus" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="dues_recipt_no" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="allotte_activeStatus" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="allottee_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Dues" Member="Dues">
+    <Type Name="Due">
+      <Column Name="dues_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="dues_type" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="dues_amount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="dues_session_month" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="dues_lastDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="dues_paidDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="dues_paidStatus" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="dues_recipt_no" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="allottee_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="dues_addedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="time_of_addition" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Allottment_Due" Member="Allottment" ThisKey="allottee_id" OtherKey="allottee_id" Type="Allottment" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

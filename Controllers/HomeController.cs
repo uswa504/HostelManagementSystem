@@ -36,7 +36,7 @@ namespace Online_Hostel_Management_System.Controllers
                 Session["user_id"] = obj.user_id;
                 Session["user_role"] = "warden";
                 Session["hostel"] = obj.hostel_id;
-                return RedirectToAction("Manage_Dues", "Warden");
+                return RedirectToAction("Manage_MessDues", "Warden");
             }
             //Login check for superitendant
             if (obj != null && obj.user_role.Equals("superitendant"))
