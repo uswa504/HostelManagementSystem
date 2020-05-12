@@ -43,7 +43,11 @@
                                 <td>@s.user_id</td>
                                 <td>@s.user_name</td>
                                 <td>@s.user_role</td>
-                                <td>@s.user_activeStatus</td>
+                                <td><select name="status">
+    <option value="@s.user_activeStatus">@s.user_activeStatus</option>
+    <option value="active">active</option>
+    <option value="inactive">inactive</option>
+</select></td>
                                 <td>@s.hostel_id</td>
                                 <td>@s.time_of_addition</td>
                                 <td>@s.USERNAME</td>

@@ -109,50 +109,17 @@ namespace Online_Hostel_Management_System.Controllers
             }
             else return RedirectToAction("Index", "Home");
         }
-        public ActionResult update_hostel(int id)
+        public ActionResult UpdateUser(int id)
         {
-            if (Session["user_role"].ToString() == "hc_clerk" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"].ToString() == "hc_clerk")
             {
-                var a = dc.Hostels.First(x => x.hostel_id == id);
-                return View(a);
-            }
-            else return RedirectToAction("Index", "Home");
-        }
-        public ActionResult UpdateHostel(int id)
-        {
-            if (Session["user_role"].ToString() == "hc_clerk" || Session["user_role"].ToString() == "admin") {
-                int hostel_number = int.Parse(Request["hostel_number"]);
-                string hname = Request["hostel_name"];
-                string hloc = Request["hlocation"];
-                string htype = Request["htype"];
-                string hstatus = Request["hstatus"];
-                var s = dc.Hostels.First(x => x.hostel_id == id);
-                if (s != null)
-                {
-                    s.hostel_no = hostel_number;
-                    s.hostel_name = hname;
-                    s.hostel_location = hloc;
-                    s.hostel_type = htype;
-                    s.hostel_activeStatus = hstatus;
+                var a = dc.Users.First(x => x.user_id == id);
+                if (a != null) {
+                    string status = Request["status"];
+                    a.user_activeStatus = status;
                     dc.SubmitChanges();
-                    return RedirectToAction("view_hostels");
                 }
-                else return RedirectToAction("view_hostels");
-            }
-            else return RedirectToAction("Index", "Home");
-        }
-        public ActionResult DeleteUser(int id)
-        {
-            if (Session["user_role"].ToString() == "hc_clerk" || Session["user_role"].ToString() == "admin")
-            {
-                var s = dc.Users.First(x => x.user_id == id);
-                if (s != null)
-                {
-                    s.user_activeStatus = "unactive";
-                    dc.SubmitChanges();
-                    return RedirectToAction("viewusers");
-                }
-                else return RedirectToAction("viewusers");
+                return View("viewusers");
             }
             else return RedirectToAction("Index", "Home");
         }

@@ -417,11 +417,15 @@ namespace Online_Hostel_Management_System.Controllers
             {
                 string status = Request["status"];
                 var a = dc.Allottments.First(s => s.allottee_id == id);
+                var t = dc.Students.First(d => d.std_cnic == a.std_cnic);
+                var z = dc.Users.First(f => f.user_id == t.user_id);
                 if (a != null)
                 {
                     a.allotte_activeStatus = "inactive";
                     var b = dc.Sessions.First(x=> x.std_cnic == a.std_cnic);
                     b.session_activeStatus = "inactive";
+                    z.user_activeStatus = "inactive";
+                    t.std_activeStatus = "inactive";
                     dc.SubmitChanges();
                     return RedirectToAction("View_Allottment");
                 }

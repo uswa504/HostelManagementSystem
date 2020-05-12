@@ -20,7 +20,7 @@ namespace Online_Hostel_Management_System.Controllers
             string user_passwd = Request["password"];
             System.Text.ASCIIEncoding encryptpwd = new System.Text.ASCIIEncoding();
             byte[] passwordArray = encryptpwd.GetBytes(user_passwd);
-            var obj = dc.Users.Where(a => a.user_name.Equals(user_name) && a.user_passwd.Equals(passwordArray)).FirstOrDefault();
+            var obj = dc.Users.Where(a => a.user_name.Equals(user_name) && a.user_passwd.Equals(passwordArray) && a.user_activeStatus == "active").FirstOrDefault();
             //Login check for Hostel Clerk
             if (obj != null && obj.user_role.Equals("hostel_clerk"))
             {

@@ -10,6 +10,7 @@ namespace Online_Hostel_Management_System.Controllers
     public class WardenController : Controller
     {
         readonly HMSDataContext dc = new HMSDataContext();
+        object t;
         public ActionResult Adduser()
         {
             if (Session["user_role"].ToString() == "warden" || Session["user_role"].ToString() == "admin")
@@ -78,10 +79,9 @@ namespace Online_Hostel_Management_System.Controllers
                 var a = dc.Allottments.Where(x => x.hostel_id == id && x.allotte_activeStatus == "active");
                 foreach (var x in a)
                 {
-                  var t = dc.Dues.Where(d => d.allottee_id == x.allottee_id && d.dues_session_month == DateTime.Now.ToString("year"));
-                  return View(t);
+                    t = dc.Dues.Where(d => d.allottee_id == x.allottee_id && d.dues_session_month == DateTime.Now.ToString("year"));
                 }
-                return View();
+                return View(t);
             }
             else return RedirectToAction("Index", "Home");
         }
