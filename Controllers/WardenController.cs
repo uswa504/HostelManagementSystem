@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Dynamic;
 using System.Web.Mvc;
 using Online_Hostel_Management_System.Models;
 
@@ -66,8 +67,15 @@ namespace Online_Hostel_Management_System.Controllers
             if (Session["user_role"].ToString() == "warden" || Session["user_role"].ToString() == "admin")
             {
                 int id = (int)Session["hostel"];
+                dynamic model = new ExpandoObject();
                 var a = dc.Allottments.Where(x => x.hostel_id == id && x.allotte_activeStatus == "active");
-                return View(a);
+                foreach (var x in a)
+                {
+                    var s = dc.Students.First(p => p.std_cnic == x.std_cnic);
+                    ViewBag.user = s.std_name;
+                    model.b = dc.Dues.Where(d => d.allottee_id == x.allottee_id && d.dues_type == "mess");
+                }
+                return View(model);
             }
             else return RedirectToAction("Index", "Home");
         }
@@ -76,12 +84,15 @@ namespace Online_Hostel_Management_System.Controllers
             if (Session["user_role"].ToString() == "warden" || Session["user_role"].ToString() == "admin")
             {
                 int id = (int)Session["hostel"];
+                dynamic model = new ExpandoObject();
                 var a = dc.Allottments.Where(x => x.hostel_id == id && x.allotte_activeStatus == "active");
                 foreach (var x in a)
                 {
-                    t = dc.Dues.Where(d => d.allottee_id == x.allottee_id && d.dues_session_month == DateTime.Now.ToString("year"));
+                    var s = dc.Students.First(p => p.std_cnic == x.std_cnic);
+                    ViewBag.user = s.std_name;
+                    model.b = dc.Dues.Where(d => d.allottee_id == x.allottee_id && d.dues_type == "annual");
                 }
-                return View(t);
+                return View(model);
             }
             else return RedirectToAction("Index", "Home");
         }
@@ -114,8 +125,15 @@ namespace Online_Hostel_Management_System.Controllers
             if (Session["user_role"].ToString() == "warden" || Session["user_role"].ToString() == "admin")
             {
                 int id = (int)Session["hostel"];
-                var a = dc.Dues.ToList();
-                return View(a);
+                dynamic model = new ExpandoObject();
+                var a = dc.Allottments.Where(x => x.hostel_id == id && x.allotte_activeStatus == "active");
+                foreach (var x in a)
+                {
+                    var s = dc.Students.First(p => p.std_cnic == x.std_cnic);
+                    ViewBag.user = s.std_name;
+                    model.b = dc.Dues.Where(d => d.allottee_id == x.allottee_id && d.dues_type == "annual");
+                }
+                return View(model);
             }
             else return RedirectToAction("Index", "Home");
         }

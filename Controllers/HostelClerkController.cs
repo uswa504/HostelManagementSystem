@@ -107,155 +107,163 @@ namespace Online_Hostel_Management_System.Controllers
         {
             string username = Request["stud_username"];
             string passwd = Request["stud_passwd"];
-            System.Text.ASCIIEncoding encryptpwd = new System.Text.ASCIIEncoding();
-            byte[] passwordArray = encryptpwd.GetBytes(passwd);
-            int? hostel = null;
-            User user = new User
-            {
-                user_name = username,
-                user_passwd = passwordArray,
-                user_role = "student",
-                user_addedBy = (int)Session["user_id"],
-                time_of_addition = DateTime.Now,
-                user_activeStatus = "active",
-                hostel_id = hostel
-            };
-            dc.Users.InsertOnSubmit(user);
-            dc.SubmitChanges();
-            string std_name = Request["name"];
-            decimal std_cnic = decimal.Parse(Request["cnic"]);
-            string std_fatherName = Request["fname"];
-            string std_fatherOccupation = Request["occupation"];
-            decimal std_fatherIncome = decimal.Parse(Request["income"]);
-            string std_presentAddress = Request["paddress"];
-            string std_permanentAddress = Request["permanentaddress"];
-            string district = Request["district"];
-            decimal std_phone = decimal.Parse(Request["stu_num"]);
-            decimal std_parentPhone = decimal.Parse(Request["grd_num"]);
-            string std_bloodGroup = Request["bloodGroup"];
-            string std_HBSAg_report = Request["hbsag"];
-            string std_antiCV_report = Request["hcv"];
-            string std_nationality = Request["nationality"];
-            Student std = new Student
-            {
-                std_cnic = std_cnic,
-                std_name = std_name,
-                std_fatherName = std_fatherName,
-                std_fatherOccupation = std_fatherOccupation,
-                std_fatherIncome= std_fatherIncome,
-                std_presentAddress = std_presentAddress,
-                std_permanentAddress = std_permanentAddress,
-                std_phone = std_phone,
-                std_parentPhone = std_parentPhone,
-                std_district = district,
-                std_bloodGroup = std_bloodGroup,
-                std_HBSAg_report = std_HBSAg_report,
-                std_antiHCV_report = std_antiCV_report,
-                std_nationality = std_nationality,
-                std_activeStatus = "active",
-                std_addedBy = (int)Session["user_id"],
-                time_of_addition = DateTime.Now,
-                user_id = user.user_id
-            };
-            dc.Students.InsertOnSubmit(std);
-            dc.SubmitChanges();
-            int room_number = int.Parse(Request["room_number"]);
-            Allottment allottment = new Allottment
-            {
-                room_id = room_number,
-                hostel_id = (int)Session["hostel"],
-                allotte_type = "regular",
-                allotte_activeStatus = "active",
-                time_of_addition = DateTime.Now,
-                allotte_addedBy = (int)Session["user_id"],
-                std_cnic = std.std_cnic
-            };
-            dc.Allottments.InsertOnSubmit(allottment);
-            dc.SubmitChanges();
-            int dpt_id = int.Parse(Request["dep_name"]);
-            string rollN0 = Request["roll_no"];
-            string degree = Request["class"];
-            int batch = int.Parse(Request["session"]);
-            DateTime session_start = DateTime.Parse(Request["session_start"]);
-            DateTime session_end = DateTime.Parse(Request["session_end"]);
-            string start = session_start.ToString("yyyy");
-            string end = session_end.ToString("yyyy");
-            int duration =  int.Parse(end) - int.Parse(start);
-            Session session = new Session
-            {
-                dep_id = dpt_id,
-                std_cnic = std.std_cnic,
-                session_rollno = rollN0,
-                session_degree = degree,
-                session_startDate = session_start,
-                session_endDate = session_end,
-                session_duration = duration.ToString(),
-                session_activeStatus = "active",
-                session_addedBy = (int)Session["user_id"],
-                time_of_addition = DateTime.Now,
-                session_batch = batch
-            };
-            dc.Sessions.InsertOnSubmit(session);
-            dc.SubmitChanges();
-            for (int i = 0; i < duration; i++)
-            {
-                Due dues = new Due()
+            var r = dc.Users.First(u => u.user_name == username);
+                if (r != null)
                 {
-                    dues_type = "annual",
-                    dues_amount = null,
-                    dues_session_month = (batch + i).ToString(),
-                    dues_lastDate = null,
-                    dues_paidDate = null,
-                    dues_paidStatus = null,
-                    dues_recipt_no = null,
-                    allottee_id = allottment.allottee_id,
-                    dues_addedBy = null,
-                    time_of_addition = DateTime.Now,
-                };
-                dc.Dues.InsertOnSubmit(dues);
-                dc.SubmitChanges();
-            }
-            string edu_deg0 = Request["edu_name0"];
-            int marks_obt0 = int.Parse(Request["marks_obt0"]);
-            int marks_total0 = int.Parse(Request["total_marks0"]);
-            int edu_session0 = int.Parse(Request["session0"]);
-            string board0 = Request["board0"];
-            Education education0 = new Education
-            {
-                std_cnic = std.std_cnic,
-                edu_degree = edu_deg0,
-                edu_marksObt = marks_obt0,
-                edu_totalMarks = marks_total0,
-                edu_board_uni = board0,
-                edu_session = edu_session0,
-                edu_addedBy = (int)Session["user_id"],
-                time_of_addition = DateTime.Now
-            };
-            dc.Educations.InsertOnSubmit(education0);
-            dc.SubmitChanges();
-            string n = Request["education_no"];
-            int key = int.Parse(n);
-            for (int i=1; i<=key; i++)
-            {
-                string edu_deg = Request["edu_name" + i];
-                int marks_obt = int.Parse(Request["marks_obt"+i]);
-                int marks_total = int.Parse(Request["total_marks" + i]);
-                int edu_session = int.Parse(Request["session" + i]);
-                string board = Request["board"+i];
-                Education education = new Education
+                    //GENERATE alert
+                }
+                else
                 {
-                    std_cnic = std.std_cnic,
-                    edu_degree = edu_deg,
-                    edu_marksObt = marks_obt,
-                    edu_totalMarks = marks_total,
-                    edu_board_uni = board,
-                    edu_session = edu_session,
-                    edu_addedBy = (int)Session["user_id"],
-                    time_of_addition = DateTime.Now
-                };
-                dc.Educations.InsertOnSubmit(education);
-                dc.SubmitChanges();
-            }
+                    System.Text.ASCIIEncoding encryptpwd = new System.Text.ASCIIEncoding();
+                    byte[] passwordArray = encryptpwd.GetBytes(passwd);
+                    int? hostel = null;
+                    User user = new User
+                    {
+                        user_name = username,
+                        user_passwd = passwordArray,
+                        user_role = "student",
+                        user_addedBy = (int)Session["user_id"],
+                        time_of_addition = DateTime.Now,
+                        user_activeStatus = "active",
+                        hostel_id = hostel
+                    };
+                    dc.Users.InsertOnSubmit(user);
+                    dc.SubmitChanges();
+                    string std_name = Request["name"];
+                    decimal std_cnic = decimal.Parse(Request["cnic"]);
+                    string std_fatherName = Request["fname"];
+                    string std_fatherOccupation = Request["occupation"];
+                    decimal std_fatherIncome = decimal.Parse(Request["income"]);
+                    string std_presentAddress = Request["paddress"];
+                    string std_permanentAddress = Request["permanentaddress"];
+                    string district = Request["district"];
+                    decimal std_phone = decimal.Parse(Request["stu_num"]);
+                    decimal std_parentPhone = decimal.Parse(Request["grd_num"]);
+                    string std_bloodGroup = Request["bloodGroup"];
+                    string std_HBSAg_report = Request["hbsag"];
+                    string std_antiCV_report = Request["hcv"];
+                    string std_nationality = Request["nationality"];
+                    Student std = new Student
+                    {
+                        std_cnic = std_cnic,
+                        std_name = std_name,
+                        std_fatherName = std_fatherName,
+                        std_fatherOccupation = std_fatherOccupation,
+                        std_fatherIncome = std_fatherIncome,
+                        std_presentAddress = std_presentAddress,
+                        std_permanentAddress = std_permanentAddress,
+                        std_phone = std_phone,
+                        std_parentPhone = std_parentPhone,
+                        std_district = district,
+                        std_bloodGroup = std_bloodGroup,
+                        std_HBSAg_report = std_HBSAg_report,
+                        std_antiHCV_report = std_antiCV_report,
+                        std_nationality = std_nationality,
+                        std_activeStatus = "active",
+                        std_addedBy = (int)Session["user_id"],
+                        time_of_addition = DateTime.Now,
+                        user_id = user.user_id
+                    };
+                    dc.Students.InsertOnSubmit(std);
+                    dc.SubmitChanges();
+                    int room_number = int.Parse(Request["room_number"]);
+                    Allottment allottment = new Allottment
+                    {
+                        room_id = room_number,
+                        hostel_id = (int)Session["hostel"],
+                        allotte_type = "regular",
+                        allotte_activeStatus = "active",
+                        time_of_addition = DateTime.Now,
+                        allotte_addedBy = (int)Session["user_id"],
+                        std_cnic = std.std_cnic
+                    };
+                    dc.Allottments.InsertOnSubmit(allottment);
+                    dc.SubmitChanges();
+                    int dpt_id = int.Parse(Request["dep_name"]);
+                    string rollN0 = Request["roll_no"];
+                    string degree = Request["class"];
+                    int batch = int.Parse(Request["session"]);
+                    DateTime session_start = DateTime.Parse(Request["session_start"]);
+                    DateTime session_end = DateTime.Parse(Request["session_end"]);
+                    string start = session_start.ToString("yyyy");
+                    string end = session_end.ToString("yyyy");
+                    int duration = int.Parse(end) - int.Parse(start);
+                    Session session = new Session
+                    {
+                        dep_id = dpt_id,
+                        std_cnic = std.std_cnic,
+                        session_rollno = rollN0,
+                        session_degree = degree,
+                        session_startDate = session_start,
+                        session_endDate = session_end,
+                        session_duration = duration.ToString(),
+                        session_activeStatus = "active",
+                        session_addedBy = (int)Session["user_id"],
+                        time_of_addition = DateTime.Now,
+                        session_batch = batch
+                    };
+                    dc.Sessions.InsertOnSubmit(session);
+                    dc.SubmitChanges();
+                    for (int i = 0; i < duration; i++)
+                    {
+                        Due dues = new Due()
+                        {
+                            dues_type = "annual",
+                            dues_amount = null,
+                            dues_session_month = (batch + i).ToString(),
+                            dues_lastDate = null,
+                            dues_paidDate = null,
+                            dues_paidStatus = null,
+                            dues_recipt_no = null,
+                            allottee_id = allottment.allottee_id,
+                            dues_addedBy = null,
+                            time_of_addition = DateTime.Now,
+                        };
+                        dc.Dues.InsertOnSubmit(dues);
+                        dc.SubmitChanges();
+                    }
+                    string edu_deg0 = Request["edu_name0"];
+                    int marks_obt0 = int.Parse(Request["marks_obt0"]);
+                    int marks_total0 = int.Parse(Request["total_marks0"]);
+                    int edu_session0 = int.Parse(Request["session0"]);
+                    string board0 = Request["board0"];
+                    Education education0 = new Education
+                    {
+                        std_cnic = std.std_cnic,
+                        edu_degree = edu_deg0,
+                        edu_marksObt = marks_obt0,
+                        edu_totalMarks = marks_total0,
+                        edu_board_uni = board0,
+                        edu_session = edu_session0,
+                        edu_addedBy = (int)Session["user_id"],
+                        time_of_addition = DateTime.Now
+                    };
+                    dc.Educations.InsertOnSubmit(education0);
+                    dc.SubmitChanges();
+                    string n = Request["education_no"];
+                    int key = int.Parse(n);
+                    for (int i = 1; i <= key; i++)
+                    {
+                        string edu_deg = Request["edu_name" + i];
+                        int marks_obt = int.Parse(Request["marks_obt" + i]);
+                        int marks_total = int.Parse(Request["total_marks" + i]);
+                        int edu_session = int.Parse(Request["session" + i]);
+                        string board = Request["board" + i];
+                        Education education = new Education
+                        {
+                            std_cnic = std.std_cnic,
+                            edu_degree = edu_deg,
+                            edu_marksObt = marks_obt,
+                            edu_totalMarks = marks_total,
+                            edu_board_uni = board,
+                            edu_session = edu_session,
+                            edu_addedBy = (int)Session["user_id"],
+                            time_of_addition = DateTime.Now
+                        };
+                        dc.Educations.InsertOnSubmit(education);
+                        dc.SubmitChanges();
+                    }
+                }
             return RedirectToAction("add_allotment");
         }
         public ActionResult Assign(int id)

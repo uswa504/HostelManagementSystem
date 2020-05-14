@@ -44,7 +44,7 @@ namespace Online_Hostel_Management_System.Controllers
                 Session["user_id"] = obj.user_id;
                 Session["user_role"] = "superitendant";
                 Session["hostel"] = obj.hostel_id;
-                return RedirectToAction("View_Request", "Superitendant");
+                return RedirectToAction("adduser", "Superitendant");
             }
             //Login check for Student
             else if (obj != null && obj.user_role.Equals("student"))

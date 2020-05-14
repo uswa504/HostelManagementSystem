@@ -1,5 +1,4 @@
-﻿
-
+﻿@model dynamic
 <div class="brand clearfix">
     <a href="#" class="logo text-white" style="font-size:16px;">Hostel Management System</a>
     <ul class="ts-profile-nav">
@@ -45,12 +44,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @{ foreach (var x in Model)
+                                    @{ foreach (var x in Model.b)
                                         {
                                             <tr>
-                                                <td></td>
+                                                <td>@ViewBag.user</td>
                                                 <td><input name="amount" type="text" /></td>
-                                                <td><input name="fine" type="text"/></td>
+                                                <td><input name="fine" type="text" /></td>
                                                 <td>@x.dues_session_month</td>
                                                 <td><input name="last_date" type="month" /></td>
                                                 <td>

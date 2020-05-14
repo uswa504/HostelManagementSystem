@@ -27,17 +27,15 @@
             <div class="row">
                 <div class="col-md-12">
                     <h2 class="page-title" style="margin-top:5%">Mess Dues</h2>
-                    Month:<input name="month" type="month"/>
-                    <a href="#">Search</a>
                     <div class="panel panel-default">
                         <div class="panel-heading">All Room Details</div>
                         <div class="panel-body">
                             <table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
-                                        <th>Alottee Id</th>
                                         <th>Allotte Name</th>
                                         <th>Mess Dues</th>
+                                        <th>Month</th>
                                         <th>Last date to submit</th>
                                         <th>Paid Status</th>
                                         <th>Paid Date</th>
@@ -47,18 +45,18 @@
                                 <tbody>
                                     @{ foreach (var x in Model)
                                         {
-                                            <tr>
-                                                <td>@x.allottee_id</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>
-                                                </td>
-                                                <td>
-                                            </tr>
+                                                                        <tr>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td>
+                                                                            </td>
+                                                                            <td>
+                                                                        </tr>
                                         }
                                     }
                                 </tbody>
