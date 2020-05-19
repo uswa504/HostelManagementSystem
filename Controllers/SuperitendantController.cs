@@ -68,25 +68,5 @@ namespace Online_Hostel_Management_System.Controllers
             }
             else return RedirectToAction("Index", "Home");
         }
-        public ActionResult Change()
-        {
-            if (Session["user_role"].ToString() == "superitendant" || Session["user_role"].ToString() == "admin")
-            {
-                string old = Request["oldpassword"];
-                string newpassword = Request["newpassword"];
-                System.Text.ASCIIEncoding encryptpwd = new System.Text.ASCIIEncoding();
-                byte[] passwordArray = encryptpwd.GetBytes(old);
-                int userid = (int)Session["user_id"];
-                var a = dc.Users.First(x => x.user_id == userid);
-                if (a != null && a.user_passwd == passwordArray)
-                {
-                    byte[] newPasswordArray = encryptpwd.GetBytes(newpassword);
-                    a.user_passwd = newPasswordArray;
-                    dc.SubmitChanges();
-                }
-                return RedirectToAction("View_Request", "Superitendant");
-            }
-            else return RedirectToAction("Index", "Home");
-        }
     }
 }

@@ -1,302 +1,285 @@
-﻿@{
-    ViewBag.Title = "Add Allotment";
-}
-@model dynamic
-<div class="brand clearfix">
-    <a href="#" class="logo text-white" style="font-size:16px;" ;>Hostel Management System</a>
-    <span class="menu-btn"><i class="fa fa-bars"></i></span>
-    <ul class="ts-profile-nav">
-        <li class="ts-account">
-        <li><a href="/Home/Logout">Logout</a></li>
-    </ul>
-</div>
+﻿@model dynamic
+    <div class="ts-main-content">
+        <div>
+            @Html.Partial("Header")
+        </div>
+        <div>
+            @Html.Partial("HostelClerk_Sidebar")
+        </div>
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
 
-<div class="ts-main-content">
-    <nav class="ts-sidebar">
-        <ul class="ts-sidebar-menu">
+                        <h2 class="page-title" style="margin-top:5%">Add New Allottment </h2>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="panel panel-primary">
 
-            <li class="ts-label">Main</li>
-            <li><a href="/HostelClerk/Addroom"><i class="fa fa-bed"></i>Add Room</a></li>
-            <li><a href="/HostelClerk/View_rooms"><i class="fa fa-users"></i>View Rooms</a></li>
-            <li><a href="/HostelClerk/Add_allotment"><i class="fa fa-user"></i>Add New Allotment</a></li>
-            <li><a href="/HostelClerk/View_Allottment"><i class="fa fa-users"></i>View Allottments</a></li>
-            <li><a href="/HostelClerk/View_Students"><i class="fa fa-users"></i>View Students</a></li>
-            <li><a href="/HostelClerk/Change_password"><i class="fa fa-key"></i>Change Password</a></li>
-        </ul>
-    </nav>
-    <div class="content-wrapper">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
+                                    <div class="panel-heading">Fill All Info</div>
+                                    <div-- class="panel-body">
 
-                    <h2 class="page-title" style="margin-top:5%">Add New Allottment </h2>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="panel panel-primary">
+                                        <form method="post" action="/HostelClerk/student_info" class="form-horizontal">
 
-                                <div class="panel-heading">Fill All Info</div>
-                                <div-- class="panel-body">
-
-                                    <form method="post" action="/HostelClerk/student_info" class="form-horizontal">
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label"><h4 style="color: green">Personal Info: </h4> </label>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">Name :</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" name="name" id="name" class="form-control">
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label"><h4 style="color: green">Personal Info: </h4> </label>
                                             </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">CNIC (without dashes) : </label>
-                                            <div class="col-sm-8">
-                                                <input type="text" name="cnic" id="cnic" class="form-control">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">Father's name: </label>
-                                            <div class="col-sm-8">
-                                                <input type="text" name="fname" id="fname" class="form-control">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">Parent/Guardian's Occupation: </label>
-                                            <div class="col-sm-8">
-                                                <input type="text" name="occupation" id="occupation" class="form-control">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">Monthly Income: </label>
-                                            <div class="col-sm-8">
-                                                <input type="text" name="income" id="income" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">Present Home Address: </label>
-                                            <div class="col-sm-8">
-                                                <textarea rows="5" name="paddress" id="paddress" class="form-control" required="required"></textarea>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">Permanent Home Address: </label>
-                                            <div class="col-sm-8">
-                                                <textarea rows="5" name="permanentaddress" id="permanentaddress" class="form-control" required="required"></textarea>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">District: </label>
-                                            <div class="col-sm-8">
-                                                <input type="text" name="district" id="district" class="form-control" required="required">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">Cell Number (Student): </label>
-                                            <div class="col-sm-8">
-                                                <input type="text" name="stu_num" id="stu_num" class="form-control" required="required">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">Cell Number (Guardian): </label>
-                                            <div class="col-sm-8">
-                                                <input type="text" name="grd_num" id="grd_num" class="form-control" required="required">
-                                            </div>
-                                        </div>
-                                        <div class="form-group" id="education">
-                                            <label class="col-sm-2 control-label">Education: </label>
-                                            <div class="add-edu">
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Name :</label>
                                                 <div class="col-sm-8">
-                                                    <div class="col-sm-4">
-                                                        <input type="text" name="edu_name0" id="edu_name" class="form-control" placeholder="Degree" />
-                                                    </div>
-                                                    <div class="col-sm-4">
-                                                        <input type="text" name="marks_obt0" id="marks_obt" class="form-control " placeholder="Marks Obt">
-                                                    </div>
-                                                    <div class="col-sm-4">
-                                                        <input type="text" name="total_marks0" id="total_marks" class="form-control" placeholder="Total Marks">
-                                                    </div>
-                                                    <div class="col-sm-8">
-                                                        <input type="text" name="board0" id="board" class="form-control " placeholder="Board/Uni" />
-                                                    </div>
-                                                    <div class="col-sm-4">
-                                                        <input type="number" min="1980" max="2030" value="2010" name="session0" id="Session" class="form-control" placeholder="Session" />
-                                                    </div>
+                                                    <input type="text" name="name" id="name" class="form-control">
                                                 </div>
                                             </div>
-                                            <div class="add" onclick="add()">
-                                                <i class="fa fa-plus" style="font-size:15px"></i>
-                                            </div>
-                                            <script>
-                                                var key = 0;
-                                                function add() {
-                                                    key += 1;
-                                                    $('input[name="education_no"]').val(key);
-                                                    console.log(key);
-              
-                                                    var inputs = [];
-                                                    var html = `<div class="form-group"
-                                                                                                                                                                                                                                                                                                                                <div class = "add-edu">
-                                                                                                                                                                                                                                                                                                                            <div class="col-sm-8 col-sm-offset-2" style="margin-top:10px">
-                                                                                                                                                                                                                                                                                                                                <div class="col-sm-4">
-                                                                                                                                                                                                                                                                                                                                    <input type="text" name="edu_name${key}" id="edu_name${key}" class="form-control" placeholder="Degree" required>
-                                                                                                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                                                                                                                <div class="col-sm-4">
-                                                                                                                                                                                                                                                                                                                                    <input type="text" name="marks_obt${key}" id="marks_obt${key}" class="form-control " placeholder="Marks Obt" required="required">
-                                                                                                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                                                                                                                <div class="col-sm-4">
-                                                                                                                                                                                                                                                                                                                                    <input type="text" name="total_marks${key}" id="total_marks${key}" class="form-control" placeholder="Total Marks" required="required">
-                                                                                                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                                                                                                                <div class="col-sm-8">
-                                                                                                                                                                                                                                                                                                                                    <input type="text" name="board${key}" id="board${key}" class="form-control " placeholder="Board/Uni" required="required">
-                                                                                                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                                                                                                                <div class="col-sm-4">
-                                                                                                                                                                                                                                                                                                                                    <input type="number" min="1980" max="2030" value = "2010" name="session${key}" id="Session${key}" class="form-control" placeholder="Session" required="required">
-                                                                                                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                                                                                                                                            </div>`
-                                                    $("#education").append(html);
-                                                }
 
-
-                                            </script>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="hidden" name="education_no" />
-                                            <label class="col-sm-2 control-label">Blood Group </label>
-                                            <div class="col-sm-8">
-                                                <select name="bloodGroup" class="form-control" required="required">
-                                                    <option value="">Select Blood Group</option>
-                                                    <option value="A+">A+</option>
-                                                    <option value="A-">A-</option>
-                                                    <option value="B+">B+</option>
-                                                    <option value="B-">B-</option>
-                                                    <option value="O+">O+</option>
-                                                    <option value="O-">O-</option>
-                                                    <option value="AB+">AB+</option>
-                                                    <option value="AB-">AB-</option>
-                                                </select>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">CNIC (without dashes) : </label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="cnic" id="cnic" class="form-control">
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">Hepatits Report (HBSAg): </label>
-                                            <div class="col-sm-8">
-                                                <select name="hbsag" class="form-control" required="required">
-                                                    <option value="">Select</option>
-                                                    <option value="Positive">Positive</option>
-                                                    <option value="Negative">Negative</option>
-                                                </select>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Father's name: </label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="fname" id="fname" class="form-control">
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">Hepatits Report (Anti HCV): </label>
-                                            <div class="col-sm-8">
-                                                <select name="hcv" class="form-control" required="required">
-                                                    <option value="">Select</option>
-                                                    <option value="Positive">Positive</option>
-                                                    <option value="Negative">Negative</option>
-                                                </select>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Parent/Guardian's Occupation: </label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="occupation" id="occupation" class="form-control">
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">Nationality: </label>
-                                            <div class="col-sm-8">
-                                                <input type="text" name="nationality" id="nationality" class="form-control" required="required">
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Monthly Income: </label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="income" id="income" class="form-control">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">Institute/Department : </label>
-                                            <div class="col-sm-8">
-                                                <select type="text" name="dep_name" id="dep_name" class="form-control" required>
-                                                    <option value="">Select Department</option>
-                                                    @foreach (var s in Model.b)
-                                                    {
-                                                        <option value="@s.dep_id">@s.dep_name</option>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Present Home Address: </label>
+                                                <div class="col-sm-8">
+                                                    <textarea rows="5" name="paddress" id="paddress" class="form-control" required="required"></textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Permanent Home Address: </label>
+                                                <div class="col-sm-8">
+                                                    <textarea rows="5" name="permanentaddress" id="permanentaddress" class="form-control" required="required"></textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">District: </label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="district" id="district" class="form-control" required="required">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Cell Number (Student): </label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="stu_num" id="stu_num" class="form-control" required="required">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Cell Number (Guardian): </label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="grd_num" id="grd_num" class="form-control" required="required">
+                                                </div>
+                                            </div>
+                                            <div class="form-group" id="education">
+                                                <label class="col-sm-2 control-label">Education: </label>
+                                                <div class="add-edu">
+                                                    <div class="col-sm-8">
+                                                        <div class="col-sm-4">
+                                                            <input type="text" name="edu_name0" id="edu_name" class="form-control" placeholder="Degree" />
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <input type="text" name="marks_obt0" id="marks_obt" class="form-control " placeholder="Marks Obt">
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <input type="text" name="total_marks0" id="total_marks" class="form-control" placeholder="Total Marks">
+                                                        </div>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" name="board0" id="board" class="form-control " placeholder="Board/Uni" />
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <input type="number" min="1980" max="2030" value="2010" name="session0" id="Session" class="form-control" placeholder="Session" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="add" onclick="add()">
+                                                    <i class="fa fa-plus" style="font-size:15px"></i>
+                                                </div>
+                                                <script>
+                                                    var key = 0;
+                                                    function add() {
+                                                        key += 1;
+                                                        $('input[name="education_no"]').val(key);
+                                                        console.log(key);
+
+                                                        var inputs = [];
+                                                        var html = `<div class="form-group"
+                                                                                                                                                                                                                                                                                                                                                                                <div class = "add-edu">
+                                                                                                                                                                                                                                                                                                                                                                            <div class="col-sm-8 col-sm-offset-2" style="margin-top:10px">
+                                                                                                                                                                                                                                                                                                                                                                                <div class="col-sm-4">
+                                                                                                                                                                                                                                                                                                                                                                                    <input type="text" name="edu_name${key}" id="edu_name${key}" class="form-control" placeholder="Degree" required>
+                                                                                                                                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                                                                                                                                <div class="col-sm-4">
+                                                                                                                                                                                                                                                                                                                                                                                    <input type="text" name="marks_obt${key}" id="marks_obt${key}" class="form-control " placeholder="Marks Obt" required="required">
+                                                                                                                                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                                                                                                                                <div class="col-sm-4">
+                                                                                                                                                                                                                                                                                                                                                                                    <input type="text" name="total_marks${key}" id="total_marks${key}" class="form-control" placeholder="Total Marks" required="required">
+                                                                                                                                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                                                                                                                                <div class="col-sm-8">
+                                                                                                                                                                                                                                                                                                                                                                                    <input type="text" name="board${key}" id="board${key}" class="form-control " placeholder="Board/Uni" required="required">
+                                                                                                                                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                                                                                                                                <div class="col-sm-4">
+                                                                                                                                                                                                                                                                                                                                                                                    <input type="number" min="1980" max="2030" value = "2010" name="session${key}" id="Session${key}" class="form-control" placeholder="Session" required="required">
+                                                                                                                                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                                                                                                                            </div>`
+                                                        $("#education").append(html);
                                                     }
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">Degree in which Admitted: </label>
-                                            <div class="col-sm-8">
-                                                <input type="text" name="class" id="class" class="form-control" required="required">
-                                            </div>
-                                        </div>
 
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">Roll Number: </label>
-                                            <div class="col-sm-8">
-                                                <input type="text" name="roll_no" id="roll_no" class="form-control" required="required">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">Session Start: </label>
-                                            <div class="col-sm-8">
-                                                <input type="month" name="session_start" class="form-control" required="required">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">Session End: </label>
-                                            <div class="col-sm-8">
-                                                <input type="month" name="session_end" class="form-control" required="required">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">Batch: </label>
-                                            <div class="col-sm-8">
-                                                <input type="number" min="1900" max="2099" step="1" value="2020" name="session" id="Session" class="form-control" placeholder="Session" required="required">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">
-                                                <h4 style="color: green"> Room Allotment: </h4>
-                                            </label>
-                                        </div>
 
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">Room Number</label>
-                                            <div class="col-sm-8">
-                                                <select name="room_number" class="form-control" required="required">
-                                                    <option value="">Select Room Number</option>
-                                                    @foreach (var s in Model.a)
-                                                    {
-                                                        <option value="@s.room_id">@s.room_no</option>
-                                                    }
-                                                </select>
+                                                </script>
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label"><h4 style="color: green">Login Info: </h4> </label>
-                                        </div>
+                                            <div class="form-group">
+                                                <input type="hidden" name="education_no" />
+                                                <label class="col-sm-2 control-label">Blood Group </label>
+                                                <div class="col-sm-8">
+                                                    <select name="bloodGroup" class="form-control" required="required">
+                                                        <option value="">Select Blood Group</option>
+                                                        <option value="A+">A+</option>
+                                                        <option value="A-">A-</option>
+                                                        <option value="B+">B+</option>
+                                                        <option value="B-">B-</option>
+                                                        <option value="O+">O+</option>
+                                                        <option value="O-">O-</option>
+                                                        <option value="AB+">AB+</option>
+                                                        <option value="AB-">AB-</option>
+                                                    </select>
+                                                </div>
+                                            </div>
 
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">Username:</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" name="stud_username" class="form-control" />
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Hepatits Report (HBSAg): </label>
+                                                <div class="col-sm-8">
+                                                    <select name="hbsag" class="form-control" required="required">
+                                                        <option value="">Select</option>
+                                                        <option value="Positive">Positive</option>
+                                                        <option value="Negative">Negative</option>
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">Password</label>
-                                            <div class="col-sm-8">
-                                                <input type="password" name="stud_passwd" class="form-control">
+
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Hepatits Report (Anti HCV): </label>
+                                                <div class="col-sm-8">
+                                                    <select name="hcv" class="form-control" required="required">
+                                                        <option value="">Select</option>
+                                                        <option value="Positive">Positive</option>
+                                                        <option value="Negative">Negative</option>
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-sm-6 col-sm-offset-4">
-                                            <button class="btn btn-default" type="submit">Cancel</button>
-                                            <input type="submit" name="submit" id="add_allottment" value="ADD" class="btn btn-primary">
-                                        </div>
-                                    </form>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Nationality: </label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="nationality" id="nationality" class="form-control" required="required">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Institute/Department : </label>
+                                                <div class="col-sm-8">
+                                                    <select type="text" name="dep_name" id="dep_name" class="form-control" required>
+                                                        <option value="">Select Department</option>
+                                                        @foreach (var s in Model.b)
+                                                        {
+                                                            <option value="@s.dep_id">@s.dep_name</option>
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Degree in which Admitted: </label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="class" id="class" class="form-control" required="required">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Roll Number: </label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="roll_no" id="roll_no" class="form-control" required="required">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Session Start: </label>
+                                                <div class="col-sm-8">
+                                                    <input type="month" name="session_start" class="form-control" required="required">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Session End: </label>
+                                                <div class="col-sm-8">
+                                                    <input type="month" name="session_end" class="form-control" required="required">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Batch: </label>
+                                                <div class="col-sm-8">
+                                                    <input type="number" min="1900" max="2099" step="1" value="2020" name="session" id="Session" class="form-control" placeholder="Session" required="required">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">
+                                                    <h4 style="color: green"> Room Allotment: </h4>
+                                                </label>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Room Number</label>
+                                                <div class="col-sm-8">
+                                                    <select name="room_number" class="form-control" required="required">
+                                                        <option value="">Select Room Number</option>
+                                                        @foreach (var s in Model.a)
+                                                        {
+                                                            <option value="@s.room_id">@s.room_no</option>
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label"><h4 style="color: green">Login Info: </h4> </label>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Username:</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="stud_username" class="form-control" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Password</label>
+                                                <div class="col-sm-8">
+                                                    <input type="password" name="stud_passwd" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-sm-offset-4">
+                                                <button class="btn btn-default" type="submit">Cancel</button>
+                                                <input type="submit" name="submit" id="add_allottment" value="ADD" class="btn btn-primary">
+                                            </div>
+                                        </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -304,4 +287,3 @@
             </div>
         </div>
     </div>
-</div>

@@ -1,27 +1,8 @@
-﻿
-
-<div class="brand clearfix">
-    <a href="#" class="logo text-white" style="font-size:16px;">Hostel Management System</a>
-    <ul class="ts-profile-nav">
-        <li class="ts-account">
-        <li><a href="/Home/Logout">Logout</a></li>
-    </ul>
+﻿<div>
+    @Html.Partial("Header");
 </div>
-
 <div class="ts-main-content">
-    <nav class="ts-sidebar">
-        <ul class="ts-sidebar-menu">
-
-            <li class="ts-label">Main</li>
-            <li><a href="/Warden/Manage_MessDues"><i class="fa fa-money"></i>Manage Mess Dues</a></li>
-            <li><a href="/Warden/View_StudentsMess"><i class="fa fa-money"></i>View Mess Record</a></li>
-            <li><a href="/Warden/Manage_AnnualDues"><i class="fa fa-money"></i>Manage Annual Dues</a></li>
-            <li><a href="/Warden/View_AnnualRecords"><i class="fa fa-money"></i>View Annual Record</a></li>
-            <li><a href="/Warden/Adduser"><i class="fa fa-user"></i>Add Hostel Clerk</a></li>
-            <li><a href="/Warden/View_rooms"><i class="fa fa-bed"></i>View Rooms</a></li>
-            <li><a href="/Warden/Change_password"><i class="fa fa-key"></i>Change Password</a></li>
-        </ul>
-    </nav>
+   @Html.Partial("Warden_Sidebar");
     <div class="content-wrapper">
         <div class="container-fluid">
             <div class="row">

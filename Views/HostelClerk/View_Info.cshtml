@@ -1,139 +1,124 @@
 ﻿@model dynamic
-<div class="brand clearfix">
-    <a href="#" class="logo text-white" style="font-size:16px;" ;>Hostel Management System</a>
-    <span class="menu-btn"><i class="fa fa-bars"></i></span>
-    <ul class="ts-profile-nav">
-        <li class="ts-account">
-        <li><a href="/Home/Logout">Logout</a></li>
-    </ul>
-</div>
-
 <div class="ts-main-content">
-    <nav class="ts-sidebar">
-        <ul class="ts-sidebar-menu">
+        <div>
+            @Html.Partial("Header")
+        </div>
+        <div>
+            @Html.Partial("HostelClerk_Sidebar")
+        </div>
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
 
-            <li class="ts-label">Main</li>
-            <li><a href="/HostelClerk/Addroom"><i class="fa fa-bed"></i>Add Room</a></li>
-            <li><a href="/HostelClerk/View_rooms"><i class="fa fa-users"></i>View Rooms</a></li>
-            <li><a href="/HostelClerk/Add_allotment"><i class="fa fa-user"></i>Add New Allotment</a></li>
-            <li><a href="/HostelClerk/View_Allottment"><i class="fa fa-users"></i>View Allottments</a></li>
-            <li><a href="/HostelClerk/View_Students"><i class="fa fa-users"></i>View Students</a></li>
-            <li><a href="/HostelClerk/Change_password"><i class="fa fa-key"></i>Change Password</a></li>
-        </ul>
-    </nav>
-    <div class="content-wrapper">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
+                        <h2 class="page-title" style="margin-top:5%">Allottee Details </h2>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="panel panel-primary">
 
-                    <h2 class="page-title" style="margin-top:5%">Allottee Details </h2>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="panel panel-primary">
+                                    <div class="panel-heading">Details</div>
+                                    <div-- class="panel-body">
 
-                                <div class="panel-heading">Details</div>
-                                <div-- class="panel-body">
+                                        <form method="post" class="form-horizontal">
 
-                                    <form method="post" class="form-horizontal">
+                                            <div class="form-group">
+                                                <h3 class="col-sm-2 control-label" style="color: green">Personal Info: </h3>
+                                            </div>
 
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label"><h4 style="color: green">Personal Info: </h4> </label>
-                                        </div>
-
-                                        @{ foreach (var s in Model.d)
-                                            {
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label">Name :</label>
-                                                    <div class="col-sm-8">
-                                                        <input type="text" value="@s.std_name" name="name" id="name" class="form-control" disabled>
+                                            @{ foreach (var s in Model.d)
+                                                {
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">Name :</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" value="@s.std_name" name="name" id="name" class="form-control" disabled>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label">CNIC (without dashes) : </label>
-                                                    <div class="col-sm-8">
-                                                        <input type="text" value="@s.std_cnic" name="cnic" id="cnic" class="form-control" disabled>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">CNIC (without dashes) : </label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" value="@s.std_cnic" name="cnic" id="cnic" class="form-control" disabled>
+                                                        </div>
                                                     </div>
-                                                </div>
 
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label">Father's name: </label>
-                                                    <div class="col-sm-8">
-                                                        <input type="text" value="@s.std_fatherName" name="fname" id="fname" class="form-control" disabled>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">Father's name: </label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" value="@s.std_fatherName" name="fname" id="fname" class="form-control" disabled>
+                                                        </div>
                                                     </div>
-                                                </div>
 
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label">Parent/Guardian's Occupation: </label>
-                                                    <div class="col-sm-8">
-                                                        <input type="text" value="@s.std_fatherOccupation" name="occupation" id="occupation" class="form-control" disabled>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">Parent/Guardian's Occupation: </label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" value="@s.std_fatherOccupation" name="occupation" id="occupation" class="form-control" disabled>
+                                                        </div>
                                                     </div>
-                                                </div>
 
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label">Monthly Income: </label>
-                                                    <div class="col-sm-8">
-                                                        <input type="text" value="@s.std_fatherIncome" name="income" id="income" class="form-control" disabled>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">Monthly Income: </label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" value="@s.std_fatherIncome" name="income" id="income" class="form-control" disabled>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label">Present Home Address: </label>
-                                                    <div class="col-sm-8">
-                                                        <textarea rows="5" name="paddress" id="paddress" class="form-control" disabled>@s.std_presentAddress</textarea>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">Present Home Address: </label>
+                                                        <div class="col-sm-8">
+                                                            <textarea rows="5" name="paddress" id="paddress" class="form-control" disabled>@s.std_presentAddress</textarea>
+                                                        </div>
                                                     </div>
-                                                </div>
 
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label">Permanent Home Address: </label>
-                                                    <div class="col-sm-8">
-                                                        <textarea rows="5" name="permanentaddress" id="permanentaddress" class="form-control" disabled>@s.std_permanentAddress</textarea>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">Permanent Home Address: </label>
+                                                        <div class="col-sm-8">
+                                                            <textarea rows="5" name="permanentaddress" id="permanentaddress" class="form-control" disabled>@s.std_permanentAddress</textarea>
+                                                        </div>
                                                     </div>
-                                                </div>
 
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label">District: </label>
-                                                    <div class="col-sm-8">
-                                                        <input type="text" value="@s.std_district" name="district" id="district" class="form-control" disabled>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">District: </label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" value="@s.std_district" name="district" id="district" class="form-control" disabled>
+                                                        </div>
                                                     </div>
-                                                </div>
 
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label">Cell Number (Student): </label>
-                                                    <div class="col-sm-8">
-                                                        <input type="text" value="@s.std_phone" name="stu_num" id="stu_num" class="form-control" disabled>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">Cell Number (Student): </label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" value="@s.std_phone" name="stu_num" id="stu_num" class="form-control" disabled>
+                                                        </div>
                                                     </div>
-                                                </div>
 
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label">Cell Number (Guardian): </label>
-                                                    <div class="col-sm-8">
-                                                        <input type="text" value="@s.std_parentPhone" name="grd_num" id="grd_num" class="form-control" disabled>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">Cell Number (Guardian): </label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" value="@s.std_parentPhone" name="grd_num" id="grd_num" class="form-control" disabled>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                
-                                                <div class="form-group" id="education">
-                                                    <label class="col-sm-2 control-label">Education: </label>
-                                                    <div class="col-sm-8">
-                                                        <table class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>Degree</th>
-                                                                    <th>Total Marks</th>
-                                                                    <th>Obt. Marks</th>
-                                                                    <th>Year of Passing</th>
-                                                                    <th>Board/Uni</th>
-                                                                </tr>
-                                                            </thead>
-                                                            @foreach (var b in Model.b)
-                                                            {
-                                                                <tr>
-                                                                    <td>@b.edu_degree</td>
-                                                                    <td>@b.edu_totalMarks</td>
-                                                                    <td>@b.edu_marksObt</td>
-                                                                    <td>@b.edu_session</td>
-                                                                    <td>@b.edu_board_uni</td>
-                                                                </tr>
-                                                            }
-                                                        </table>
+
+                                                    <div class="form-group" id="education">
+                                                        <label class="col-sm-2 control-label">Education: </label>
+                                                        <div class="col-sm-8">
+                                                            <table class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Degree</th>
+                                                                        <th>Total Marks</th>
+                                                                        <th>Obt. Marks</th>
+                                                                        <th>Year of Passing</th>
+                                                                        <th>Board/Uni</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                @foreach (var b in Model.b)
+                                                                {
+                                                                    <tr>
+                                                                        <td>@b.edu_degree</td>
+                                                                        <td>@b.edu_totalMarks</td>
+                                                                        <td>@b.edu_marksObt</td>
+                                                                        <td>@b.edu_session</td>
+                                                                        <td>@b.edu_board_uni</td>
+                                                                    </tr>
+                                                                }
+                                                            </table>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -163,21 +148,21 @@
                                                             <input type="text" value="@s.std_nationality" name="nationality" id="nationality" class="form-control" disabled>
                                                         </div>
                                                     </div>
-                                            }
-                                            foreach (var a in Model.c)
-                                            {
-                                                foreach(var x in Model.a)
-                                                {
-                                                    if (a.dep_id == x.dep_id)
-                                                    {
-                                                    <div class="form-group">
-                                                        <label class="col-sm-2 control-label">Institute/Department : </label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" value="@x.dep_name" name="dep" class="form-control" disabled>
-                                                        </div>
-                                                    </div>
-                                                    }
                                                 }
+                                                foreach (var a in Model.c)
+                                                {
+                                                    foreach (var x in Model.a)
+                                                    {
+                                                        if (a.dep_id == x.dep_id)
+                                                        {
+                                                            <div class="form-group">
+                                                                <label class="col-sm-2 control-label">Institute/Department : </label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" value="@x.dep_name" name="dep" class="form-control" disabled>
+                                                                </div>
+                                                            </div>
+                                                        }
+                                                    }
 
                                                     <div class="form-group">
                                                         <label class="col-sm-2 control-label">Degree in which Admitted: </label>
@@ -210,9 +195,10 @@
                                                             <input type="text" value="@a.session_batch" name="session" id="Session" class="form-control" placeholder="Session" disabled>
                                                         </div>
                                                     </div>
-                                                    }
-                                                    }
-</form>
+                                                }
+                                            }
+                                        </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -220,4 +206,3 @@
             </div>
         </div>
     </div>
-</div>

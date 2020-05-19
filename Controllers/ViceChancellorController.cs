@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Dynamic;
 using Online_Hostel_Management_System.Models;
 
 namespace Online_Hostel_Management_System.Controllers
@@ -29,31 +30,47 @@ namespace Online_Hostel_Management_System.Controllers
             }
             else return RedirectToAction("Index", "Home");
         }
+        public ActionResult View_Users()
+        {
+            if (Session["user_role"].ToString() == "vc" || Session["user_role"].ToString() == "admin")
+            {
+                var a = dc.View_Users.ToList();
+                return View(a);
+            }
+            else return RedirectToAction("Index", "Home");
+        }
+        public ActionResult See_Info(int id)
+        {
+            if (Session["user_role"].ToString() == "vc" || Session["user_role"].ToString() == "admin")
+            {
+                dynamic model = new ExpandoObject();
+                model.a = dc.Allottments.First(x => x.allottee_id == id);
+                var a = dc.Allottments.First(x => x.allottee_id == id);
+                model.b = dc.Students.Where(y => y.std_cnic == a.std_cnic);
+                var t = dc.Allottments.First(r => r.std_cnic == a.std_cnic);
+                model.c = dc.Hostels.Where(z => z.hostel_id == t.hostel_id);
+                model.d = dc.Rooms.Where(c => c.hostel_id == t.hostel_id && c.room_id == t.room_id);
+                model.e = dc.Educations.Where(x => x.std_cnic == a.std_cnic).ToList();
+                model.f = dc.Sessions.Where(x => x.std_cnic == a.std_cnic && x.session_activeStatus == "active");
+                model.g = dc.Departments.ToList();
+                return View(model);
+            }
+            else return RedirectToAction("Index", "Home");
+        }
+        public ActionResult View_Allottments()
+        {
+            if (Session["user_role"].ToString() == "vc" || Session["user_role"].ToString() == "admin")
+            {
+                var a = dc.View_Allottments.Where(s => s.allotte_activeStatus == "active").ToList();
+                return View(a);
+            }
+            else return RedirectToAction("Index", "Home"); ;
+        }
         public ActionResult Change_password()
         {
             if (Session["user_role"].ToString() == "vc" || Session["user_role"].ToString() == "admin")
             {
                 return View();
-            }
-            else return RedirectToAction("Index", "Home");
-        }
-        public ActionResult Change()
-        {
-            if (Session["user_role"].ToString() == "vc" || Session["user_role"].ToString() == "admin")
-            {
-                string old = Request["oldpassword"];
-                string newpassword = Request["newpassword"];
-                System.Text.ASCIIEncoding encryptpwd = new System.Text.ASCIIEncoding();
-                byte[] passwordArray = encryptpwd.GetBytes(old);
-                int userid = (int)Session["user_id"];
-                var a = dc.Users.First(x => x.user_id == userid);
-                if (a != null && a.user_passwd == passwordArray)
-                {
-                    byte[] newPasswordArray = encryptpwd.GetBytes(newpassword);
-                    a.user_passwd = newPasswordArray;
-                    dc.SubmitChanges();
-                }
-                return View("View_hostels");
             }
             else return RedirectToAction("Index", "Home");
         }

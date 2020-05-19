@@ -1,20 +1,10 @@
 ﻿<div class="ts-main-content">
-<div class="brand clearfix">
-	<a href="#" class="logo text-white" style="font-size:16px;">Hostel Management System</a>
-	<ul class="ts-profile-nav">
-		<li class="ts-account">
-				<li><a href="/Home/Logout">Logout</a></li>
-	</ul>
-</div>
-<nav class="ts-sidebar">
-    <nav class="ts-sidebar">
-        <ul class="ts-sidebar-menu">
-            <li class="ts-label">Main</li>
-            <li><a href="/ViceChancellor/View_hostels"><i class="fa fa-bed"></i>View Hostels</a></li>
-            <li><a href="/ViceChancellor/Change_password"><i class="fa fa-key"></i>Change Password</a></li>
-        </ul>
-    </nav>
-</nav>
+    <div>
+        @Html.Partial("Header")
+    </div>
+    <div>
+        @Html.Partial("VC_Sidebar")
+    </div>
 		<div class="content-wrapper">
 			<div class="container-fluid">
 				<div class="row">
@@ -49,14 +39,4 @@
 				</div>
 			</div>
 			</div>
-		</div>
-	<!-- Loading Scripts -->
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap-select.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.dataTables.min.js"></script>
-	<script src="js/dataTables.bootstrap.min.js"></script>
-	<script src="js/Chart.min.js"></script>
-	<script src="js/fileinput.js"></script>
-	<script src="js/chartData.js"></script>
-	<script src="js/main.js"></script>
+		</div>s

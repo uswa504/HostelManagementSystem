@@ -72,58 +72,5 @@ namespace Online_Hostel_Management_System.Controllers
             }
             else return RedirectToAction("Index", "Home");
         }
-        public ActionResult Change()
-        {
-            if (Session["user_role"].ToString() == "chc")
-            {
-                string old = Request["oldpassword"];
-                string newpassword = Request["newpassword"];
-                System.Text.ASCIIEncoding encryptpwd = new System.Text.ASCIIEncoding();
-                byte[] passwordArray = encryptpwd.GetBytes(old);
-                int userid = (int)Session["user_id"];
-                var a = dc.Users.First(x => x.user_id == userid);
-                if (a != null && a.user_passwd == passwordArray)
-                {
-                    byte[] newPasswordArray = encryptpwd.GetBytes(newpassword);
-                    a.user_passwd = newPasswordArray;
-                    dc.SubmitChanges();
-                }
-                return View("View_hostels");
-            }
-            else return RedirectToAction("Index", "Home");
-        }
-        public ActionResult update_hostel(int id)
-        {
-            if (Session["user_role"].ToString() == "chc" || Session["user_role"].ToString() == "admin")
-            {
-                var a = dc.Hostels.First(x => x.hostel_id == id);
-                return View(a);
-            }
-            else return RedirectToAction("Index", "Home");
-        }
-        public ActionResult UpdateHostel(int id)
-        {
-            if (Session["user_role"].ToString() == "chc" || Session["user_role"].ToString() == "admin")
-            {
-                int hostel_number = int.Parse(Request["hostel_number"]);
-                string hname = Request["hostel_name"];
-                string hloc = Request["hlocation"];
-                string htype = Request["htype"];
-                string hstatus = Request["hstatus"];
-                var s = dc.Hostels.First(x => x.hostel_id == id);
-                if (s != null)
-                {
-                    s.hostel_no = hostel_number;
-                    s.hostel_name = hname;
-                    s.hostel_location = hloc;
-                    s.hostel_type = htype;
-                    s.hostel_activeStatus = hstatus;
-                    dc.SubmitChanges();
-                    return RedirectToAction("View_hostels");
-                }
-                else return RedirectToAction("View_hostels");
-            }
-            else return RedirectToAction("Index", "Home");
-        }
     }
 }

@@ -1,20 +1,8 @@
 ﻿@model Online_Hostel_Management_System.Models.Hostel
-<div class="brand clearfix">
-    <a href="#" class="logo text-white" style="font-size:16px;">Hostel Management System</a>
-    <ul class="ts-profile-nav">
-        <li class="ts-account">
-        <li><a href="/Home/Logout">Logout</a></li>
-    </ul>
-</div>
 <div class="ts-main-content">
-    <nav class="ts-sidebar">
-        <ul class="ts-sidebar-menu">
-            <li class="ts-label">Main</li>
-            <li><a href="/ChairmanHallCouncil/Addhostel"><i class="fa fa-building"></i>Add Hostel</a></li>
-            <li><a href="/ChairmanHallCouncil/View_hostels"><i class="fa fa-bed"></i>View Hostels</a></li>
-            <li><a href="/ChairmanHallCouncil/Change_password"><i class="fa fa-key"></i>Change Password</a></li>
-        </ul>
-    </nav>
+    <div>
+        @Html.Partial("Header");
+    </div>   
     <div class="content-wrapper">
         <div class="container-fluid">
             <div class="row">

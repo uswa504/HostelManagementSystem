@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Web.Security;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Online_Hostel_Management_System.Models;
 
@@ -87,9 +86,48 @@ namespace Online_Hostel_Management_System.Controllers
                 return RedirectToAction("Index", "Home");
             }
         }
+        public ActionResult Change()
+        {
+            string old = Request["oldpassword"];
+            string newpassword = Request["newpassword"];
+            System.Text.ASCIIEncoding encryptpwd = new System.Text.ASCIIEncoding();
+            byte[] passwordArray = encryptpwd.GetBytes(old);
+            int userid = (int)Session["user_id"];
+            var a = dc.Users.First(x => x.user_id == userid);
+            if (a != null && a.user_passwd == passwordArray)
+            {
+                byte[] newPasswordArray = encryptpwd.GetBytes(newpassword);
+                a.user_passwd = newPasswordArray;
+                dc.SubmitChanges();
+                if(a.user_role == "hostel_clerk") {
+                    return View("Change_password","HostelClerk");
+                }
+                else if (a.user_role == "warden")
+                {
+                    return View("Change_password", "Warden");
+                }
+                else if (a.user_role == "superitendant")
+                {
+                    return View("Change_password", "Superitendant");
+                }
+                else if (a.user_role == "student")
+                {
+                    return View("Change_password", "Student");
+                }
+                else if (a.user_role == "vc")
+                {
+                    return View("Change_password", "ViceChancellor");
+                }
+                else if (a.user_role == "chc")
+                {
+                    return View("Change_password", "ChairmanHallCouncil");
+                }
+            }
+            return RedirectToAction("Index");
+        }
         public ActionResult Logout()
         {
-            Session.Abandon();
+            Session.Clear();
             return RedirectToAction("Index");
         }
     }

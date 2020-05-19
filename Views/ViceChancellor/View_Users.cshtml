@@ -3,7 +3,7 @@
         @Html.Partial("Header");
     </div>
     <div>
-        @Html.Partial("HC_Clerk_Sidebar");
+        @Html.Partial("VC_Sidebar");
     </div>
     <div class="content-wrapper">
         <div class="container-fluid">
@@ -23,27 +23,19 @@
                                         <th>Hostel Assigned</th>
                                         <th>Time of Addition</th>
                                         <th>User added by</th>
-                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 @foreach (var s in Model)
                                 {
-                            <tr>
-                                <td>@s.user_id</td>
-                                <td>@s.user_name</td>
-                                <td>@s.user_role</td>
-                                <td><select name="status">
-    <option value="@s.user_activeStatus">@s.user_activeStatus</option>
-    <option value="active">active</option>
-    <option value="inactive">inactive</option>
-</select></td>
-                                <td>@s.hostel_id</td>
-                                <td>@s.time_of_addition</td>
-                                <td>@s.USERNAME</td>
-                                <td>
-                                    <a class="see-details" href="/HallCouncilClerk/UpdateUser/@s.user_id">Update</a>
-                                </td>
-                            </tr>
+                                    <tr>
+                                        <td>@s.user_id</td>
+                                        <td>@s.user_name</td>
+                                        <td>@s.user_role</td>
+                                        <td>@s.user_activeStatus</td>
+                                        <td>@s.hostel_id</td>
+                                        <td>@s.time_of_addition</td>
+                                        <td>@s.USERNAME</td>
+                                    </tr>
                                 }
                             </table>
                         </div>
@@ -53,14 +45,3 @@
         </div>
     </div>
 </div>
-<!-- Loading Scripts -->
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap-select.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.dataTables.min.js"></script>
-<script src="js/dataTables.bootstrap.min.js"></script>
-<script src="js/Chart.min.js"></script>
-<script src="js/fileinput.js"></script>
-<script src="js/chartData.js"></script>
-<script src="js/main.js"></script>
-

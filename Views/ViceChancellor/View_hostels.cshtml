@@ -1,19 +1,11 @@
 ﻿
 <div class="ts-main-content">
-    <div class="brand clearfix">
-        <a href="#" class="logo text-white" style="font-size:16px;">Hostel Management System</a>
-        <ul class="ts-profile-nav">
-            <li class="ts-account">
-            <li><a href="/Home/Logout">Logout</a></li>
-        </ul>
+    <div>
+        @Html.Partial("Header")
     </div>
-    <nav class="ts-sidebar">
-        <ul class="ts-sidebar-menu">
-            <li class="ts-label">Main</li>
-            <li><a href="/ViceChancellor/View_hostels"><i class="fa fa-bed"></i>View Hostels</a></li>
-            <li><a href="/ViceChancellor/Change_password"><i class="fa fa-key"></i>Change Password</a></li>
-        </ul>
-    </nav>
+    <div>
+        @Html.Partial("VC_Sidebar")
+    </div>
     <div class="content-wrapper">
         <div class="container-fluid">
             <div class="row">
@@ -32,8 +24,6 @@
                                         <th>Hostel Type</th>
                                         <th>Time of Addition</th>
                                         <th>Hostel added by</th>
-                                        <th>Hostel Status</th>
-                                        <th>Total Rooms</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -47,8 +37,6 @@
                                         <td>@s.hostel_type</td>
                                         <td>@s.time_of_addition</td>
                                         <td>@s.user_name</td>
-                                        <td>@s.hostel_activeStatus</td>
-                                        <td>@s.hostel_roomCount</td>
                                         <td>
                                             <a class="see-details" href="/ViceChancellor/View_rooms/@s.hostel_id">View Rooms</a>
                                         </td>

@@ -1,21 +1,10 @@
-﻿<div class="brand clearfix">
-    <a href="#" class="logo text-white" style="font-size:16px;">Hostel Management System</a>
-    <ul class="ts-profile-nav">
-        <li class="ts-account">
-                <li><a href="/Home/Logout">Logout</a></li>
-    </ul>
-</div>
-<div class="ts-main-content">
-    <nav class="ts-sidebar">
-        <ul class="ts-sidebar-menu">
-            <li class="ts-label">Main</li>
-            <li><a href="/HallCouncilClerk/addhostel"><i class="fa fa-building"></i>Add Hostel</a></li>
-            <li><a href="/HallCouncilClerk/adduser"><i class="fa fa-user"></i>Add User</a></li>
-            <li><a href="/HallCouncilClerk/view_hostels"><i class="fa fa-bed"></i>View Hostels</a></li>
-            <li><a href="/HallCouncilClerk/viewusers"><i class="fa fa-users"></i>View Users</a></li>
-            <li><a href="/HallCouncilClerk/change_password"><i class="fa fa-key"></i>Change Password</a></li>
-        </ul>
-    </nav>
+﻿<div class="ts-main-content">
+    <div>
+        @Html.Partial("Header");
+    </div>
+    <div>
+        @Html.Partial("HC_Clerk_Sidebar");
+    </div>
     <div class="content-wrapper">
         <div class="container-fluid">
             <div class="row">
@@ -74,7 +63,7 @@
             </div>
         </div>
     </div>
-    </div>
+</div>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap-select.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
