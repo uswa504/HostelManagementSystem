@@ -203,8 +203,11 @@
     <Content Include="Views\ChairmanHallCouncil\View_hostels.cshtml" />
     <Content Include="Views\ChairmanHallCouncil\View_rooms.cshtml" />
     <Content Include="Views\ChairmanHallCouncil\Change_password.cshtml" />
-    <Content Include="Views\ChairmanHallCouncil\Update_hostel.cshtml" />
     <Content Include="Views\HostelClerk\Add.cshtml" />
+    <Content Include="Views\ChairmanHallCouncil\View_Allottments.cshtml" />
+    <Content Include="Views\ChairmanHallCouncil\View_Users.cshtml" />
+    <Content Include="Views\ChairmanHallCouncil\See_Info.cshtml" />
+    <Content Include="Views\ChairmanHallCouncil\AddUser.cshtml" />
     <None Include="Views\HostelClerk\Addroom.cshtml" />
     <Content Include="Views\HostelClerk\Change_password.cshtml" />
     <Content Include="Views\HostelClerk\View_rooms.cshtml" />
