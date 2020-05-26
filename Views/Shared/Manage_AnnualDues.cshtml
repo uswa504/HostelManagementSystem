@@ -1,0 +1,55 @@
+﻿@model dynamic
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="page-title" style="margin-top:5%">Manage Annual Dues</h2>
+                <div class="panel panel-default">
+                    <div class="panel-heading">All Room Details</div>
+                    <div class="panel-body">
+                        <table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Allotte Name</th>
+                                    <th>Amount</th>
+                                    <th>Fine(if any)</th>
+                                    <th>Year</th>
+                                    <th>Last date to submit</th>
+                                    <th>Paid Status</th>
+                                    <th>Paid Date</th>
+                                    <th>Recipt No.</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{ foreach (var x in Model.b)
+                                    {
+                                        <tr>
+                                            <td>@ViewBag.user</td>
+                                            <td><input name="amount" type="text" /></td>
+                                            <td><input name="fine" type="text" /></td>
+                                            <td>@x.dues_session_month</td>
+                                            <td><input name="last_date" type="month" /></td>
+                                            <td>
+                                                <select name="paid_status">
+                                                    <option value="unpaid"></option>
+                                                    <option value="paid"></option>
+                                                </select>
+                                            </td>
+                                            <td><input name="paid_date" type="month" /></td>
+                                            <td><input type="text" name="reciptno" /></td>
+
+                                            <td>
+                                                <a href="/Warden/Update/@x.allottee_id" class="link_black" title="Update">UpdateMess</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+﻿<div>
+    @Html.Partial("Header");
+</div>
+<div class="ts-main-content">
+   @Html.Partial("Superitendant_Sidebar");
+    <div class="content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="page-title">Mess Dues</h2>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">All Room Details</div>
+                        <div class="panel-body">
+                            <table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Allotte Name</th>
+                                        <th>Mess Dues</th>
+                                        <th>Month</th>
+                                        <th>Last date to submit</th>
+                                        <th>Paid Status</th>
+                                        <th>Paid Date</th>
+                                        <th>Recipt No.</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{ foreach (var x in Model)
+                                        {
+                                                                        <tr>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td>
+                                                                            </td>
+                                                                            <td>
+                                                                        </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

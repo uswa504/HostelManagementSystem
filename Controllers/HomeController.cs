@@ -125,6 +125,37 @@ namespace Online_Hostel_Management_System.Controllers
             }
             return RedirectToAction("Index");
         }
+        public ActionResult UserAdd()
+        {
+            if (Session["user_role"].ToString() == "superitendant" || Session["user_role"].ToString() == "warden")
+            {
+                int hostel = (int)Session["hostel"];
+                string name = Request["user_name"];
+                string passwd = Request["user_passwd"];
+                System.Text.ASCIIEncoding encryptpwd = new System.Text.ASCIIEncoding();
+                byte[] passwordArray = encryptpwd.GetBytes(passwd);
+                string role = "hostel_clerk";
+                /*var a = dc.Users.First(x=> x.user_name == name);
+                if(a != null)
+                {
+                    ViewBag.Message = "Username already taken";
+                }*/
+                User user = new User
+                {
+                    user_name = name,
+                    user_passwd = passwordArray,
+                    user_role = role,
+                    user_addedBy = (int)Session["user_id"],
+                    time_of_addition = DateTime.Now,
+                    user_activeStatus = "active",
+                    hostel_id = hostel
+                };
+                dc.Users.InsertOnSubmit(user);
+                dc.SubmitChanges();
+                return RedirectToAction("Adduser", "Superitendant");
+            }
+            else return RedirectToAction("Index", "Home");
+        }
         public ActionResult Logout()
         {
             Session.Clear();

@@ -1,14 +1,14 @@
-﻿@model dynamic
-<div>
+﻿<div>
     @Html.Partial("Header");
 </div>
 <div class="ts-main-content">
-    @Html.Partial("Warden_Sidebar");
+    @Html.Partial("HostelClerk_Sidebar");
     <div class="content-wrapper">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="page-title" style="margin-top:5%">Manage Annual Dues</h2>
+                    <h2 class="page-title">Manage Mess Dues</h2>
+                    <a class="btn btn-primary" name="generate" style="margin-bottom:2%" href="/Warden/Generate_MessRecord">Generate Mess Record</a>
                     <div class="panel panel-default">
                         <div class="panel-heading">All Room Details</div>
                         <div class="panel-body">
@@ -16,9 +16,8 @@
                                 <thead>
                                     <tr>
                                         <th>Allotte Name</th>
-                                        <th>Amount</th>
-                                        <th>Fine(if any)</th>
-                                        <th>Year</th>
+                                        <th>Mess Dues</th>
+                                        <th>Month</th>
                                         <th>Last date to submit</th>
                                         <th>Paid Status</th>
                                         <th>Paid Date</th>
@@ -27,13 +26,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @{ foreach (var x in Model.b)
+                                    @{ foreach (var x in Model)
                                         {
                                             <tr>
-                                                <td>@ViewBag.user</td>
-                                                <td><input name="amount" type="text" /></td>
-                                                <td><input name="fine" type="text" /></td>
-                                                <td>@x.dues_session_month</td>
+                                                <td class="col-sm-2"></td>
+                                                <td><input name="mess_amount" type="text" /></td>
+                                                <td><input class="col-sm-6" name="mess_month" type="month" /></td>
                                                 <td><input name="last_date" type="month" /></td>
                                                 <td>
                                                     <select name="paid_status">
@@ -42,10 +40,9 @@
                                                     </select>
                                                 </td>
                                                 <td><input name="paid_date" type="month" /></td>
-                                                <td><input type="text" name="reciptno" /></td>
-
+                                                <td><input class="col-sm-2" type="text" name="reciptno" /></td>
                                                 <td>
-                                                    <a href="/Warden/UpdateAnnual/@x.allottee_id" class="link_black" title="Update">UpdateMess</a>
+                                                    <a href="/Warden/UpdateMess/" class="link_black" title="Update">UpdateMess</a>
                                                 </td>
                                             </tr>
                                         }

@@ -95,7 +95,7 @@ namespace Online_Hostel_Management_System.Controllers
             }
             else return RedirectToAction("Index", "Home");
         }
-        public ActionResult Update(int id)
+        public ActionResult UpdateAnnual(int id)
         {
             if (Session["user_role"].ToString() == "warden" || Session["user_role"].ToString() == "admin")
             {
