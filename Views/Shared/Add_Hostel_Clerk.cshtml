@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <h2 class="page-title" style="margin-top: 5%">Add User</h2>
+                <h2 class="page-title" style="margin-top:5%">Add User</h2>
                 <div class="panel panel-default">
                     <div class="panel-heading">Add User</div>
                     <div class="panel-body">
@@ -41,3 +41,27 @@
         </div>
     </div>
 </div>
+<script>
+    var result = false;
+    $('input[name=user_name]').blur(function (e) {
+        $.ajax({
+            url: "/Home/checkUser?username=" + $('input[name=user_name]').val(),
+            type: "GET",
+            success: function (data) {
+                if (data.user_available) {
+                    window.alert("Username already existing!")
+                } else {
+                    result = true;
+                }
+            }
+        });
+    });
+
+    $("form").submit(function (e) {
+        if (!result) {
+            alert("Username already existing!")
+        }
+        return result;
+    })
+
+</script>

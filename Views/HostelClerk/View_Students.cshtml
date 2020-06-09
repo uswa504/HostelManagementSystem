@@ -19,6 +19,7 @@
                                         <th>Student CNIC</th>
                                         <th>Student Name</th>
                                         <th>Allottment Status</th>
+                                        <th>Recent Session</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -28,6 +29,7 @@
                                         <td>@s.std_cnic</td>
                                         <td>@s.std_name</td>
                                         <td>inactive</td>
+                                        <td>@s.session_startDate - @s.session_endDate</td>
                                         <td><a href="/HostelClerk/Add/@s.std_id">Add Allottment</a></td>
                                     </tr>
 

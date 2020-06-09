@@ -23,9 +23,29 @@ namespace Online_Hostel_Management_System.Controllers
                 var t = dc.Allottments.First(y => y.std_cnic == cnic);
                 model.c = dc.Hostels.Where(z => z.hostel_id == t.hostel_id);
                 model.d = dc.Rooms.Where(c => c.hostel_id == t.hostel_id && c.room_id == t.room_id);
-                var q = dc.Sessions.First(x => x.std_cnic == cnic && x.session_activeStatus == "active");
-                //ViewBag.stay_duration = (q.session_endDate - q.session_startDate)+"years";
                 return View(model);
+            }
+            else return RedirectToAction("Index", "Home");
+        }
+        public ActionResult View_AnnualDues()
+        {
+            if (Session["user_role"].ToString() == "student")
+            {
+                decimal cnic = (decimal)Session["user_cnic"];
+                var x = dc.Allottments.First(q => q.std_cnic == cnic);
+                var a = dc.Dues.Where(s => s.allottee_id == x.allottee_id && s.dues_type == "annual").ToList();
+                return View(a);
+            }
+            else return RedirectToAction("Index", "Home");
+        }
+        public ActionResult View_MessDues()
+        {
+            if (Session["user_role"].ToString() == "student")
+            {
+                decimal cnic = (decimal)Session["user_cnic"];
+                var x = dc.Allottments.First(q => q.std_cnic == cnic);
+                var a = dc.Dues.Where(s => s.allottee_id == x.allottee_id && s.dues_type == "mess").ToList();
+                return View(a);
             }
             else return RedirectToAction("Index", "Home");
         }

@@ -9,7 +9,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="page-title" style="margin-top: 5%">Add User</h2>
+                    <h2 class="page-title">Add User</h2>
                     <div class="panel panel-default">
                         <div class="panel-heading">Add User</div>
                         <div class="panel-body">
@@ -69,30 +69,21 @@
         </div>
     </div>
 </div>
-        < !--Loading Scripts-- >
-        @if (ViewBag.Message != null){
-            <script type="text/javascript">
-                         $("#submitButton").on("click", function () {
-                            alert("@ViewBag.Message");
-                        });
-            </script>
-
-        }
-        <script>
-            $(document).ready(function () {
-                $("#submitButton").on("click", function () {
-
-                    alert('User has been added succesfully');
-                });
-
-            });
-        </script>
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap-select.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/jquery.dataTables.min.js"></script>
-        <script src="js/dataTables.bootstrap.min.js"></script>
-        <script src="js/Chart.min.js"></script>
-        <script src="js/fileinput.js"></script>
-        <script src="js/chartData.js"></script>
-        <script src="js/main.js"></script>
+<script>
+    var result = false;
+    $('form').submit(function (e) {
+        $.ajax({
+            url: "/Home/checkUser?username=" + $('input[name=stud_username]').val(),
+            type: "GET",
+            success: function (data) {
+                if (!data.user_available) {
+                    window.alert("Username already existing!")
+                } else {
+                    console.log("aann")
+                    result = true;
+                }
+            }
+        })
+        return result;
+    })
+</script>

@@ -1,50 +1,47 @@
 ﻿<div class="ts-main-content">
     <div>
-        @Html.Partial("Header");
+        @Html.Partial("Header")
     </div>
     <div>
-        @Html.Partial("HC_Clerk_Sidebar");
+        @Html.Partial("Superitendant_Sidebar")
     </div>
     <div class="content-wrapper">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="page-title">Users</h2>
+                    <h2 class="page-title" style="margin-top: 5%">Allottments</h2>
                     <div class="panel panel-default">
-                        <div class="panel-heading">All Hostel Details</div>
+                        <div class="panel-heading">Room Details</div>
                         <div class="panel-body">
                             <table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
-                                        <th>User ID</th>
-                                        <th>User Name</th>
-                                        <th>User Role</th>
-                                        <th>User Status</th>
-                                        <th>Hostel Assigned</th>
+                                        <th>Allottee Id</th>
+                                        <th>Allottee Name</th>
+                                        <th>Allottee Type</th>
+                                        <th>Room No</th>
+                                        <th>Allottee Status</th>
                                         <th>Time of Addition</th>
-                                        <th>User added by</th>
+                                        <th>Allottment Added by</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 @foreach (var s in Model)
                                 {
-                            <tr>
-                                <td>@s.user_id</td>
-                                <td>@s.user_name</td>
-                                <td>@s.user_role</td>
-                                <td><select name="status">
-    <option value="@s.user_activeStatus">@s.user_activeStatus</option>
-    <option value="active">active</option>
-    <option value="inactive">inactive</option>
-</select></td>
-                                <td>@s.hostel_id</td>
-                                <td>@s.time_of_addition</td>
-                                <td>@s.USERNAME</td>
-                                <td>
-                                    <a class="see-details" href="/HallCouncilClerk/UpdateUser/@s.user_id">Update</a>
-                                </td>
-                            </tr>
+                                    <tr>
+                                        <td>@s.allottee_id</td>
+                                        <td>@s.std_name</td>
+                                        <td>@s.allotte_type</td>
+                                        <td>@s.room_no</td>
+                                        <td>@s.allotte_activeStatus </td>
+                                        <td>@s.time_of_addition</td>
+                                        <td>@s.user_name</td>
+                                        <td>
+                                            <a href="/Superitendant/View_Info/@s.allottee_id">See Info</a>
+                                        </td>
+                                    </tr>
                                 }
+
                             </table>
                         </div>
                     </div>
@@ -63,4 +60,3 @@
 <script src="js/fileinput.js"></script>
 <script src="js/chartData.js"></script>
 <script src="js/main.js"></script>
-

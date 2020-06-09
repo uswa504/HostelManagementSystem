@@ -20,6 +20,33 @@ namespace Online_Hostel_Management_System.Controllers
             }
             else return RedirectToAction("Index", "Home");
         }
+        public ActionResult View_Allottment()
+        {
+            if (Session["user_role"].ToString() == "warden" || Session["user_role"].ToString() == "admin")
+            {
+                int hostel = (int)Session["hostel"];
+                var a = dc.View_Allottments.Where(s => s.hostel_id == hostel && s.allotte_activeStatus == "active").ToList();
+                return View(a);
+            }
+            else return RedirectToAction("Index", "Home"); ;
+        }
+        public ActionResult View_Info(int id)
+        {
+            if (Session["user_role"].ToString() == "warden" || Session["user_role"].ToString() == "admin")
+            {
+                dynamic model = new ExpandoObject();
+                var a = dc.Allottments.First(x => x.allottee_id == id);
+                decimal cnic = (decimal)a.std_cnic;
+                model.b = dc.Educations.Where(x => x.std_cnic == cnic).ToList();
+                model.c = dc.Sessions.Where(x => x.std_cnic == cnic && x.session_activeStatus == "active");
+                var t = dc.Sessions.First(x => x.std_cnic == cnic && x.session_activeStatus == "active");
+                var z = dc.Departments.First(b => b.dep_id == t.dep_id);
+                ViewBag.dep = z.dep_name;
+                model.d = dc.Students.Where(x => x.std_cnic == cnic);
+                return View(model);
+            }
+            else return RedirectToAction("Index", "Home");
+        }
         public ActionResult UserAdd()
         {
             if (Session["user_role"].ToString() == "warden" || Session["user_role"].ToString() == "admin")

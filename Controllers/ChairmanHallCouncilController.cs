@@ -71,11 +71,6 @@ namespace Online_Hostel_Management_System.Controllers
                     hostel = int.Parse(Request["hostel"]);
                 }
                 else hostel = null;
-                /*var a = dc.Users.First(x=> x.user_name == name);
-                if(a != null)
-                {
-                    ViewBag.Message = "Username already taken";
-                }*/
                 User user = new User
                 {
                     user_name = name,
@@ -88,7 +83,7 @@ namespace Online_Hostel_Management_System.Controllers
                 };
                 dc.Users.InsertOnSubmit(user);
                 dc.SubmitChanges();
-                return RedirectToAction("adduser", "HallCouncilClerk");
+                return RedirectToAction("adduser", "ChairmanHallCouncil");
             }
             else return RedirectToAction("Index", "Home");
         }

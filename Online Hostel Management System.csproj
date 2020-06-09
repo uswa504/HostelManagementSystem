@@ -121,6 +121,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ContentRepository.cs" />
     <Compile Include="Controllers\HallCouncilClerkController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HostelClerkController.cs" />
@@ -245,6 +246,10 @@
     <Content Include="Views\Superitendant\View_AnnualRecords.cshtml" />
     <Content Include="Views\Superitendant\Manage_AnnualDues.cshtml" />
     <Content Include="Views\Superitendant\Manage_MessDues.cshtml" />
+    <Content Include="Views\Superitendant\View_Allottment.cshtml" />
+    <Content Include="Views\Superitendant\View_Info.cshtml" />
+    <Content Include="Views\Student\View_AnnualDues.cshtml" />
+    <Content Include="Views\Student\View_MessDues.cshtml" />
     <None Include="Views\Warden\Manage_MessDues.cshtml" />
     <Content Include="Views\ChairmanHallCouncil\Addhostel.cshtml" />
     <None Include="Views\HallCouncilClerk\addhostel.cshtml" />
@@ -269,8 +274,12 @@
     <Content Include="Views\Warden\View_rooms.cshtml" />
     <Content Include="Views\Warden\View_StudentsMess.cshtml" />
     <Content Include="Views\Warden\View_AnnualRecords.cshtml" />
+    <Content Include="Views\Warden\View_Allottment.cshtml" />
+    <Content Include="Views\Warden\View_Info.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Content\img\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

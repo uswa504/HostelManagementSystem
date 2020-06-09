@@ -61,8 +61,6 @@
                                     <input class="btn btn-primary" type="submit" id="submitButton" name="submit" value="Add">
                                 </div>
                             </form>
-
-
                         </div>
                     </div>
                 </div>
@@ -70,30 +68,27 @@
         </div>
     </div>
 </div>
-        < !--Loading Scripts-- >
-        @if (ViewBag.Message != null){
-            <script type="text/javascript">
-                         $("#submitButton").on("click", function () {
-                            alert("@ViewBag.Message");
-                        });
-            </script>
+<script>
+    var result = false;
+    $('input[name=user_name]').blur(function (e) {
+        $.ajax({
+            url: "/Home/checkUser?username=" + $('input[name=user_name]').val(),
+            type: "GET",
+            success: function (data) {
+                if (data.user_available) {
+                    window.alert("Username already existing!")
+                } else {
+                    result = true;
+                }
+            }
+        });
+    });
 
+    $("form").submit(function (e) {
+        if (!result) {
+            alert("Username already existing!")
         }
-        <script>
-            $(document).ready(function () {
-                $("#submitButton").on("click", function () {
+        return result;
+    })
 
-                    alert('User has been added succesfully');
-                });
-
-            });
-        </script>
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap-select.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/jquery.dataTables.min.js"></script>
-        <script src="js/dataTables.bootstrap.min.js"></script>
-        <script src="js/Chart.min.js"></script>
-        <script src="js/fileinput.js"></script>
-        <script src="js/chartData.js"></script>
-        <script src="js/main.js"></script>
+</script>

@@ -13,7 +13,35 @@ namespace Online_Hostel_Management_System.Controllers
         {
             return View();
         }
-       public ActionResult Login()
+        public ActionResult checkUser(string username) 
+        {
+            try
+            {
+                var obj = dc.Users.First(x => x.user_name == username);
+                return Json(new { user_available = true }, JsonRequestBehavior.AllowGet);
+            } catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return Json(new { user_available = false }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        public ActionResult checkRoom(int num)
+        {
+            try
+            {
+                var obj = dc.Rooms.First(x => x.room_id == num);
+                int count = dc.Allottments.Count(x => x.room_id == num);
+                if (count < obj.room_capacity)
+                    return Json(new { room_available = true}, JsonRequestBehavior.AllowGet);
+                else return Json(new { room_available = false }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return Json(new { room_available = false }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        public ActionResult Login()
         {
             string user_name = Request["username"];
             string user_passwd = Request["password"];
@@ -135,11 +163,6 @@ namespace Online_Hostel_Management_System.Controllers
                 System.Text.ASCIIEncoding encryptpwd = new System.Text.ASCIIEncoding();
                 byte[] passwordArray = encryptpwd.GetBytes(passwd);
                 string role = "hostel_clerk";
-                /*var a = dc.Users.First(x=> x.user_name == name);
-                if(a != null)
-                {
-                    ViewBag.Message = "Username already taken";
-                }*/
                 User user = new User
                 {
                     user_name = name,
@@ -152,7 +175,14 @@ namespace Online_Hostel_Management_System.Controllers
                 };
                 dc.Users.InsertOnSubmit(user);
                 dc.SubmitChanges();
-                return RedirectToAction("Adduser", "Superitendant");
+                if (Session["user_role"].ToString() == "superitendant") {
+                    return RedirectToAction("Adduser", "Superitendant");
+                }
+                else if (Session["user_role"].ToString() == "warden")
+                {
+                    return RedirectToAction("Adduser", "Warden");
+                }
+                else return RedirectToAction("Index", "Home");
             }
             else return RedirectToAction("Index", "Home");
         }

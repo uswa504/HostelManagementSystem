@@ -1,0 +1,45 @@
+﻿<div>
+    @Html.Partial("Header")
+</div>
+<div class="ts-main-content">
+    <div>
+        @Html.Partial("Student_Sidebar")
+    </div>
+    <div class="content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="page-title" style="margin-top:5%">Mess Dues</h2>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Mess Dues Details</div>
+                        <div class="panel-body">
+                            <table class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Year</th>
+                                        <th>Amount</th>
+                                        <th>Last date to submit</th>
+                                        <th>Paid Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{ foreach (var x in Model)
+                                        {
+                                            <tr>
+                                                <td>@x.dues_session_month</td>
+                                                <td>@x.dues_amount</td>
+                                                <td>@x.dues_lastDate</td>
+                                                <td>@x.dues_paidStatus</td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

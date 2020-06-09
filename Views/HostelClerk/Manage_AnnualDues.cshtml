@@ -17,7 +17,6 @@
                                     <tr>
                                         <th>Allotte Name</th>
                                         <th>Amount</th>
-                                        <th>Fine(if any)</th>
                                         <th>Year</th>
                                         <th>Last date to submit</th>
                                         <th>Paid Status</th>
@@ -32,7 +31,6 @@
                                             <tr>
                                                 <td>@ViewBag.user</td>
                                                 <td><input name="amount" type="text" /></td>
-                                                <td><input name="fine" type="text" /></td>
                                                 <td>@x.dues_session_month</td>
                                                 <td><input name="last_date" type="month" /></td>
                                                 <td>
@@ -45,7 +43,7 @@
                                                 <td><input type="text" name="reciptno" /></td>
 
                                                 <td>
-                                                    <a href="/Warden/UpdateAnnual/@x.allottee_id" class="link_black" title="Update">UpdateMess</a>
+                                                    <a href="/Warden/UpdateAnnual/@x.allottee_id" class="link_black" title="Update">UpdateAnnual</a>
                                                 </td>
                                             </tr>
                                         }
