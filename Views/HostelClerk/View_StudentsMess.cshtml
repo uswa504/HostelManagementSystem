@@ -24,20 +24,22 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @{ foreach (var x in Model)
+                                    @{int i = 0;}
+                                    @{ foreach (var x in ViewBag.data)
                                         {
-                                                                        <tr>
-                                                                            <td></td>
-                                                                            <td></td>
-                                                                            <td></td>
-                                                                            <td></td>
-                                                                            <td></td>
-                                                                            <td></td>
-                                                                            <td></td>
-                                                                            <td>
-                                                                            </td>
-                                                                            <td>
-                                                                        </tr>
+                                            foreach (var g in x)
+                                            {
+                                                <tr>
+                                                    <td>@ViewBag.names[i]</td>
+                                                    <td>@g.dues_amount</td>
+                                                    <td>@g.dues_session_month</td>
+                                                    <td>@g.dues_lastDate</td>
+                                                    <td>@g.dues_paidStatus</td>
+                                                    <td>@g.dues_paidDate</td>
+                                                    <td>@g.dues_recipt_no</td>
+                                                </tr>
+                                            }
+                                            i++;
                                         }
                                     }
                                 </tbody>

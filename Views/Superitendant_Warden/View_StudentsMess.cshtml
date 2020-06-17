@@ -1,14 +1,13 @@
-﻿@model dynamic
-<div>
+﻿<div>
     @Html.Partial("Header");
 </div>
 <div class="ts-main-content">
-    @Html.Partial("Superitendant_Sidebar");
+   @Html.Partial("Superitendant_Sidebar");
     <div class="content-wrapper">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="page-title">Manage Annual Dues</h2>
+                    <h2 class="page-title">Mess Dues</h2>
                     <div class="panel panel-default">
                         <div class="panel-heading">All Room Details</div>
                         <div class="panel-body">
@@ -16,28 +15,31 @@
                                 <thead>
                                     <tr>
                                         <th>Allotte Name</th>
-                                        <th>Amount</th>
-                                        <th>Fine(if any)</th>
-                                        <th>Year</th>
-                                        <th>Last date</th>
+                                        <th>Mess Dues</th>
+                                        <th>Month</th>
+                                        <th>Last date to submit</th>
                                         <th>Paid Status</th>
                                         <th>Paid Date</th>
                                         <th>Recipt No.</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @{ foreach (var x in Model.b)
+                                    @{int i = 0;}
+                                    @{ foreach (var x in ViewBag.data)
                                         {
-                                            <tr>
-                                                <td>@ViewBag.user</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
+                                            foreach (var g in x)
+                                            {
+                                                <tr>
+                                                    <td>@ViewBag.names[i]</td>
+                                                    <td>@g.dues_amount</td>
+                                                    <td>@g.dues_session_month</td>
+                                                    <td>@g.dues_lastDate</td>
+                                                    <td>@g.dues_paidStatus</td>
+                                                    <td>@g.dues_paidDate</td>
+                                                    <td>@g.dues_recipt_no</td>
+                                                </tr>
+                                            }
+                                            i++;
                                         }
                                     }
                                 </tbody>

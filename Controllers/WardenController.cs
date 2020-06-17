@@ -107,18 +107,22 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult Manage_AnnualDues()
         {
-            if (Session["user_role"].ToString() == "warden" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"].ToString() == "hostel_clerk" || Session["user_role"].ToString() == "admin")
             {
+                List<List<Due>> data = new List<List<Due>>();
+                List<string> names = new List<string>();
                 int id = (int)Session["hostel"];
-                dynamic model = new ExpandoObject();
                 var a = dc.Allottments.Where(x => x.hostel_id == id && x.allotte_activeStatus == "active");
                 foreach (var x in a)
                 {
                     var s = dc.Students.First(p => p.std_cnic == x.std_cnic);
-                    ViewBag.user = s.std_name;
-                    model.b = dc.Dues.Where(d => d.allottee_id == x.allottee_id && d.dues_type == "annual");
+                    var b = dc.Dues.Where(d => d.allottee_id == x.allottee_id && d.dues_type == "annual").ToList();
+                    data.Add(b);
+                    names.Add(s.std_name);
                 }
-                return View(model);
+                ViewBag.names = names;
+                ViewBag.data = data;
+                return View();
             }
             else return RedirectToAction("Index", "Home");
         }

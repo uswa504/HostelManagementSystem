@@ -16,20 +16,6 @@
       <Association Name="Student_Allottment" Member="Student" ThisKey="std_cnic" OtherKey="std_cnic" Type="Student" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.[User]" Member="Users">
-    <Type Name="User">
-      <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="user_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="user_passwd" Type="System.Data.Linq.Binary" DbType="Binary(50)" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="user_role" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="user_addedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="time_of_addition" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="user_activeStatus" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="hostel_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="User_Student" Member="Students" ThisKey="user_id" OtherKey="user_id" Type="Student" />
-      <Association Name="Hostel_User" Member="Hostel" ThisKey="hostel_id" OtherKey="hostel_id" Type="Hostel" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Department" Member="Departments">
     <Type Name="Department">
       <Column Name="dep_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -49,8 +35,8 @@
       <Column Name="time_of_addition" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="hostel_activeStatus" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Association Name="Hostel_Allottment" Member="Allottments" ThisKey="hostel_id" OtherKey="hostel_id" Type="Allottment" />
-      <Association Name="Hostel_User" Member="Users" ThisKey="hostel_id" OtherKey="hostel_id" Type="User" />
       <Association Name="Hostel_Room" Member="Rooms" ThisKey="hostel_id" OtherKey="hostel_id" Type="Room" />
+      <Association Name="Hostel_User" Member="Users" ThisKey="hostel_id" OtherKey="hostel_id" Type="User" />
     </Type>
   </Table>
   <Table Name="dbo.Room" Member="Rooms">
@@ -215,6 +201,20 @@
       <Association Name="Student_Education" Member="Educations" ThisKey="std_cnic" OtherKey="std_cnic" Type="Education" />
       <Association Name="Student_Session" Member="Sessions" ThisKey="std_cnic" OtherKey="std_cnic" Type="Session" />
       <Association Name="User_Student" Member="User" ThisKey="user_id" OtherKey="user_id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[User]" Member="Users">
+    <Type Name="User">
+      <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="user_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="user_passwd" Type="System.Data.Linq.Binary" DbType="Binary(50)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="user_role" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="user_addedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="time_of_addition" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="user_activeStatus" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="hostel_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="User_Student" Member="Students" ThisKey="user_id" OtherKey="user_id" Type="Student" />
+      <Association Name="Hostel_User" Member="Hostel" ThisKey="hostel_id" OtherKey="hostel_id" Type="Hostel" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

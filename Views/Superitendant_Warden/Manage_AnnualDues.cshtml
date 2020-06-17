@@ -1,14 +1,14 @@
-﻿<div>
+﻿@model dynamic
+<div>
     @Html.Partial("Header");
 </div>
 <div class="ts-main-content">
-    @Html.Partial("HostelClerk_Sidebar");
+    @Html.Partial("Superitendant_Sidebar");
     <div class="content-wrapper">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="page-title">Manage Mess Dues</h2>
-                    <a class="btn btn-primary" name="generate" style="margin-bottom:2%" href="/HostelClerk/Generate_MessRecord">Generate Mess Record</a>
+                    <h2 class="page-title">Manage Annual Dues</h2>
                     <div class="panel panel-default">
                         <div class="panel-heading">All Room Details</div>
                         <div class="panel-body">
@@ -16,8 +16,8 @@
                                 <thead>
                                     <tr>
                                         <th>Allotte Name</th>
-                                        <th>Mess Dues</th>
-                                        <th>Month</th>
+                                        <th>Amount</th>
+                                        <th>Year</th>
                                         <th>Last date to submit</th>
                                         <th>Paid Status</th>
                                         <th>Paid Date</th>
@@ -31,7 +31,7 @@
                                         {
                                             foreach (var g in x)
                                             {
-                                                var lastDate = "";
+                                                 var lastDate = "";
                                                 var paidDate = "";
                                                 if(g.dues_lastDate != null)
                                                 {
@@ -45,9 +45,9 @@
                                                 }
                                                 <tr>
                                                     <td>@ViewBag.names[i]</td>
-                                                    <td><input name="amount" value="@g.dues_amount" type="text" pattern="[0-9]*" title="Only Digits" style="width:50px" /></td>
+                                                    <td><input name="amount" type="text" style="width:50px" value="@g.dues_amount" pattern="[0-9]*" title="Only Digits"/></td>
                                                     <td>@g.dues_session_month</td>
-                                                    <td><input name="last_date" value="@lastDate" type="date" /></td>
+                                                    <td><input name="last_date" type="date" value="@lastDate"/></td>
                                                     <td>
                                                         <select name="paid_status">
                                                             <option value="@g.dues_paidStatus">@g.dues_paidStatus</option>
@@ -55,10 +55,11 @@
                                                             <option value="paid">Paid</option>
                                                         </select>
                                                     </td>
-                                                    <td><input name="paid_date" value="@paidDate" type="date" /></td>
-                                                    <td><input type="text" name="reciptno" pattern="[0-9]*" value="@g.dues_recipt_no" title="Only Digits" style="width:80px" /></td>
+                                                    <td><input name="paid_date" type="date" value="@paidDate"/></td>
+                                                    <td><input type="text" name="reciptno" value="@g.dues_recipt_no" style="width:80px" pattern="[0-9]*" title="Only Digits"/></td>
+
                                                     <td>
-                                                        <a href="/HostelClerk/UpdateMess/@g.allottee_id?month=@g.dues_session_month" class="link_black" title="Update">UpdateMess</a>
+                                                        <a href="/Superitendant_Warden/UpdateAnnual/@g.allottee_id?year=@g.dues_session_month" class="link_black" title="Update">UpdateAnnual</a>
                                                     </td>
                                                 </tr>
                                             }
@@ -75,7 +76,7 @@
     </div>
 </div>
 <script>
- $('a').click(function (e) {
+    $('a').click(function (e) {
         e.preventDefault();
         var element = this;
         var row = $(this).parent().parent();
@@ -89,7 +90,7 @@
                 paidStatus: row.find("[name=paid_status]").val(),
                 paidDate: row.find("[name=paid_date]").val(),
                 recipt: row.find("[name=reciptno]").val(),
-                month: $(this).data("month")
+                year: $(this).data("year")
             },
             dataType: "json",
             traditional: true,

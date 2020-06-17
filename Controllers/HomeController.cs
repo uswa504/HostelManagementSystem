@@ -2,6 +2,7 @@
 using System.Web.Security;
 using System.Linq;
 using System.Web.Mvc;
+using System.Collections.Generic;
 using Online_Hostel_Management_System.Models;
 
 namespace Online_Hostel_Management_System.Controllers
@@ -30,7 +31,7 @@ namespace Online_Hostel_Management_System.Controllers
             try
             {
                 var obj = dc.Rooms.First(x => x.room_id == num);
-                int count = dc.Allottments.Count(x => x.room_id == num);
+                int count = dc.Allottments.Count(x => x.room_id == num && x.allotte_activeStatus == "inactive");
                 if (count < obj.room_capacity)
                     return Json(new { room_available = true}, JsonRequestBehavior.AllowGet);
                 else return Json(new { room_available = false }, JsonRequestBehavior.AllowGet);
@@ -63,7 +64,7 @@ namespace Online_Hostel_Management_System.Controllers
                 Session["user_id"] = obj.user_id;
                 Session["user_role"] = "warden";
                 Session["hostel"] = obj.hostel_id;
-                return RedirectToAction("Manage_MessDues", "Warden");
+                return RedirectToAction("View_Allottment", "Superitendant_Warden");
             }
             //Login check for superitendant
             if (obj != null && obj.user_role.Equals("superitendant"))
@@ -71,7 +72,7 @@ namespace Online_Hostel_Management_System.Controllers
                 Session["user_id"] = obj.user_id;
                 Session["user_role"] = "superitendant";
                 Session["hostel"] = obj.hostel_id;
-                return RedirectToAction("adduser", "Superitendant");
+                return RedirectToAction("View_Allottment", "Superitendant_Warden");
             }
             //Login check for Student
             else if (obj != null && obj.user_role.Equals("student"))
@@ -81,10 +82,6 @@ namespace Online_Hostel_Management_System.Controllers
                 var a = dc.Students.First(x => x.user_id == obj.user_id);
                 Session["user_cnic"] = a.std_cnic;
                 var s = dc.Allottments.First(y => y.std_cnic == a.std_cnic && y.allotte_activeStatus == "active");
-                if (a == null)
-                {
-                    //genearte alert
-                }
                 Session["allotte_id"] = s.allottee_id;
                 return RedirectToAction("Dashboard", "Student");
             }
@@ -110,7 +107,6 @@ namespace Online_Hostel_Management_System.Controllers
             }
             else
             {
-                //ViewBag.Message = "Incorrect username or password";
                 return RedirectToAction("Index", "Home");
             }
         }
@@ -121,34 +117,34 @@ namespace Online_Hostel_Management_System.Controllers
             System.Text.ASCIIEncoding encryptpwd = new System.Text.ASCIIEncoding();
             byte[] passwordArray = encryptpwd.GetBytes(old);
             int userid = (int)Session["user_id"];
-            var a = dc.Users.First(x => x.user_id == userid);
-            if (a != null && a.user_passwd == passwordArray)
+            var a = dc.Users.First(x => x.user_id == userid && x.user_passwd.Equals(passwordArray) && x.user_activeStatus == "active");
+            if (a != null)
             {
                 byte[] newPasswordArray = encryptpwd.GetBytes(newpassword);
                 a.user_passwd = newPasswordArray;
                 dc.SubmitChanges();
                 if(a.user_role == "hostel_clerk") {
-                    return View("Change_password","HostelClerk");
+                    return RedirectToAction("Change_password","HostelClerk");
                 }
                 else if (a.user_role == "warden")
                 {
-                    return View("Change_password", "Warden");
+                    return RedirectToAction("Change_password", "Superitendant_Warden");
                 }
                 else if (a.user_role == "superitendant")
                 {
-                    return View("Change_password", "Superitendant");
+                    return RedirectToAction("Change_password", "Superitendant_Warden");
                 }
                 else if (a.user_role == "student")
                 {
-                    return View("Change_password", "Student");
+                    return RedirectToAction("Change_password", "Student");
                 }
                 else if (a.user_role == "vc")
                 {
-                    return View("Change_password", "ViceChancellor");
+                    return RedirectToAction("Change_password", "ViceChancellor");
                 }
                 else if (a.user_role == "chc")
                 {
-                    return View("Change_password", "ChairmanHallCouncil");
+                    return RedirectToAction("Change_password", "ChairmanHallCouncil");
                 }
             }
             return RedirectToAction("Index");
@@ -176,7 +172,7 @@ namespace Online_Hostel_Management_System.Controllers
                 dc.Users.InsertOnSubmit(user);
                 dc.SubmitChanges();
                 if (Session["user_role"].ToString() == "superitendant") {
-                    return RedirectToAction("Adduser", "Superitendant");
+                    return RedirectToAction("Adduser", "Superitendant_Warden");
                 }
                 else if (Session["user_role"].ToString() == "warden")
                 {

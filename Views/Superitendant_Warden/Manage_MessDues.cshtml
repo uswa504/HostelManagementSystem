@@ -2,13 +2,13 @@
     @Html.Partial("Header");
 </div>
 <div class="ts-main-content">
-    @Html.Partial("HostelClerk_Sidebar");
+    @Html.Partial("Superitendant_Sidebar");
     <div class="content-wrapper">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
                     <h2 class="page-title">Manage Mess Dues</h2>
-                    <a class="btn btn-primary" name="generate" style="margin-bottom:2%" href="/HostelClerk/Generate_MessRecord">Generate Mess Record</a>
+                    <a class="btn btn-primary" name="generate" style="margin-bottom:2%" href="/Warden/Generate_MessRecord">Generate Mess Record</a>
                     <div class="panel panel-default">
                         <div class="panel-heading">All Room Details</div>
                         <div class="panel-body">
@@ -30,7 +30,7 @@
                                     @{ foreach (var x in ViewBag.data)
                                         {
                                             foreach (var g in x)
-                                            {
+                                            { 
                                                 var lastDate = "";
                                                 var paidDate = "";
                                                 if(g.dues_lastDate != null)
@@ -56,7 +56,7 @@
                                                         </select>
                                                     </td>
                                                     <td><input name="paid_date" value="@paidDate" type="date" /></td>
-                                                    <td><input type="text" name="reciptno" pattern="[0-9]*" value="@g.dues_recipt_no" title="Only Digits" style="width:80px" /></td>
+                                                    <td><input type="text" name="reciptno" pattern="[0-9]*" title="Only Digits" style="width:80px" /></td>
                                                     <td>
                                                         <a href="/HostelClerk/UpdateMess/@g.allottee_id?month=@g.dues_session_month" class="link_black" title="Update">UpdateMess</a>
                                                     </td>

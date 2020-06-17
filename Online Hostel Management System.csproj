@@ -127,7 +127,7 @@
     <Compile Include="Controllers\HostelClerkController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\ChairmanHallCouncilController.cs" />
-    <Compile Include="Controllers\SuperitendantController.cs" />
+    <Compile Include="Controllers\Superitendant_WardenController.cs" />
     <Compile Include="Controllers\ViceChancellorController.cs" />
     <Compile Include="Controllers\WardenController.cs" />
     <Compile Include="Global.asax.cs">
@@ -222,7 +222,6 @@
     <Content Include="Views\Shared\HostelClerk_Sidebar.cshtml" />
     <Content Include="Views\Shared\CHC_Sidebar.cshtml" />
     <Content Include="Views\Shared\ChangePassword.cshtml" />
-    <Content Include="Views\Shared\Warden_Sidebar.cshtml" />
     <Content Include="Views\Shared\HC_Clerk_Sidebar.cshtml" />
     <Content Include="Views\Shared\Add_Hostel_Clerk.cshtml" />
     <Content Include="Views\Shared\Manage_AnnualDues.cshtml" />
@@ -233,24 +232,20 @@
     <None Include="Views\Student\Change_password.cshtml" />
     <None Include="Views\Student\Dashboard.cshtml" />
     <None Include="Views\HostelClerk\Add_allotment.cshtml" />
-    <Content Include="Views\Warden\Adduser.cshtml" />
-    <Content Include="Views\Warden\Change_password.cshtml" />
-    <Content Include="Views\Superitendant\adduser.cshtml" />
-    <Content Include="Views\Superitendant\Change_password.cshtml" />
-    <Content Include="Views\Superitendant\View_rooms.cshtml" />
-    <Content Include="Views\Warden\Manage_AnnualDues.cshtml" />
+    <Content Include="Views\Superitendant_Warden\adduser.cshtml" />
+    <Content Include="Views\Superitendant_Warden\Change_password.cshtml" />
+    <Content Include="Views\Superitendant_Warden\View_rooms.cshtml" />
     <Content Include="Views\ViceChancellor\View_Users.cshtml" />
     <Content Include="Views\ViceChancellor\View_Allottments.cshtml" />
     <Content Include="Views\ViceChancellor\See_Info.cshtml" />
-    <Content Include="Views\Superitendant\View_StudentsMess.cshtml" />
-    <Content Include="Views\Superitendant\View_AnnualRecords.cshtml" />
-    <Content Include="Views\Superitendant\Manage_AnnualDues.cshtml" />
-    <Content Include="Views\Superitendant\Manage_MessDues.cshtml" />
-    <Content Include="Views\Superitendant\View_Allottment.cshtml" />
-    <Content Include="Views\Superitendant\View_Info.cshtml" />
+    <Content Include="Views\Superitendant_Warden\View_StudentsMess.cshtml" />
+    <Content Include="Views\Superitendant_Warden\View_AnnualRecords.cshtml" />
+    <Content Include="Views\Superitendant_Warden\Manage_AnnualDues.cshtml" />
+    <Content Include="Views\Superitendant_Warden\Manage_MessDues.cshtml" />
+    <Content Include="Views\Superitendant_Warden\View_Allottment.cshtml" />
+    <Content Include="Views\Superitendant_Warden\View_Info.cshtml" />
     <Content Include="Views\Student\View_AnnualDues.cshtml" />
     <Content Include="Views\Student\View_MessDues.cshtml" />
-    <None Include="Views\Warden\Manage_MessDues.cshtml" />
     <Content Include="Views\ChairmanHallCouncil\Addhostel.cshtml" />
     <None Include="Views\HallCouncilClerk\addhostel.cshtml" />
     <None Include="Views\HallCouncilClerk\adduser.cshtml" />
@@ -271,11 +266,6 @@
     <Content Include="Views\ViceChancellor\View_hostels.cshtml" />
     <Content Include="Views\ViceChancellor\Change_password.cshtml" />
     <Content Include="Views\ViceChancellor\View_rooms.cshtml" />
-    <Content Include="Views\Warden\View_rooms.cshtml" />
-    <Content Include="Views\Warden\View_StudentsMess.cshtml" />
-    <Content Include="Views\Warden\View_AnnualRecords.cshtml" />
-    <Content Include="Views\Warden\View_Allottment.cshtml" />
-    <Content Include="Views\Warden\View_Info.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\img\" />

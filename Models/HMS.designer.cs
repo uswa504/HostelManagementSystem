@@ -33,9 +33,6 @@ namespace Online_Hostel_Management_System.Models
     partial void InsertAllottment(Allottment instance);
     partial void UpdateAllottment(Allottment instance);
     partial void DeleteAllottment(Allottment instance);
-    partial void InsertUser(User instance);
-    partial void UpdateUser(User instance);
-    partial void DeleteUser(User instance);
     partial void InsertDepartment(Department instance);
     partial void UpdateDepartment(Department instance);
     partial void DeleteDepartment(Department instance);
@@ -57,6 +54,9 @@ namespace Online_Hostel_Management_System.Models
     partial void InsertStudent(Student instance);
     partial void UpdateStudent(Student instance);
     partial void DeleteStudent(Student instance);
+    partial void InsertUser(User instance);
+    partial void UpdateUser(User instance);
+    partial void DeleteUser(User instance);
     #endregion
 		
 		public HMSDataContext() : 
@@ -94,14 +94,6 @@ namespace Online_Hostel_Management_System.Models
 			get
 			{
 				return this.GetTable<Allottment>();
-			}
-		}
-		
-		public System.Data.Linq.Table<User> Users
-		{
-			get
-			{
-				return this.GetTable<User>();
 			}
 		}
 		
@@ -206,6 +198,14 @@ namespace Online_Hostel_Management_System.Models
 			get
 			{
 				return this.GetTable<Student>();
+			}
+		}
+		
+		public System.Data.Linq.Table<User> Users
+		{
+			get
+			{
+				return this.GetTable<User>();
 			}
 		}
 	}
@@ -591,305 +591,6 @@ namespace Online_Hostel_Management_System.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[User]")]
-	public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _user_id;
-		
-		private string _user_name;
-		
-		private System.Data.Linq.Binary _user_passwd;
-		
-		private string _user_role;
-		
-		private System.Nullable<int> _user_addedBy;
-		
-		private System.Nullable<System.DateTime> _time_of_addition;
-		
-		private string _user_activeStatus;
-		
-		private System.Nullable<int> _hostel_id;
-		
-		private EntitySet<Student> _Students;
-		
-		private EntityRef<Hostel> _Hostel;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onuser_idChanging(int value);
-    partial void Onuser_idChanged();
-    partial void Onuser_nameChanging(string value);
-    partial void Onuser_nameChanged();
-    partial void Onuser_passwdChanging(System.Data.Linq.Binary value);
-    partial void Onuser_passwdChanged();
-    partial void Onuser_roleChanging(string value);
-    partial void Onuser_roleChanged();
-    partial void Onuser_addedByChanging(System.Nullable<int> value);
-    partial void Onuser_addedByChanged();
-    partial void Ontime_of_additionChanging(System.Nullable<System.DateTime> value);
-    partial void Ontime_of_additionChanged();
-    partial void Onuser_activeStatusChanging(string value);
-    partial void Onuser_activeStatusChanged();
-    partial void Onhostel_idChanging(System.Nullable<int> value);
-    partial void Onhostel_idChanged();
-    #endregion
-		
-		public User()
-		{
-			this._Students = new EntitySet<Student>(new Action<Student>(this.attach_Students), new Action<Student>(this.detach_Students));
-			this._Hostel = default(EntityRef<Hostel>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int user_id
-		{
-			get
-			{
-				return this._user_id;
-			}
-			set
-			{
-				if ((this._user_id != value))
-				{
-					this.Onuser_idChanging(value);
-					this.SendPropertyChanging();
-					this._user_id = value;
-					this.SendPropertyChanged("user_id");
-					this.Onuser_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_name", DbType="NVarChar(MAX)")]
-		public string user_name
-		{
-			get
-			{
-				return this._user_name;
-			}
-			set
-			{
-				if ((this._user_name != value))
-				{
-					this.Onuser_nameChanging(value);
-					this.SendPropertyChanging();
-					this._user_name = value;
-					this.SendPropertyChanged("user_name");
-					this.Onuser_nameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_passwd", DbType="Binary(50)", UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary user_passwd
-		{
-			get
-			{
-				return this._user_passwd;
-			}
-			set
-			{
-				if ((this._user_passwd != value))
-				{
-					this.Onuser_passwdChanging(value);
-					this.SendPropertyChanging();
-					this._user_passwd = value;
-					this.SendPropertyChanged("user_passwd");
-					this.Onuser_passwdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_role", DbType="NVarChar(MAX)")]
-		public string user_role
-		{
-			get
-			{
-				return this._user_role;
-			}
-			set
-			{
-				if ((this._user_role != value))
-				{
-					this.Onuser_roleChanging(value);
-					this.SendPropertyChanging();
-					this._user_role = value;
-					this.SendPropertyChanged("user_role");
-					this.Onuser_roleChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_addedBy", DbType="Int")]
-		public System.Nullable<int> user_addedBy
-		{
-			get
-			{
-				return this._user_addedBy;
-			}
-			set
-			{
-				if ((this._user_addedBy != value))
-				{
-					this.Onuser_addedByChanging(value);
-					this.SendPropertyChanging();
-					this._user_addedBy = value;
-					this.SendPropertyChanged("user_addedBy");
-					this.Onuser_addedByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_time_of_addition", DbType="DateTime")]
-		public System.Nullable<System.DateTime> time_of_addition
-		{
-			get
-			{
-				return this._time_of_addition;
-			}
-			set
-			{
-				if ((this._time_of_addition != value))
-				{
-					this.Ontime_of_additionChanging(value);
-					this.SendPropertyChanging();
-					this._time_of_addition = value;
-					this.SendPropertyChanged("time_of_addition");
-					this.Ontime_of_additionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_activeStatus", DbType="NVarChar(MAX)")]
-		public string user_activeStatus
-		{
-			get
-			{
-				return this._user_activeStatus;
-			}
-			set
-			{
-				if ((this._user_activeStatus != value))
-				{
-					this.Onuser_activeStatusChanging(value);
-					this.SendPropertyChanging();
-					this._user_activeStatus = value;
-					this.SendPropertyChanged("user_activeStatus");
-					this.Onuser_activeStatusChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_hostel_id", DbType="Int")]
-		public System.Nullable<int> hostel_id
-		{
-			get
-			{
-				return this._hostel_id;
-			}
-			set
-			{
-				if ((this._hostel_id != value))
-				{
-					if (this._Hostel.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onhostel_idChanging(value);
-					this.SendPropertyChanging();
-					this._hostel_id = value;
-					this.SendPropertyChanged("hostel_id");
-					this.Onhostel_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Student", Storage="_Students", ThisKey="user_id", OtherKey="user_id")]
-		public EntitySet<Student> Students
-		{
-			get
-			{
-				return this._Students;
-			}
-			set
-			{
-				this._Students.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Hostel_User", Storage="_Hostel", ThisKey="hostel_id", OtherKey="hostel_id", IsForeignKey=true)]
-		public Hostel Hostel
-		{
-			get
-			{
-				return this._Hostel.Entity;
-			}
-			set
-			{
-				Hostel previousValue = this._Hostel.Entity;
-				if (((previousValue != value) 
-							|| (this._Hostel.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Hostel.Entity = null;
-						previousValue.Users.Remove(this);
-					}
-					this._Hostel.Entity = value;
-					if ((value != null))
-					{
-						value.Users.Add(this);
-						this._hostel_id = value.hostel_id;
-					}
-					else
-					{
-						this._hostel_id = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Hostel");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Students(Student entity)
-		{
-			this.SendPropertyChanging();
-			entity.User = this;
-		}
-		
-		private void detach_Students(Student entity)
-		{
-			this.SendPropertyChanging();
-			entity.User = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Department")]
 	public partial class Department : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1030,9 +731,9 @@ namespace Online_Hostel_Management_System.Models
 		
 		private EntitySet<Allottment> _Allottments;
 		
-		private EntitySet<User> _Users;
-		
 		private EntitySet<Room> _Rooms;
+		
+		private EntitySet<User> _Users;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1061,8 +762,8 @@ namespace Online_Hostel_Management_System.Models
 		public Hostel()
 		{
 			this._Allottments = new EntitySet<Allottment>(new Action<Allottment>(this.attach_Allottments), new Action<Allottment>(this.detach_Allottments));
-			this._Users = new EntitySet<User>(new Action<User>(this.attach_Users), new Action<User>(this.detach_Users));
 			this._Rooms = new EntitySet<Room>(new Action<Room>(this.attach_Rooms), new Action<Room>(this.detach_Rooms));
+			this._Users = new EntitySet<User>(new Action<User>(this.attach_Users), new Action<User>(this.detach_Users));
 			OnCreated();
 		}
 		
@@ -1259,19 +960,6 @@ namespace Online_Hostel_Management_System.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Hostel_User", Storage="_Users", ThisKey="hostel_id", OtherKey="hostel_id")]
-		public EntitySet<User> Users
-		{
-			get
-			{
-				return this._Users;
-			}
-			set
-			{
-				this._Users.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Hostel_Room", Storage="_Rooms", ThisKey="hostel_id", OtherKey="hostel_id")]
 		public EntitySet<Room> Rooms
 		{
@@ -1282,6 +970,19 @@ namespace Online_Hostel_Management_System.Models
 			set
 			{
 				this._Rooms.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Hostel_User", Storage="_Users", ThisKey="hostel_id", OtherKey="hostel_id")]
+		public EntitySet<User> Users
+		{
+			get
+			{
+				return this._Users;
+			}
+			set
+			{
+				this._Users.Assign(value);
 			}
 		}
 		
@@ -1317,18 +1018,6 @@ namespace Online_Hostel_Management_System.Models
 			entity.Hostel = null;
 		}
 		
-		private void attach_Users(User entity)
-		{
-			this.SendPropertyChanging();
-			entity.Hostel = this;
-		}
-		
-		private void detach_Users(User entity)
-		{
-			this.SendPropertyChanging();
-			entity.Hostel = null;
-		}
-		
 		private void attach_Rooms(Room entity)
 		{
 			this.SendPropertyChanging();
@@ -1336,6 +1025,18 @@ namespace Online_Hostel_Management_System.Models
 		}
 		
 		private void detach_Rooms(Room entity)
+		{
+			this.SendPropertyChanging();
+			entity.Hostel = null;
+		}
+		
+		private void attach_Users(User entity)
+		{
+			this.SendPropertyChanging();
+			entity.Hostel = this;
+		}
+		
+		private void detach_Users(User entity)
 		{
 			this.SendPropertyChanging();
 			entity.Hostel = null;
@@ -4281,6 +3982,305 @@ namespace Online_Hostel_Management_System.Models
 		{
 			this.SendPropertyChanging();
 			entity.Student = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[User]")]
+	public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _user_id;
+		
+		private string _user_name;
+		
+		private System.Data.Linq.Binary _user_passwd;
+		
+		private string _user_role;
+		
+		private System.Nullable<int> _user_addedBy;
+		
+		private System.Nullable<System.DateTime> _time_of_addition;
+		
+		private string _user_activeStatus;
+		
+		private System.Nullable<int> _hostel_id;
+		
+		private EntitySet<Student> _Students;
+		
+		private EntityRef<Hostel> _Hostel;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onuser_idChanging(int value);
+    partial void Onuser_idChanged();
+    partial void Onuser_nameChanging(string value);
+    partial void Onuser_nameChanged();
+    partial void Onuser_passwdChanging(System.Data.Linq.Binary value);
+    partial void Onuser_passwdChanged();
+    partial void Onuser_roleChanging(string value);
+    partial void Onuser_roleChanged();
+    partial void Onuser_addedByChanging(System.Nullable<int> value);
+    partial void Onuser_addedByChanged();
+    partial void Ontime_of_additionChanging(System.Nullable<System.DateTime> value);
+    partial void Ontime_of_additionChanged();
+    partial void Onuser_activeStatusChanging(string value);
+    partial void Onuser_activeStatusChanged();
+    partial void Onhostel_idChanging(System.Nullable<int> value);
+    partial void Onhostel_idChanged();
+    #endregion
+		
+		public User()
+		{
+			this._Students = new EntitySet<Student>(new Action<Student>(this.attach_Students), new Action<Student>(this.detach_Students));
+			this._Hostel = default(EntityRef<Hostel>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int user_id
+		{
+			get
+			{
+				return this._user_id;
+			}
+			set
+			{
+				if ((this._user_id != value))
+				{
+					this.Onuser_idChanging(value);
+					this.SendPropertyChanging();
+					this._user_id = value;
+					this.SendPropertyChanged("user_id");
+					this.Onuser_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_name", DbType="NVarChar(MAX)")]
+		public string user_name
+		{
+			get
+			{
+				return this._user_name;
+			}
+			set
+			{
+				if ((this._user_name != value))
+				{
+					this.Onuser_nameChanging(value);
+					this.SendPropertyChanging();
+					this._user_name = value;
+					this.SendPropertyChanged("user_name");
+					this.Onuser_nameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_passwd", DbType="Binary(50)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary user_passwd
+		{
+			get
+			{
+				return this._user_passwd;
+			}
+			set
+			{
+				if ((this._user_passwd != value))
+				{
+					this.Onuser_passwdChanging(value);
+					this.SendPropertyChanging();
+					this._user_passwd = value;
+					this.SendPropertyChanged("user_passwd");
+					this.Onuser_passwdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_role", DbType="VarChar(MAX)")]
+		public string user_role
+		{
+			get
+			{
+				return this._user_role;
+			}
+			set
+			{
+				if ((this._user_role != value))
+				{
+					this.Onuser_roleChanging(value);
+					this.SendPropertyChanging();
+					this._user_role = value;
+					this.SendPropertyChanged("user_role");
+					this.Onuser_roleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_addedBy", DbType="Int")]
+		public System.Nullable<int> user_addedBy
+		{
+			get
+			{
+				return this._user_addedBy;
+			}
+			set
+			{
+				if ((this._user_addedBy != value))
+				{
+					this.Onuser_addedByChanging(value);
+					this.SendPropertyChanging();
+					this._user_addedBy = value;
+					this.SendPropertyChanged("user_addedBy");
+					this.Onuser_addedByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_time_of_addition", DbType="DateTime")]
+		public System.Nullable<System.DateTime> time_of_addition
+		{
+			get
+			{
+				return this._time_of_addition;
+			}
+			set
+			{
+				if ((this._time_of_addition != value))
+				{
+					this.Ontime_of_additionChanging(value);
+					this.SendPropertyChanging();
+					this._time_of_addition = value;
+					this.SendPropertyChanged("time_of_addition");
+					this.Ontime_of_additionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_activeStatus", DbType="NVarChar(MAX)")]
+		public string user_activeStatus
+		{
+			get
+			{
+				return this._user_activeStatus;
+			}
+			set
+			{
+				if ((this._user_activeStatus != value))
+				{
+					this.Onuser_activeStatusChanging(value);
+					this.SendPropertyChanging();
+					this._user_activeStatus = value;
+					this.SendPropertyChanged("user_activeStatus");
+					this.Onuser_activeStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_hostel_id", DbType="Int")]
+		public System.Nullable<int> hostel_id
+		{
+			get
+			{
+				return this._hostel_id;
+			}
+			set
+			{
+				if ((this._hostel_id != value))
+				{
+					if (this._Hostel.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onhostel_idChanging(value);
+					this.SendPropertyChanging();
+					this._hostel_id = value;
+					this.SendPropertyChanged("hostel_id");
+					this.Onhostel_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Student", Storage="_Students", ThisKey="user_id", OtherKey="user_id")]
+		public EntitySet<Student> Students
+		{
+			get
+			{
+				return this._Students;
+			}
+			set
+			{
+				this._Students.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Hostel_User", Storage="_Hostel", ThisKey="hostel_id", OtherKey="hostel_id", IsForeignKey=true)]
+		public Hostel Hostel
+		{
+			get
+			{
+				return this._Hostel.Entity;
+			}
+			set
+			{
+				Hostel previousValue = this._Hostel.Entity;
+				if (((previousValue != value) 
+							|| (this._Hostel.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Hostel.Entity = null;
+						previousValue.Users.Remove(this);
+					}
+					this._Hostel.Entity = value;
+					if ((value != null))
+					{
+						value.Users.Add(this);
+						this._hostel_id = value.hostel_id;
+					}
+					else
+					{
+						this._hostel_id = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Hostel");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Students(Student entity)
+		{
+			this.SendPropertyChanging();
+			entity.User = this;
+		}
+		
+		private void detach_Students(Student entity)
+		{
+			this.SendPropertyChanging();
+			entity.User = null;
 		}
 	}
 }
