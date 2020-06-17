@@ -84,9 +84,11 @@ namespace Online_Hostel_Management_System.Controllers
         {
             if (Session["user_role"].ToString() == "hostel_clerk" || Session["user_role"].ToString() == "admin")
             {
+                int id = (int)Session["hostel"];
                 int roomno = int.Parse(Request["rmno"]);
                 int seater = int.Parse(Request["seater"]);
                 string rtype = Request["rtype"];
+                var obj = dc.Hostels.First(x => x.hostel_id == id);
                 Room room = new Room
                 {
                     room_no = roomno,
@@ -95,9 +97,10 @@ namespace Online_Hostel_Management_System.Controllers
                     room_addedBy = (int)Session["user_id"],
                     room_status = "active",
                     time_of_addition = DateTime.Now,
-                    hostel_id = (int)Session["hostel"]
+                    hostel_id = id
                 };
                 dc.Rooms.InsertOnSubmit(room);
+                obj.hostel_roomCount = +1;
                 dc.SubmitChanges();
                 return RedirectToAction("Addroom");
             }

@@ -2,6 +2,7 @@
 using System.Web.Security;
 using System.Linq;
 using System.Web.Mvc;
+using System.Web;
 using System.Collections.Generic;
 using Online_Hostel_Management_System.Models;
 
@@ -12,6 +13,7 @@ namespace Online_Hostel_Management_System.Controllers
         readonly HMSDataContext dc = new HMSDataContext();
         public ActionResult Index()
         {
+            //Response.Cache.SetCacheability(HttpCacheability.NoCache);
             return View();
         }
         public ActionResult checkUser(string username) 
@@ -31,7 +33,7 @@ namespace Online_Hostel_Management_System.Controllers
             try
             {
                 var obj = dc.Rooms.First(x => x.room_id == num);
-                int count = dc.Allottments.Count(x => x.room_id == num && x.allotte_activeStatus == "inactive");
+                int count = dc.Allottments.Count(x => x.room_id == num && x.allotte_activeStatus == "active");
                 if (count < obj.room_capacity)
                     return Json(new { room_available = true}, JsonRequestBehavior.AllowGet);
                 else return Json(new { room_available = false }, JsonRequestBehavior.AllowGet);

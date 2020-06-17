@@ -59,7 +59,7 @@ namespace Online_Hostel_Management_System.Controllers
         {
             if (Session["user_role"].ToString() == "hc_clerk" || Session["user_role"].ToString() == "admin")
             {
-            int? hostel;
+            int hostel = 0;
             string name = Request["user_name"];
             string passwd = Request["user_passwd"];
             System.Text.ASCIIEncoding encryptpwd = new System.Text.ASCIIEncoding();
@@ -69,7 +69,6 @@ namespace Online_Hostel_Management_System.Controllers
             {
                 hostel = int.Parse(Request["hostel"]);
             }
-            else hostel = null;
             /*var a = dc.Users.First(x=> x.user_name == name);
             if(a != null)
             {

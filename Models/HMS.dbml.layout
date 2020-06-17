@@ -1,165 +1,159 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 15, 16.125" name="HMS">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 14.25, 15.875" name="HMS">
   <DataContextMoniker Name="/HMSDataContext" />
   <nestedChildShapes>
-    <classShape Id="8bc3b85e-bf09-4fb6-b1d2-f99f2efd45c1" absoluteBounds="9, 13, 2, 2.3478011067708344">
+    <classShape Id="7d811b87-d992-40d5-aa97-adcd3cb8fb1b" absoluteBounds="9, 13, 2, 2.3478011067708344">
       <DataClassMoniker Name="/HMSDataContext/Allottment" />
       <nestedChildShapes>
-        <elementListCompartment Id="d8262f80-a4c3-4504-9472-1afaec67c144" absoluteBounds="9.015, 13.46, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="c59cd70a-25af-4fe8-aa9b-d28f63e1c744" absoluteBounds="9.015, 13.46, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="067616b9-a5c0-404e-9e63-2a6e3a3a1c9c" absoluteBounds="9.25, 6.625, 2, 1.1939925130208344">
-      <DataClassMoniker Name="/HMSDataContext/Department" />
-      <nestedChildShapes>
-        <elementListCompartment Id="cc692f48-72fa-4156-9247-96fd596058e7" absoluteBounds="9.265, 7.085, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="20ff1bed-b94b-4d96-8a6f-6bfb0c4a460b" absoluteBounds="0.75, 6.75, 2, 2.5401025390624996">
-      <DataClassMoniker Name="/HMSDataContext/Hostel" />
-      <nestedChildShapes>
-        <elementListCompartment Id="e021a7a9-37f8-4f11-95de-877485e9e6b4" absoluteBounds="0.765, 7.21, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="0e65746d-8466-4ca3-af57-e11446acd66a" absoluteBounds="3.5, 13.125, 2, 2.3478011067708344">
-      <DataClassMoniker Name="/HMSDataContext/Room" />
-      <nestedChildShapes>
-        <elementListCompartment Id="f0c1bd19-2400-473b-bab4-efa1048dcce9" absoluteBounds="3.515, 13.585, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <associationConnector edgePoints="[(2.75 : 8.46875125); (3.625 : 8.46875125); (3.625 : 8.22280110677083); (10.75 : 8.22280110677083); (10.75 : 12.75); (10.2500005 : 12.75); (10.2500005 : 13)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/HMSDataContext/Hostel/Hostel_Allottment" />
-      <nodes>
-        <classShapeMoniker Id="20ff1bed-b94b-4d96-8a6f-6bfb0c4a460b" />
-        <classShapeMoniker Id="8bc3b85e-bf09-4fb6-b1d2-f99f2efd45c1" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 14.8453597005208); (9 : 14.8453597005208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/HMSDataContext/Room/Room_Allottment" />
-      <nodes>
-        <classShapeMoniker Id="0e65746d-8466-4ca3-af57-e11446acd66a" />
-        <classShapeMoniker Id="8bc3b85e-bf09-4fb6-b1d2-f99f2efd45c1" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(1.75 : 9.2901025390625); (1.75 : 14.2989005533854); (3.5 : 14.2989005533854)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/HMSDataContext/Hostel/Hostel_Room" />
-      <nodes>
-        <classShapeMoniker Id="20ff1bed-b94b-4d96-8a6f-6bfb0c4a460b" />
-        <classShapeMoniker Id="0e65746d-8466-4ca3-af57-e11446acd66a" />
-      </nodes>
-    </associationConnector>
-    <classShape Id="e57197e5-9f1c-4a3a-988e-a7baf26708af" absoluteBounds="3.75, 0.75, 2, 2.5401025390625005">
-      <DataClassMoniker Name="/HMSDataContext/View_User" />
-      <nestedChildShapes>
-        <elementListCompartment Id="beab5f74-154d-4a0f-8022-e7c6f7d99725" absoluteBounds="3.765, 1.21, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="00acd6c9-a693-4257-b9e5-081fecb7fe38" absoluteBounds="6.75, 0.75, 2, 2.7324039713541666">
-      <DataClassMoniker Name="/HMSDataContext/View_Hostel" />
-      <nestedChildShapes>
-        <elementListCompartment Id="41db1b92-9691-4efd-9078-4e55d30568a6" absoluteBounds="6.765, 1.21, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="10bdf932-3d53-4e5f-acfa-7b6e4c9e1390" absoluteBounds="3.875, 5.625, 2, 2.3478011067708335">
-      <DataClassMoniker Name="/HMSDataContext/View_Room" />
-      <nestedChildShapes>
-        <elementListCompartment Id="de8f5a4e-98ed-4456-87ac-61f447a4780b" absoluteBounds="3.89, 6.085, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="8ef9a1fc-c5e9-4566-8dc2-612c8d91bb14" absoluteBounds="8.5, 9.75, 2, 2.5401025390625">
-      <DataClassMoniker Name="/HMSDataContext/Education" />
-      <nestedChildShapes>
-        <elementListCompartment Id="4d54cff0-10e8-4dfc-9c04-124e0647f4dd" absoluteBounds="8.515, 10.21, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="517b895e-3336-46b0-9380-64a74a5e9614" absoluteBounds="4.125, 1.875, 2, 2.7324039713541666">
-      <DataClassMoniker Name="/HMSDataContext/View_Allottment" />
-      <nestedChildShapes>
-        <elementListCompartment Id="6fa95ef8-f29c-4b48-a8c1-f4c673940339" absoluteBounds="4.1400000000000006, 2.335, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="085b9bdd-7987-42a2-947c-7aaf41758cee" absoluteBounds="12.75, 9.75, 2, 3.1170068359375">
-      <DataClassMoniker Name="/HMSDataContext/Session" />
-      <nestedChildShapes>
-        <elementListCompartment Id="37dacec8-58a2-4ec9-9a14-d475441d3ee6" absoluteBounds="12.765, 10.21, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <associationConnector edgePoints="[(10.90625 : 7.81899251302083); (10.90625 : 12.6098046875); (12.75 : 12.6098046875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/HMSDataContext/Department/Department_Session" />
-      <nodes>
-        <classShapeMoniker Id="067616b9-a5c0-404e-9e63-2a6e3a3a1c9c" />
-        <classShapeMoniker Id="085b9bdd-7987-42a2-947c-7aaf41758cee" />
-      </nodes>
-    </associationConnector>
-    <classShape Id="a739d8a3-ae39-4311-9a71-05d4b6ca772e" absoluteBounds="1, 1.5, 2, 2.1554996744791666">
-      <DataClassMoniker Name="/HMSDataContext/View_StudentsMess" />
-      <nestedChildShapes>
-        <elementListCompartment Id="d77d10b5-5a8c-46b0-af2b-64b7c81c23ae" absoluteBounds="1.0150000000000001, 1.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="15bd415d-eec1-4780-8977-2d0eada2cdd1" absoluteBounds="12.375, 13, 2, 2.9247054036458331">
-      <DataClassMoniker Name="/HMSDataContext/Due" />
-      <nestedChildShapes>
-        <elementListCompartment Id="b0038c8f-90fe-4a2c-95c9-1f73f87b7450" absoluteBounds="12.39, 13.46, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <associationConnector edgePoints="[(11 : 14.1739005533854); (12.375 : 14.1739005533854)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/HMSDataContext/Allottment/Allottment_Due" />
-      <nodes>
-        <classShapeMoniker Id="8bc3b85e-bf09-4fb6-b1d2-f99f2efd45c1" />
-        <classShapeMoniker Id="15bd415d-eec1-4780-8977-2d0eada2cdd1" />
-      </nodes>
-    </associationConnector>
-    <classShape Id="63056f44-1bfc-4836-b3b4-e2eb2efd5f3b" absoluteBounds="0.75, 1.875, 2, 1.9631982421875">
-      <DataClassMoniker Name="/HMSDataContext/View_Student" />
-      <nestedChildShapes>
-        <elementListCompartment Id="acf8ebb3-e660-472b-9299-58296c92d8c6" absoluteBounds="0.765, 2.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="9fbe34e9-c9fc-4a7a-b464-9b3e1daa15c0" absoluteBounds="6.125, 9.25, 2, 4.6554182942708326">
-      <DataClassMoniker Name="/HMSDataContext/Student" />
-      <nestedChildShapes>
-        <elementListCompartment Id="b0b1ea20-e522-46fc-8eaf-1e6e9e8506ee" absoluteBounds="6.14, 9.71, 1.9700000000000002, 4.095418294270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <associationConnector edgePoints="[(8.125 : 13.4527091471354); (9 : 13.4527091471354)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/HMSDataContext/Student/Student_Allottment" />
-      <nodes>
-        <classShapeMoniker Id="9fbe34e9-c9fc-4a7a-b464-9b3e1daa15c0" />
-        <classShapeMoniker Id="8bc3b85e-bf09-4fb6-b1d2-f99f2efd45c1" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(8.125 : 11.0200512695312); (8.5 : 11.0200512695312)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/HMSDataContext/Student/Student_Education" />
-      <nodes>
-        <classShapeMoniker Id="9fbe34e9-c9fc-4a7a-b464-9b3e1daa15c0" />
-        <classShapeMoniker Id="8ef9a1fc-c5e9-4566-8dc2-612c8d91bb14" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(8.125 : 12.4187036132812); (12.75 : 12.4187036132812)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/HMSDataContext/Student/Student_Session" />
-      <nodes>
-        <classShapeMoniker Id="9fbe34e9-c9fc-4a7a-b464-9b3e1daa15c0" />
-        <classShapeMoniker Id="085b9bdd-7987-42a2-947c-7aaf41758cee" />
-      </nodes>
-    </associationConnector>
-    <classShape Id="48711d72-7e0c-45bb-87e2-5485e1db8056" absoluteBounds="2.875, 10.5, 2, 2.3478011067708335">
+    <classShape Id="73125ba5-da56-491c-aea8-a9c69083d069" absoluteBounds="3.5, 9, 2, 2.3478011067708344">
       <DataClassMoniker Name="/HMSDataContext/User" />
       <nestedChildShapes>
-        <elementListCompartment Id="66220dc8-dc45-4b38-b40c-670aa8c4690a" absoluteBounds="2.89, 10.96, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="891f7c8a-51cd-4490-8139-093f75387615" absoluteBounds="3.515, 9.46, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(4.875 : 11.6739005533854); (6.125 : 11.6739005533854)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/HMSDataContext/User/User_Student" />
+    <classShape Id="09fb22c4-8967-423b-b10c-5ed99e200593" absoluteBounds="9.25, 6.625, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/HMSDataContext/Department" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8721ca0c-533e-4b6f-b660-8718dba1ef38" absoluteBounds="9.265, 7.085, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4b22720c-79f6-42f7-8fad-b009274404d3" absoluteBounds="11.75, 12.75, 2, 2.9247054036458309">
+      <DataClassMoniker Name="/HMSDataContext/Due" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a51554ce-c5cd-4195-9a14-34ad0e821a22" absoluteBounds="11.765, 13.21, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="45bc3267-4964-4e42-a6e8-67847550405e" absoluteBounds="9, 8.875, 2, 2.5401025390624987">
+      <DataClassMoniker Name="/HMSDataContext/Education" />
+      <nestedChildShapes>
+        <elementListCompartment Id="146eb7f8-2ef4-4c94-b59a-fc5c08272045" absoluteBounds="9.015, 9.335, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="27fe84cf-d319-42a3-a349-94aa25d44fbf" absoluteBounds="3.5, 13.25, 2, 2.3478011067708344">
+      <DataClassMoniker Name="/HMSDataContext/Room" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4f77c490-c293-4ad3-91b4-b02740d1cda0" absoluteBounds="3.515, 13.71, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c6950888-61c8-4ab2-92ec-814bd384d8a6" absoluteBounds="12, 8.625, 2, 3.1170068359375023">
+      <DataClassMoniker Name="/HMSDataContext/Session" />
+      <nestedChildShapes>
+        <elementListCompartment Id="20a72294-177c-4713-8599-e29a2c1932ac" absoluteBounds="12.015, 9.085, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a69989a9-e262-4ffc-adfa-e7f520338637" absoluteBounds="6.25, 7.875, 2, 4.6554182942708318">
+      <DataClassMoniker Name="/HMSDataContext/Student" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7b14459b-8096-47f3-aaa0-574c221d687d" absoluteBounds="6.265, 8.335, 1.9700000000000002, 4.095418294270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(11 : 14.1739005533854); (11.75 : 14.1739005533854)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/HMSDataContext/Allottment/Allottment_Due" />
       <nodes>
-        <classShapeMoniker Id="48711d72-7e0c-45bb-87e2-5485e1db8056" />
-        <classShapeMoniker Id="9fbe34e9-c9fc-4a7a-b464-9b3e1daa15c0" />
+        <classShapeMoniker Id="7d811b87-d992-40d5-aa97-adcd3cb8fb1b" />
+        <classShapeMoniker Id="4b22720c-79f6-42f7-8fad-b009274404d3" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.2812525 : 9.2901025390625); (2.2812525 : 11.6739005533854); (2.875 : 11.6739005533854)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 14.2989005533854); (9 : 14.2989005533854)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/HMSDataContext/Room/Room_Allottment" />
+      <nodes>
+        <classShapeMoniker Id="27fe84cf-d319-42a3-a349-94aa25d44fbf" />
+        <classShapeMoniker Id="7d811b87-d992-40d5-aa97-adcd3cb8fb1b" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.15625 : 7.81899251302083); (11.15625 : 11.6098046875); (12 : 11.6098046875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/HMSDataContext/Department/Department_Session" />
+      <nodes>
+        <classShapeMoniker Id="09fb22c4-8967-423b-b10c-5ed99e200593" />
+        <classShapeMoniker Id="c6950888-61c8-4ab2-92ec-814bd384d8a6" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.25 : 12.5304182942708); (7.25 : 13.6963252766927); (9 : 13.6963252766927)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/HMSDataContext/Student/Student_Allottment" />
+      <nodes>
+        <classShapeMoniker Id="a69989a9-e262-4ffc-adfa-e7f520338637" />
+        <classShapeMoniker Id="7d811b87-d992-40d5-aa97-adcd3cb8fb1b" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 10.1450512695312); (9 : 10.1450512695312)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/HMSDataContext/Student/Student_Education" />
+      <nodes>
+        <classShapeMoniker Id="a69989a9-e262-4ffc-adfa-e7f520338637" />
+        <classShapeMoniker Id="45bc3267-4964-4e42-a6e8-67847550405e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 8.71875); (11.0729166666667 : 8.71875 : JumpStart); (11.2395833333333 : 8.71875 : JumpEnd); (12 : 8.71875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/HMSDataContext/Student/Student_Session" />
+      <nodes>
+        <classShapeMoniker Id="a69989a9-e262-4ffc-adfa-e7f520338637" />
+        <classShapeMoniker Id="c6950888-61c8-4ab2-92ec-814bd384d8a6" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 10.1739005533854); (6.25 : 10.1739005533854)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/HMSDataContext/User/User_Student" />
+      <nodes>
+        <classShapeMoniker Id="73125ba5-da56-491c-aea8-a9c69083d069" />
+        <classShapeMoniker Id="a69989a9-e262-4ffc-adfa-e7f520338637" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="f84184b0-689e-4623-b227-0d7733b96ad2" absoluteBounds="0.75, 0.75, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/HMSDataContext/View_Allottment" />
+      <nestedChildShapes>
+        <elementListCompartment Id="542a881d-e7e5-4e87-9661-5dd056e2404c" absoluteBounds="0.765, 1.21, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a824d887-1f5d-4c58-8031-3adc9a005715" absoluteBounds="3.75, 0.75, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/HMSDataContext/View_Hostel" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f1c1305b-f85c-4870-9ba9-c547e0f8dd76" absoluteBounds="3.765, 1.21, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="73458068-47fe-422f-8516-2ce5c0a6a37c" absoluteBounds="3.75, 4.75, 2, 2.3478011067708344">
+      <DataClassMoniker Name="/HMSDataContext/View_Room" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0e550632-5e0d-482e-afb5-82f9eb41713d" absoluteBounds="3.765, 5.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8200a6f8-27c3-4afc-9d01-eb056579a0e3" absoluteBounds="6.75, 0.75, 2, 1.9631982421875003">
+      <DataClassMoniker Name="/HMSDataContext/View_Student" />
+      <nestedChildShapes>
+        <elementListCompartment Id="52c2922c-f0dd-4e13-9583-28c7ee432623" absoluteBounds="6.765, 1.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="415c3d1f-984f-4fc1-9462-41fe4149d2dc" absoluteBounds="9.75, 0.75, 2, 2.5401025390625005">
+      <DataClassMoniker Name="/HMSDataContext/View_User" />
+      <nestedChildShapes>
+        <elementListCompartment Id="393a442a-2552-4189-b746-49fae37de1e9" absoluteBounds="9.765, 1.21, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b166523b-067f-4a0f-85f1-6fda25a75fe4" absoluteBounds="1.75, 7.5, 2, 2.5401025390625">
+      <DataClassMoniker Name="/HMSDataContext/Hostel" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1f708515-2b7f-44a2-82de-8c4b666dbd89" absoluteBounds="1.7650000000000001, 7.96, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.59375 : 10.0401025390625); (2.59375 : 13.09375); (2.99479366666667 : 13.09375 : JumpStart); (3.16146033333333 : 13.09375 : JumpEnd); (7.16666666666667 : 13.09375 : JumpStart); (7.33333333333333 : 13.09375 : JumpEnd); (9 : 13.09375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/HMSDataContext/Hostel/Hostel_Allottment" />
+      <nodes>
+        <classShapeMoniker Id="b166523b-067f-4a0f-85f1-6fda25a75fe4" />
+        <classShapeMoniker Id="7d811b87-d992-40d5-aa97-adcd3cb8fb1b" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.75 : 8.2499995); (4.6250005 : 8.2499995); (4.6250005 : 9)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/HMSDataContext/Hostel/Hostel_User" />
       <nodes>
-        <classShapeMoniker Id="20ff1bed-b94b-4d96-8a6f-6bfb0c4a460b" />
-        <classShapeMoniker Id="48711d72-7e0c-45bb-87e2-5485e1db8056" />
+        <classShapeMoniker Id="b166523b-067f-4a0f-85f1-6fda25a75fe4" />
+        <classShapeMoniker Id="73125ba5-da56-491c-aea8-a9c69083d069" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.078127 : 10.0401025390625); (3.078127 : 14.4239005533854); (3.5 : 14.4239005533854)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/HMSDataContext/Hostel/Hostel_Room" />
+      <nodes>
+        <classShapeMoniker Id="b166523b-067f-4a0f-85f1-6fda25a75fe4" />
+        <classShapeMoniker Id="27fe84cf-d319-42a3-a349-94aa25d44fbf" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

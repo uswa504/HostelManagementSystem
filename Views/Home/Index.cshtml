@@ -29,7 +29,7 @@
             type: "GET",
             success: function (data) {
                 if (!data.user_available) {
-                    window.alert("User not found!")
+                    window.alert("Incorrect username")
                 } else {
                     result = true;
                 }
@@ -39,7 +39,7 @@
 
     $("form").submit(function (e) {
         if (!result) {
-            alert("User not found!")
+            alert("Incorrect username or password")
         }
         return result;
     })

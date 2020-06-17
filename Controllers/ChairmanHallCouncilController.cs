@@ -24,19 +24,17 @@ namespace Online_Hostel_Management_System.Controllers
         {
             if (Session["user_role"].ToString() == "chc" || Session["user_role"].ToString() == "admin")
             {
-                int? hrooms;
                 int hostel_number = int.Parse(Request["hostel_number"]);
                 string hname = Request["hostel_name"];
                 string hloc = Request["hlocation"];
                 string htype = Request["htype"];
-                hrooms = null;
                 Hostel hostel = new Hostel
                 {
                     hostel_no = hostel_number,
                     hostel_name = hname,
                     hostel_location = hloc,
                     hostel_type = htype,
-                    hostel_roomCount = hrooms,
+                    hostel_roomCount = 0,
                     hostel_addedBy = (int)Session["user_id"],
                     time_of_addition = DateTime.Now,
                     hostel_activeStatus = "active"
@@ -60,7 +58,7 @@ namespace Online_Hostel_Management_System.Controllers
         {
             if (Session["user_role"].ToString() == "chc" || Session["user_role"].ToString() == "admin")
             {
-                int? hostel;
+                int hostel = 0;
                 string name = Request["user_name"];
                 string passwd = Request["user_passwd"];
                 System.Text.ASCIIEncoding encryptpwd = new System.Text.ASCIIEncoding();
@@ -70,7 +68,6 @@ namespace Online_Hostel_Management_System.Controllers
                 {
                     hostel = int.Parse(Request["hostel"]);
                 }
-                else hostel = null;
                 User user = new User
                 {
                     user_name = name,
