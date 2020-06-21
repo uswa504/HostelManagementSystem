@@ -71,9 +71,9 @@
 </div>
 <script>
     var userExists = false;
-        $('input[name=stud_user_name]').blur(function (e) {
+        $('input[name=user_name]').blur(function (e) {
             $.ajax({
-                url: "/Home/checkUser?username=" + $('input[name=stud_user_name]').val(),
+                url: "/Home/checkUser?username=" + $('input[name=user_name]').val(),
                 type: "GET",
                 success: function (data) {
                     if (data.user_available) {

@@ -13,7 +13,7 @@ namespace Online_Hostel_Management_System.Controllers
         readonly HMSDataContext dc = new HMSDataContext();
         public ActionResult addhostel()
         {
-            if (Session["user_role"].ToString() == "hc_clerk" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"] != null && (Session["user_role"].ToString() == "hc_clerk" || Session["user_role"].ToString() == "admin"))
             {
                 return View();
             }
@@ -21,21 +21,19 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult hostelAdd()
         {
-            if (Session["user_role"].ToString() == "hc_clerk" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"] != null && (Session["user_role"].ToString() == "hc_clerk" || Session["user_role"].ToString() == "admin"))
             {
-                int? hrooms;
                 int hostel_number = int.Parse(Request["hostel_number"]);
                 string hname = Request["hostel_name"];
                 string hloc = Request["hlocation"];
                 string htype = Request["htype"];
-                hrooms = null;
                 Hostel hostel = new Hostel
                 {
                     hostel_no = hostel_number,
                     hostel_name = hname,
                     hostel_location = hloc,
                     hostel_type = htype,
-                    hostel_roomCount = hrooms,
+                    hostel_roomCount = 0,
                     hostel_addedBy = (int)Session["user_id"],
                     time_of_addition= DateTime.Now,
                     hostel_activeStatus="active"
@@ -48,7 +46,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult adduser()
         {
-            if (Session["user_role"].ToString() == "hc_clerk" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"] != null && (Session["user_role"].ToString() == "hc_clerk" || Session["user_role"].ToString() == "admin"))
             {
                 var a = dc.Hostels.ToList();
                 return View(a);
@@ -57,7 +55,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult UserAdd()
         {
-            if (Session["user_role"].ToString() == "hc_clerk" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"] != null && (Session["user_role"].ToString() == "hc_clerk" || Session["user_role"].ToString() == "admin"))
             {
             int hostel = 0;
             string name = Request["user_name"];
@@ -69,11 +67,6 @@ namespace Online_Hostel_Management_System.Controllers
             {
                 hostel = int.Parse(Request["hostel"]);
             }
-            /*var a = dc.Users.First(x=> x.user_name == name);
-            if(a != null)
-            {
-                ViewBag.Message = "Username already taken";
-            }*/
             User user = new User
             {
                 user_name = name,
@@ -92,7 +85,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult view_hostels()
         {
-            if (Session["user_role"].ToString() == "hc_clerk" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"] != null && (Session["user_role"].ToString() == "hc_clerk" || Session["user_role"].ToString() == "admin"))
             {
                 var a = dc.View_Hostels.ToList();
                 return View(a);
@@ -101,7 +94,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult viewusers()
         {
-            if (Session["user_role"].ToString() == "hc_clerk" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"] != null && (Session["user_role"].ToString() == "hc_clerk" || Session["user_role"].ToString() == "admin"))
             {
                 var a = dc.View_Users.ToList();
                 return View(a);
@@ -110,7 +103,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult UpdateUser(int id)
         {
-            if (Session["user_role"].ToString() == "hc_clerk")
+            if (Session["user_role"] != null && (Session["user_role"].ToString() == "hc_clerk" || Session["user_role"].ToString() == "admin"))
             {
                 var a = dc.Users.First(x => x.user_id == id);
                 if (a != null) {
@@ -124,7 +117,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult view_rooms(int id)
         {
-            if (Session["user_role"].ToString() == "hc_clerk")
+            if (Session["user_role"] != null && (Session["user_role"].ToString() == "hc_clerk" || Session["user_role"].ToString() == "admin"))
             {
                 var a = dc.Rooms.Where(x=> x.hostel_id == id).ToList();
                 return View(a);
@@ -133,7 +126,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult change_password()
         {
-            if (Session["user_role"].ToString() == "hc_clerk")
+            if (Session["user_role"] != null && (Session["user_role"].ToString() == "hc_clerk" || Session["user_role"].ToString() == "admin"))
             {
                 return View();
             }

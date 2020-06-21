@@ -38,28 +38,28 @@
                                                     <div class="form-group">
                                                         <label class="col-sm-2 control-label">CNIC (without dashes) : </label>
                                                         <div class="col-sm-8">
-                                                            <input type="text" value="@s.std_cnic" name="cnic" id="cnic" class="form-control" required>
+                                                            <input type="text" value="@s.std_cnic" name="cnic" id="cnic" class="form-control" pattern="[0-9]{13}" title="13 Digits" required>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label class="col-sm-2 control-label">Father's name: </label>
                                                         <div class="col-sm-8">
-                                                            <input type="text" value="@s.std_fatherName" name="fname" id="fname" class="form-control" required>
+                                                            <input type="text" value="@s.std_fatherName" pattern="[A-Z][a-z]* [a-z]*" title=" Only Alphabets (Starting with Capital Letters)" name="fname" id="fname" class="form-control" required>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label class="col-sm-2 control-label">Parent/Guardian's Occupation: </label>
                                                         <div class="col-sm-8">
-                                                            <input type="text" value="@s.std_fatherOccupation" name="occupation" id="occupation" class="form-control" required>
+                                                            <input type="text" value="@s.std_fatherOccupation" pattern="\D*" title=" Only Alphabets" name="occupation" id="occupation" class="form-control" required>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label class="col-sm-2 control-label">Monthly Income: </label>
                                                         <div class="col-sm-8">
-                                                            <input type="text" value="@s.std_fatherIncome" name="income" id="income" class="form-control" required>
+                                                            <input type="text" value="@s.std_fatherIncome" pattern="[0-9]*" title="Only Digits" name="income" id="income" class="form-control" required>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -79,21 +79,21 @@
                                                     <div class="form-group">
                                                         <label class="col-sm-2 control-label">District: </label>
                                                         <div class="col-sm-8">
-                                                            <input type="text" value="@s.std_district" name="district" id="district" class="form-control" required>
+                                                            <input type="text" value="@s.std_district" pattern="[A-Z][a-z]* [a-z]*" title="Alphabets only" name="district" id="district" class="form-control" required>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label class="col-sm-2 control-label">Cell Number (Student): </label>
                                                         <div class="col-sm-8">
-                                                            <input type="text" value="@s.std_phone" name="stu_num" id="stu_num" class="form-control" required>
+                                                            <input type="text" value="@s.std_phone" name="stu_num" id="stu_num" pattern="[0-9]{11}" title="11 Digits" class="form-control" required>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label class="col-sm-2 control-label">Cell Number (Guardian): </label>
                                                         <div class="col-sm-8">
-                                                            <input type="text" value="@s.std_parentPhone" name="grd_num" id="grd_num" class="form-control" required">
+                                                            <input type="text" value="@s.std_parentPhone" name="grd_num" pattern="[0-9]{11}" title="11 Digits" id="grd_num" class="form-control" required">
                                                         </div>
                                                     </div>
 
@@ -125,16 +125,16 @@
                                                                 <div class="add-edu">
                                                                     <div class="col-sm-12">
                                                                         <div class="col-sm-4">
-                                                                            <input type="text" name="edu_name0" id="edu_name" class="form-control" placeholder="Degree" />
+                                                                            <input type="text" name="edu_name0" id="edu_name" pattern="[A-Z][a-z]* [a-z]*" title="Alphabets only (Starting with capital letters)" class="form-control" placeholder="Degree" />
                                                                         </div>
                                                                         <div class="col-sm-4">
-                                                                            <input type="text" name="marks_obt0" id="marks_obt" class="form-control " placeholder="Marks Obt">
+                                                                            <input type="text" name="marks_obt0" id="marks_obt" class="form-control" pattern="[0-9]" title="Only Digits" placeholder="Marks Obt">
                                                                         </div>
                                                                         <div class="col-sm-4">
-                                                                            <input type="text" name="total_marks0" id="total_marks" class="form-control" placeholder="Total Marks">
+                                                                            <input type="text" name="total_marks0" id="total_marks" class="form-control" pattern="[0-9]" title="Only Digits" placeholder="Total Marks">
                                                                         </div>
                                                                         <div class="col-sm-8">
-                                                                            <input type="text" name="board0" id="board" class="form-control " placeholder="Board/Uni" />
+                                                                            <input type="text" name="board0" id="board" title="Alphabets only (Starting with capital letters)" class="form-control" pattern="[A-Z][a-z]* [a-z]*" placeholder="Board/Uni" />
                                                                         </div>
                                                                         <div class="col-sm-4">
                                                                             <input type="number" min="1980" max="2030" value="2010" name="session0" id="Session" class="form-control" placeholder="Session" />
@@ -239,7 +239,7 @@
                                                     <div class="form-group">
                                                         <label class="col-sm-2 control-label">Nationality: </label>
                                                         <div class="col-sm-8">
-                                                            <input type="text" value="@s.std_nationality" name="nationality" id="nationality" class="form-control">
+                                                            <input type="text" pattern="[A-Z][a-z]*" title="Alphabets only (Starting with capital letters)" value="@s.std_nationality" name="nationality" id="nationality" class="form-control">
                                                         </div>
                                                     </div>
 
@@ -260,7 +260,7 @@
                                                     <div class="form-group">
                                                         <label class="col-sm-2 control-label">Degree in which Admitted: </label>
                                                         <div class="col-sm-8">
-                                                            <input type="text" name="class" id="class" class="form-control">
+                                                            <input type="text" pattern="[A-Z][a-z]* [a-z]*" title="Alphabets only (Starting with capital letters)"  name="class" id="class" class="form-control">
                                                         </div>
                                                     </div>
 
@@ -322,7 +322,7 @@
                                                     <div class="form-group">
                                                         <label class="col-sm-2 control-label">Password</label>
                                                         <div class="col-sm-8">
-                                                            <input type="password" name="stud_passwd" class="form-control">
+                                                            <input type="password" name="stud_passwd" pattern=".{6,}" title="More than 6 characters" class="form-control">
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6 col-sm-offset-4">

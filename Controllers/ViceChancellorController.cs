@@ -14,7 +14,7 @@ namespace Online_Hostel_Management_System.Controllers
         readonly HMSDataContext dc = new HMSDataContext();
         public ActionResult View_hostels()
         {
-            if (Session["user_role"].ToString() == "vc" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"] != null && Session["user_role"].ToString() == "vc")
             {
                 var a = dc.View_Hostels.ToList();
                 return View(a);
@@ -23,7 +23,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult View_rooms(int id)
         {
-            if (Session["user_role"].ToString() == "vc" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"] != null && Session["user_role"].ToString() == "vc")
             {
                 var a = dc.Rooms.Where(x => x.hostel_id == id).ToList();
                 return View(a);
@@ -32,7 +32,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult View_Users()
         {
-            if (Session["user_role"].ToString() == "vc" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"] != null && Session["user_role"].ToString() == "vc")
             {
                 var a = dc.View_Users.ToList();
                 return View(a);
@@ -41,7 +41,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult See_Info(int id)
         {
-            if (Session["user_role"].ToString() == "vc" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"] != null && Session["user_role"].ToString() == "vc")
             {
                 dynamic model = new ExpandoObject();
                 model.a = dc.Allottments.First(x => x.allottee_id == id);
@@ -59,7 +59,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult View_Allottments()
         {
-            if (Session["user_role"].ToString() == "vc" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"] != null && Session["user_role"].ToString() == "vc")
             {
                 var a = dc.View_Allottments.Where(s => s.allotte_activeStatus == "active").ToList();
                 return View(a);
@@ -68,7 +68,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult Change_password()
         {
-            if (Session["user_role"].ToString() == "vc" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"] != null && Session["user_role"].ToString() == "vc")
             {
                 return View();
             }

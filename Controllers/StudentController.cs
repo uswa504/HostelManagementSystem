@@ -13,7 +13,7 @@ namespace Online_Hostel_Management_System.Controllers
         readonly HMSDataContext dc = new HMSDataContext();
         public ActionResult Dashboard()
         {
-            if (Session["user_role"].ToString() == "student")
+            if (Session["user_role"] != null && Session["user_role"].ToString() == "student")
             {
                 decimal cnic = (decimal)Session["user_cnic"];
 
@@ -29,7 +29,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult View_AnnualDues()
         {
-            if (Session["user_role"].ToString() == "student")
+            if (Session["user_role"] != null && Session["user_role"].ToString() == "student")
             {
                 decimal cnic = (decimal)Session["user_cnic"];
                 var x = dc.Allottments.First(q => q.std_cnic == cnic);
@@ -40,7 +40,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult View_MessDues()
         {
-            if (Session["user_role"].ToString() == "student")
+            if (Session["user_role"] != null && Session["user_role"].ToString() == "student")
             {
                 decimal cnic = (decimal)Session["user_cnic"];
                 var x = dc.Allottments.First(q => q.std_cnic == cnic);
@@ -51,7 +51,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult Change_password()
         {
-            if (Session["user_role"].ToString() == "student")
+            if (Session["user_role"] != null && Session["user_role"].ToString() == "student")
             { 
                 return View();
             }

@@ -14,6 +14,10 @@
                                 <input type="password" placeholder="Password" name="password" class="form-control mb">
                                 <input type="submit" name="login" class="btn btn-primary btn-block" value="Login">
                             </form>
+                            @if (ViewBag.error != null)
+                            {
+                                <label class="text-uppercase text-sm">@ViewBag.error</label>
+                            }
                         </div>
                     </div>
                 </div>
@@ -21,27 +25,3 @@
         </div>
     </div>
 </div>
-<script>
-    var result = false;
-    $('input[name=username]').blur(function (e) {
-        $.ajax({
-            url: "/Home/checkUser?username=" + $('input[name=username]').val(),
-            type: "GET",
-            success: function (data) {
-                if (!data.user_available) {
-                    window.alert("Incorrect username")
-                } else {
-                    result = true;
-                }
-            }
-        });
-    });
-
-    $("form").submit(function (e) {
-        if (!result) {
-            alert("Incorrect username or password")
-        }
-        return result;
-    })
-   
-</script>

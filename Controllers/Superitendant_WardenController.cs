@@ -13,7 +13,7 @@ namespace Online_Hostel_Management_System.Controllers
         readonly HMSDataContext dc = new HMSDataContext();
         public ActionResult Adduser()
         {
-            if (Session["user_role"].ToString() == "superitendant" || Session["user_role"].ToString() == "warden")
+            if (Session["user_role"] != null && (Session["user_role"].ToString() == "superitendant" || Session["user_role"].ToString() == "warden"))
             {
                 ViewBag.hostel = (int)Session["hostel"];
                 return View();
@@ -22,7 +22,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult View_Allottment()
         {
-            if (Session["user_role"].ToString() == "superitendant" || Session["user_role"].ToString() == "warden")
+            if (Session["user_role"] != null && (Session["user_role"].ToString() == "superitendant" || Session["user_role"].ToString() == "warden"))
             {
                 int hostel = (int)Session["hostel"];
                 var a = dc.View_Allottments.Where(s => s.hostel_id == hostel && s.allotte_activeStatus == "active").ToList();
@@ -32,7 +32,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult View_Info(int id)
         {
-            if (Session["user_role"].ToString() == "superitendant" || Session["user_role"].ToString() == "warden")
+            if (Session["user_role"] != null && (Session["user_role"].ToString() == "superitendant" || Session["user_role"].ToString() == "warden"))
             {
                 dynamic model = new ExpandoObject();
                 var a = dc.Allottments.First(x => x.allottee_id == id);
@@ -49,7 +49,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult View_rooms()
         {
-            if (Session["user_role"].ToString() == "superitendant" || Session["user_role"].ToString() == "warden")
+            if (Session["user_role"] != null && (Session["user_role"].ToString() == "superitendant" || Session["user_role"].ToString() == "warden"))
             {
                 int id = (int)Session["hostel"];
                 var a = dc.View_Rooms.Where(x => x.hostel_id == id).ToList();
@@ -57,40 +57,8 @@ namespace Online_Hostel_Management_System.Controllers
             }
             else return RedirectToAction("Index", "Home");
         }
-        public ActionResult Generate_MessRecord()
-        {
-            int id = (int)Session["hostel"];
-            var a = dc.Allottments.Where(x => x.hostel_id == id && x.allotte_activeStatus == "active");
-            DateTime month = DateTime.Now;
-            string year = month.ToString("yyyy");
-            string[] months = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
-            foreach (var x in a)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    Due due = new Due
-                    {
-                        allottee_id = x.allottee_id,
-                        dues_type = "mess",
-                        dues_amount = null,
-                        dues_session_month = months[i] + " " + year,
-                        dues_lastDate = null,
-                        dues_paidStatus = null,
-                        dues_paidDate = null,
-                        dues_addedBy = null,
-                        dues_recipt_no = null,
-                        time_of_addition = DateTime.Now
-                    };
-                    dc.Dues.InsertOnSubmit(due);
-                    dc.SubmitChanges();
-                }
-            }
-
-            return RedirectToAction("Manage_MessDues");
-        }
         public ActionResult Manage_MessDues()
         {
-
             if (Session["user_role"].ToString() == "superitendant" || Session["user_role"].ToString() == "warden")
             {
                 List<List<Due>> data = new List<List<Due>>();
@@ -112,7 +80,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult Manage_AnnualDues()
         {
-            if (Session["user_role"].ToString() == "superitendant" || Session["user_role"].ToString() == "warden")
+            if (Session["user_role"] != null && (Session["user_role"].ToString() == "superitendant" || Session["user_role"].ToString() == "warden"))
             {
                 List<List<Due>> data = new List<List<Due>>();
                 List<string> names = new List<string>();
@@ -134,7 +102,7 @@ namespace Online_Hostel_Management_System.Controllers
 
         public ActionResult View_StudentsMess()
         {
-            if (Session["user_role"].ToString() == "superitendant" || Session["user_role"].ToString() == "warden")
+            if (Session["user_role"] != null && (Session["user_role"].ToString() == "superitendant" || Session["user_role"].ToString() == "warden"))
             {
                 List<List<Due>> data = new List<List<Due>>();
                 List<string> names = new List<string>();
@@ -155,7 +123,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult View_AnnualRecords()
         {
-            if (Session["user_role"].ToString() == "superitendant" || Session["user_role"].ToString() == "warden")
+            if (Session["user_role"] != null && (Session["user_role"].ToString() == "superitendant" || Session["user_role"].ToString() == "warden"))
             {
                 List<List<Due>> data = new List<List<Due>>();
                 List<string> names = new List<string>();

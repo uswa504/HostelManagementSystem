@@ -18,6 +18,15 @@
     <link rel="stylesheet" href="@Url.Content("~/Content/Styles/bootstrap-select.css")" />
     <link rel="stylesheet" href="@Url.Content("~/Content/Styles/fileinput.min.css")" />
     <link rel="stylesheet" href="@Url.Content("~/Content/Styles/awesome-bootstrap-checkbox.css")" />
+    <script type="text/javascript" language="javascript">
+        function DisableBackButton() {
+            window.history.forward()
+        }
+        DisableBackButton();
+        window.onload = DisableBackButton;
+        window.onpageshow = function (evt) { if (evt.persisted) DisableBackButton() }
+        window.onunload = function () { void (0) }
+    </script>
     <script src="@Url.Content("~/Scripts/jquery.min.js")"></script>
     <script src="@Url.Content("~/Scripts/bootstrap-select.min.js")"></script>
     <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>

@@ -3,6 +3,7 @@ using System.Web.Security;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web;
+using System.Web.UI;
 using System.Collections.Generic;
 using Online_Hostel_Management_System.Models;
 
@@ -13,7 +14,6 @@ namespace Online_Hostel_Management_System.Controllers
         readonly HMSDataContext dc = new HMSDataContext();
         public ActionResult Index()
         {
-            //Response.Cache.SetCacheability(HttpCacheability.NoCache);
             return View();
         }
         public ActionResult checkUser(string username) 
@@ -109,7 +109,8 @@ namespace Online_Hostel_Management_System.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                ViewBag.error = "Username or password is incorrect!";
+                return View("Index");
             }
         }
         public ActionResult Change()
@@ -153,7 +154,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult UserAdd()
         {
-            if (Session["user_role"].ToString() == "superitendant" || Session["user_role"].ToString() == "warden")
+            if (Session["user_role"] != null && (Session["user_role"].ToString() == "superitendant" || Session["user_role"].ToString() == "warden"))
             {
                 int hostel = (int)Session["hostel"];
                 string name = Request["user_name"];

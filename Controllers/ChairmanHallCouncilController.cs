@@ -14,7 +14,7 @@ namespace Online_Hostel_Management_System.Controllers
         readonly HMSDataContext dc = new HMSDataContext();
         public ActionResult Addhostel()
         {
-            if (Session["user_role"].ToString() == "chc" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"] != null && Session["user_role"].ToString() == "chc")
             {
                 return View();
             }
@@ -22,7 +22,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult hostelAdd()
         {
-            if (Session["user_role"].ToString() == "chc" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"] != null && Session["user_role"].ToString() == "chc")
             {
                 int hostel_number = int.Parse(Request["hostel_number"]);
                 string hname = Request["hostel_name"];
@@ -47,7 +47,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult adduser()
         {
-            if (Session["user_role"].ToString() == "chc" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"] != null && Session["user_role"].ToString() == "chc")
             {
                 var a = dc.Hostels.ToList();
                 return View(a);
@@ -56,7 +56,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult UserAdd()
         {
-            if (Session["user_role"].ToString() == "chc" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"] != null && Session["user_role"].ToString() == "chc")
             {
                 int hostel = 0;
                 string name = Request["user_name"];
@@ -86,7 +86,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult View_hostels()
         {
-            if (Session["user_role"].ToString() == "chc" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"] != null && Session["user_role"].ToString() == "chc")
             {
                 var a = dc.View_Hostels.ToList();
                 return View(a);
@@ -95,7 +95,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult View_rooms(int id)
         {
-            if (Session["user_role"].ToString() == "chc")
+            if (Session["user_role"] != null && Session["user_role"].ToString() == "chc")
             {
                 var a = dc.Rooms.Where(x => x.hostel_id == id).ToList();
                 return View(a);
@@ -104,7 +104,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult View_Users()
         {
-            if (Session["user_role"].ToString() == "chc" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"] != null && Session["user_role"].ToString() == "chc")
             {
                 var a = dc.View_Users.ToList();
                 return View(a);
@@ -113,7 +113,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult See_Info(int id)
         {
-            if (Session["user_role"].ToString() == "chc" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"] != null && Session["user_role"].ToString() == "chc")
             {
                 dynamic model = new ExpandoObject();
                 model.a = dc.Allottments.First(x => x.allottee_id == id);
@@ -131,7 +131,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult View_Allottments()
         {
-            if (Session["user_role"].ToString() == "chc" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"] != null && Session["user_role"].ToString() == "chc")
             {
                 var a = dc.View_Allottments.Where(s => s.allotte_activeStatus == "active").ToList();
                 return View(a);
@@ -140,7 +140,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult Change_password()
         {
-            if (Session["user_role"].ToString() == "chc")
+            if (Session["user_role"] != null && Session["user_role"].ToString() == "chc")
             {
                 return View();
             }

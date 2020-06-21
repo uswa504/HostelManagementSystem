@@ -13,7 +13,7 @@ namespace Online_Hostel_Management_System.Controllers
     {
         readonly HMSDataContext dc = new HMSDataContext();
         public ActionResult Addroom() {
-            if (Session["user_role"].ToString() == "hostel_clerk" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"] != null && Session["user_role"].ToString() == "hostel_clerk")
             {
                 return View();
             }
@@ -21,7 +21,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult View_Allottment()
         {
-            if (Session["user_role"].ToString() == "hostel_clerk" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"] != null && Session["user_role"].ToString() == "hostel_clerk")
             {
                 int hostel = (int)Session["hostel"];
                 var a = dc.View_Allottments.Where(s=> s.hostel_id == hostel && s.allotte_activeStatus == "active").ToList();
@@ -31,7 +31,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult Add_allotment()
         {
-            if (Session["user_role"].ToString() == "hostel_clerk" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"] != null && Session["user_role"].ToString() == "hostel_clerk")
             {
                 int hostel = (int)Session["hostel"];
                 dynamic model = new ExpandoObject();
@@ -43,7 +43,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult Add(int id)
         {
-            if (Session["user_role"].ToString() == "hostel_clerk" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"] != null && Session["user_role"].ToString() == "hostel_clerk")
             {
                 int hostel = (int)Session["hostel"];
                 dynamic model = new ExpandoObject();
@@ -63,7 +63,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult View_rooms()
         {
-            if (Session["user_role"].ToString() == "hostel_clerk" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"] != null && Session["user_role"].ToString() == "hostel_clerk")
             {
                 int id = (int)Session["hostel"];
                 var a = dc.View_Rooms.Where(x => x.hostel_id == id).ToList();
@@ -73,7 +73,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult View_Students()
         {
-            if (Session["user_role"].ToString() == "hostel_clerk" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"] != null && Session["user_role"].ToString() == "hostel_clerk")
             {
                 var a = dc.View_Students.ToList();
                 return View(a);
@@ -82,7 +82,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult Add_room()
         {
-            if (Session["user_role"].ToString() == "hostel_clerk" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"] != null && Session["user_role"].ToString() == "hostel_clerk")
             {
                 int id = (int)Session["hostel"];
                 int roomno = int.Parse(Request["rmno"]);
@@ -213,6 +213,7 @@ namespace Online_Hostel_Management_System.Controllers
                 };
                 dc.Sessions.InsertOnSubmit(session);
                 dc.SubmitChanges();
+                string[] months = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
                 for (int i = 0; i < duration; i++)
                 {
                     Due dues = new Due()
@@ -230,6 +231,24 @@ namespace Online_Hostel_Management_System.Controllers
                     };
                     dc.Dues.InsertOnSubmit(dues);
                     dc.SubmitChanges();
+                    for (int j = 0; j < 12; j++)
+                    {
+                        Due due = new Due
+                        {
+                            allottee_id = allottment.allottee_id,
+                            dues_type = "mess",
+                            dues_amount = null,
+                            dues_session_month = months[j] + " " + (batch + i).ToString(),
+                            dues_lastDate = null,
+                            dues_paidStatus = null,
+                            dues_paidDate = null,
+                            dues_addedBy = null,
+                            dues_recipt_no = null,
+                            time_of_addition = DateTime.Now
+                        };
+                        dc.Dues.InsertOnSubmit(due);
+                        dc.SubmitChanges();
+                    }
                 }
                 string edu_deg0 = Request["edu_name0"];
                 int marks_obt0 = int.Parse(Request["marks_obt0"]);
@@ -373,6 +392,43 @@ namespace Online_Hostel_Management_System.Controllers
                 };
                 dc.Sessions.InsertOnSubmit(session);
                 dc.SubmitChanges();
+                string[] months = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
+                for (int i = 0; i < duration; i++)
+                {
+                    Due dues = new Due()
+                    {
+                        dues_type = "annual",
+                        dues_amount = null,
+                        dues_session_month = (batch + i).ToString(),
+                        dues_lastDate = null,
+                        dues_paidDate = null,
+                        dues_paidStatus = null,
+                        dues_recipt_no = null,
+                        allottee_id = allottment.allottee_id,
+                        dues_addedBy = null,
+                        time_of_addition = DateTime.Now,
+                    };
+                    dc.Dues.InsertOnSubmit(dues);
+                    dc.SubmitChanges();
+                    for (int j = 0; j < 12; j++)
+                    {
+                        Due due = new Due
+                        {
+                            allottee_id = allottment.allottee_id,
+                            dues_type = "mess",
+                            dues_amount = null,
+                            dues_session_month = months[j] + " " + (batch + i).ToString(),
+                            dues_lastDate = null,
+                            dues_paidStatus = null,
+                            dues_paidDate = null,
+                            dues_addedBy = null,
+                            dues_recipt_no = null,
+                            time_of_addition = DateTime.Now
+                        };
+                        dc.Dues.InsertOnSubmit(due);
+                        dc.SubmitChanges();
+                    }
+                }
                 string edu_deg0 = Request["edu_name0"];
                 int marks_obt0 = int.Parse(Request["marks_obt0"]);
                 int marks_total0 = int.Parse(Request["total_marks0"]);
@@ -419,7 +475,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult Change_password()
         {
-            if (Session["user_role"].ToString() == "hostel_clerk" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"] != null && Session["user_role"].ToString() == "hostel_clerk")
             {
                 return View();
             }
@@ -427,7 +483,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult View_Info(int id)
         {
-            if (Session["user_role"].ToString() == "hostel_clerk" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"] != null && Session["user_role"].ToString() == "hostel_clerk")
             {
                 dynamic model = new ExpandoObject();
                 var a = dc.Allottments.First(x => x.allottee_id == id);
@@ -444,7 +500,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult Update(int id)
         {
-            if (Session["user_role"].ToString() == "hostel_clerk" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"] != null && Session["user_role"].ToString() == "hostel_clerk")
             {
                 string status = Request["status"];
                 var a = dc.Allottments.First(s => s.allottee_id == id);
@@ -465,39 +521,9 @@ namespace Online_Hostel_Management_System.Controllers
             }
             else return RedirectToAction("Index", "Home");
         }
-        public ActionResult Generate_MessRecord()
-        {
-            int id = (int)Session["hostel"];
-            var a = dc.Allottments.Where(x => x.hostel_id == id && x.allotte_activeStatus == "active");
-            DateTime month = DateTime.Now;
-            string year = month.ToString("yyyy");
-            string [] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
-            foreach (var x in a)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    Due due = new Due
-                    {
-                        allottee_id = x.allottee_id,
-                        dues_type = "mess",
-                        dues_amount = null,
-                        dues_session_month = months[i] + " " + year,
-                        dues_lastDate = null,
-                        dues_paidStatus = null,
-                        dues_paidDate = null,
-                        dues_addedBy = null,
-                        dues_recipt_no = null,
-                        time_of_addition = DateTime.Now
-                    };
-                    dc.Dues.InsertOnSubmit(due);
-                    dc.SubmitChanges();
-                }
-            }
-            return RedirectToAction("Manage_MessDues", "HostelClerk");
-        }
         public ActionResult Manage_MessDues()
         {
-            if (Session["user_role"].ToString() == "hostel_clerk" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"] != null && Session["user_role"].ToString() == "hostel_clerk")
             {
                 List<List<Due>> data = new List<List<Due>>();
                 List<string> names = new List<string>();
@@ -518,7 +544,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult Manage_AnnualDues()
         {
-            if (Session["user_role"].ToString() == "hostel_clerk" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"] != null && Session["user_role"].ToString() == "hostel_clerk")
             {
                 List<List<Due>> data = new List<List<Due>>();
                 List<string> names = new List<string>();
@@ -539,7 +565,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult View_StudentsMess()
         {
-            if (Session["user_role"].ToString() == "hostel_clerk" || Session["user_role"].ToString() == "admin")
+            if (Session["user_role"] != null && Session["user_role"].ToString() == "hostel_clerk")
             {
                 List<List<Due>> data = new List<List<Due>>();
                 List<string> names = new List<string>();
@@ -560,7 +586,7 @@ namespace Online_Hostel_Management_System.Controllers
         }
         public ActionResult View_AnnualRecords()
         {
-            if (Session["user_role"].ToString() == "hostel_clerk")
+            if (Session["user_role"] != null && Session["user_role"].ToString() == "hostel_clerk")
             {
                 List<List<Due>> data = new List<List<Due>>();
                 List<string> names = new List<string>();
