@@ -52,12 +52,14 @@
                                                             <option value="@g.dues_paidStatus">@g.dues_paidStatus</option>
                                                             <option value="unpaid">Unpaid</option>
                                                             <option value="paid">Paid</option>
+                                                            <option value="partial">Partial</option>
                                                         </select>
                                                     </td>
                                                     <td><input name="paid_date" value="@paidDate" type="date" /></td>
                                                     <td><input type="text" name="reciptno" pattern="[0-9]*" value="@g.dues_recipt_no" title="Only Digits" style="width:80px" /></td>
                                                     <td>
-                                                        <a href="/HostelClerk/UpdateMess/@g.allottee_id?month=@g.dues_session_month" class="link_black" title="Update">UpdateMess</a>
+                                                        <a href="/HostelClerk/UpdateMess/@g.allottee_id" data-month="@g.dues_session_month" class="link_black" title="Update">UpdateMess</a>
+                                                        <a href="/HostelClerk/AddPartialMess/@g.allottee_id?month=@g.dues_session_month" class="link_black" title="Add Partial">Add Partial</a>
                                                     </td>
                                                 </tr>
                                             }

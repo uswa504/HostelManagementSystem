@@ -532,7 +532,7 @@ namespace Online_Hostel_Management_System.Controllers
                 foreach (var x in a)
                 {
                     var s = dc.Students.First(p => p.std_cnic == x.std_cnic);
-                    var b = dc.Dues.Where(d => d.allottee_id == x.allottee_id && d.dues_type == "mess").ToList();
+                    var b = dc.Dues.Where(d => d.allottee_id == x.allottee_id && (d.dues_type == "mess" || d.dues_type == "partial mess")).ToList();
                     data.Add(b);
                     names.Add(s.std_name);
                 }
@@ -553,7 +553,7 @@ namespace Online_Hostel_Management_System.Controllers
                 foreach (var x in a)
                 {
                     var s = dc.Students.First(p => p.std_cnic == x.std_cnic);
-                    var b = dc.Dues.Where(d => d.allottee_id == x.allottee_id && d.dues_type == "annual").ToList();
+                    var b = dc.Dues.Where(d => d.allottee_id == x.allottee_id && (d.dues_type == "annual" || d.dues_type == "partial annual")).ToList();
                     data.Add(b);
                     names.Add(s.std_name);
                 }
@@ -574,7 +574,7 @@ namespace Online_Hostel_Management_System.Controllers
                 foreach (var x in a)
                 {
                     var s = dc.Students.First(p => p.std_cnic == x.std_cnic);
-                    var b = dc.Dues.Where(d => d.allottee_id == x.allottee_id && d.dues_type == "mess").ToList();
+                    var b = dc.Dues.Where(d => d.allottee_id == x.allottee_id && (d.dues_type == "mess" || d.dues_type == "partial mess")).ToList();
                     data.Add(b);
                     names.Add(s.std_name);
                 }
@@ -595,7 +595,7 @@ namespace Online_Hostel_Management_System.Controllers
                 foreach (var x in a)
                 {
                     var s = dc.Students.First(p => p.std_cnic == x.std_cnic);
-                    var b = dc.Dues.Where(d => d.allottee_id == x.allottee_id && d.dues_type == "annual").ToList();
+                    var b = dc.Dues.Where(d => d.allottee_id == x.allottee_id && (d.dues_type == "annual" || d.dues_type == "partial annual")).ToList();
                     data.Add(b);
                     names.Add(s.std_name);
                 }
@@ -654,6 +654,44 @@ namespace Online_Hostel_Management_System.Controllers
                 return Json(new { success = true }, JsonRequestBehavior.AllowGet);
             }
             return Json(new { success = false }, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult AddPartialAnnual(int id, string year)
+        {
+            Due due = new Due
+            {
+                allottee_id = id,
+                dues_type = "partial annual",
+                dues_amount = null,
+                dues_session_month = year,
+                dues_lastDate = null,
+                dues_paidStatus = null,
+                dues_paidDate = null,
+                dues_addedBy = null,
+                dues_recipt_no = null,
+                time_of_addition = DateTime.Now
+            };
+            dc.Dues.InsertOnSubmit(due);
+            dc.SubmitChanges();
+            return RedirectToAction("Manage_AnnualDues");
+        }
+        public ActionResult AddPartialMess(int id, string month)
+        {
+            Due due = new Due
+            {
+                allottee_id = id,
+                dues_type = "partial mess",
+                dues_amount = null,
+                dues_session_month = month,
+                dues_lastDate = null,
+                dues_paidStatus = null,
+                dues_paidDate = null,
+                dues_addedBy = null,
+                dues_recipt_no = null,
+                time_of_addition = DateTime.Now
+            };
+            dc.Dues.InsertOnSubmit(due);
+            dc.SubmitChanges();
+            return RedirectToAction("Manage_MessDues");
         }
     }
 }
